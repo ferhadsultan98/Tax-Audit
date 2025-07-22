@@ -1,0 +1,587 @@
+$primaryColor: #54e7b3;
+$whiteColor: #ffffff;
+$darkColor: #1a1a1a;
+$grayColor: #666666;
+$lightGray: #f8f9fa;
+$shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+$transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    transform: scale(0.9) translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.homeAwards {
+  padding: 100px 0;
+  background-color: $lightGray;
+  overflow: hidden;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba($primaryColor, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .awardsContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .awardsHeader {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: fadeInUp 0.6s ease-out;
+
+    .sectionLabel {
+      color: $primaryColor;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    .sectionTitle {
+      font-size: 42px;
+      font-weight: 700;
+      color: $darkColor;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .sectionDesc {
+      font-size: 18px;
+      color: $grayColor;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+  }
+
+  .awardsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+  .awardCard {
+    cursor: pointer;
+    perspective: 1000px;
+    height: 350px;
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.1}s;
+      }
+    }
+
+    .cardInner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    &:hover {
+      .cardInner {
+        transform: rotateY(180deg);
+      }
+
+      .awardImage {
+        img {
+          transform: scale(1.1);
+        }
+
+        .imageOverlay {
+          opacity: 1;
+        }
+      }
+    }
+
+    .cardFront,
+    .cardBack {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .cardFront {
+      background: $whiteColor;
+    }
+
+    .cardBack {
+      background: linear-gradient(135deg, $primaryColor, darken($primaryColor, 10%));
+      transform: rotateY(180deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .backContent {
+        text-align: center;
+        color: $whiteColor;
+        padding: 30px;
+
+        svg {
+          margin-bottom: 15px;
+          animation: float 3s ease-in-out infinite;
+        }
+
+        h4 {
+          font-size: 20px;
+          margin-bottom: 10px;
+        }
+
+        p {
+          font-size: 14px;
+          opacity: 0.9;
+        }
+      }
+    }
+
+    .awardImage {
+      position: relative;
+      height: 60%;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+      }
+
+      .imageOverlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba($primaryColor, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+
+        svg {
+          color: $whiteColor;
+          animation: float 3s ease-in-out infinite;
+        }
+      }
+    }
+
+    .awardInfo {
+      padding: 25px;
+      text-align: center;
+
+      .awardCategory {
+        color: $primaryColor;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .awardTitle {
+        font-size: 18px;
+        font-weight: 600;
+        color: $darkColor;
+        margin: 10px 0;
+        line-height: 1.3;
+      }
+
+      .awardYear {
+        color: $grayColor;
+        font-size: 14px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+// Modal Styles
+.awardModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: modalFadeIn 0.3s ease-out;
+
+  .modalContent {
+    background: $whiteColor;
+    border-radius: 20px;
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    overflow: hidden;
+    position: relative;
+    animation: modalSlideIn 0.3s ease-out;
+
+    .closeBtn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba($darkColor, 0.1);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: $transition;
+      z-index: 10;
+
+      &:hover {
+        background: $primaryColor;
+        color: $whiteColor;
+        transform: rotate(90deg);
+      }
+    }
+
+    .modalBody {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 100%;
+    }
+
+    .modalImage {
+      position: relative;
+      background: $lightGray;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .modalCategory {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background: $primaryColor;
+        color: $whiteColor;
+        padding: 8px 20px;
+        border-radius: 25px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+    }
+
+    .modalInfo {
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .modalTitle {
+        font-size: 32px;
+        font-weight: 700;
+        color: $darkColor;
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+
+      .modalMeta {
+        display: flex;
+        gap: 30px;
+        margin-bottom: 30px;
+
+        .metaItem {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          color: $grayColor;
+          font-size: 14px;
+
+          svg {
+            color: $primaryColor;
+          }
+        }
+      }
+
+      .modalDesc {
+        font-size: 16px;
+        line-height: 1.8;
+        color: $grayColor;
+        margin-bottom: 40px;
+      }
+
+      .modalActions {
+        display: flex;
+        gap: 15px;
+
+        .actionBtn {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 12px 24px;
+          border-radius: 25px;
+          font-weight: 600;
+          font-size: 14px;
+          border: none;
+          cursor: pointer;
+          transition: $transition;
+
+          &.primary {
+            background: $primaryColor;
+            color: $whiteColor;
+
+            &:hover {
+              background: darken($primaryColor, 10%);
+              transform: translateY(-2px);
+              box-shadow: 0 5px 15px rgba($primaryColor, 0.3);
+            }
+          }
+
+          &.secondary {
+            background: transparent;
+            color: $primaryColor;
+            border: 2px solid $primaryColor;
+
+            &:hover {
+              background: $primaryColor;
+              color: $whiteColor;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 992px) {
+  .homeAwards {
+    padding: 80px 0;
+
+    .awardsHeader {
+      margin-bottom: 50px;
+
+      .sectionTitle {
+        font-size: 36px;
+      }
+
+      .sectionDesc {
+        font-size: 16px;
+      }
+    }
+
+    .awardsGrid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+  }
+
+  .awardModal {
+    .modalContent {
+      .modalBody {
+        grid-template-columns: 1fr;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+
+      .modalImage {
+        height: 300px;
+      }
+
+      .modalInfo {
+        padding: 40px;
+
+        .modalTitle {
+          font-size: 28px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .homeAwards {
+    padding: 60px 0;
+
+    .awardsHeader {
+      margin-bottom: 40px;
+
+      .sectionLabel {
+        font-size: 12px;
+      }
+
+      .sectionTitle {
+        font-size: 28px;
+      }
+
+      .sectionDesc {
+        font-size: 15px;
+      }
+    }
+
+    .awardsGrid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .awardCard {
+      height: 300px;
+    }
+  }
+
+  .awardModal {
+    .modalContent {
+      border-radius: 15px;
+
+      .modalInfo {
+        padding: 30px;
+
+        .modalTitle {
+          font-size: 24px;
+          margin-bottom: 15px;
+        }
+
+        .modalMeta {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .modalDesc {
+          font-size: 15px;
+          margin-bottom: 30px;
+        }
+
+        .modalActions {
+          flex-direction: column;
+          gap: 10px;
+
+          .actionBtn {
+            width: 100%;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .homeAwards {
+    padding: 50px 0;
+
+    .awardsHeader {
+      .sectionTitle {
+        font-size: 24px;
+        margin-bottom: 15px;
+      }
+
+      .sectionDesc {
+        font-size: 14px;
+      }
+    }
+
+    .awardCard {
+      height: 280px;
+
+      .awardInfo {
+        padding: 20px;
+
+        .awardTitle {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  .awardModal {
+    padding: 10px;
+
+    .modalContent {
+      .closeBtn {
+        width: 35px;
+        height: 35px;
+        top: 15px;
+        right: 15px;
+      }
+
+      .modalImage {
+        height: 250px;
+      }
+
+      .modalInfo {
+        padding: 25px;
+
+        .modalTitle {
+          font-size: 20px;
+        }
+
+        .modalDesc {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

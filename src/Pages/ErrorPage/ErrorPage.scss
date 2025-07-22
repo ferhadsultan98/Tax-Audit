@@ -1,0 +1,155 @@
+$primaryColor: #54e7b3;
+$whiteColor: #ffffff;
+$shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+$transition: all 0.5s ease-in-out;
+
+.errorSection {
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+
+  .errorWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 2rem;
+  }
+
+  .errorContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .errorImageWrapper {
+    position: relative;
+    text-align: center;
+
+    .errorIcon {
+      font-size: 6rem;
+      color: $primaryColor;
+      margin-bottom: 2rem;
+      transition: $transition;
+    }
+
+    .errorText {
+      text-align: center;
+      color: #333;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      padding: 1.5rem 2rem;
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      box-shadow: $shadow;
+
+      h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+      }
+
+      .backButton {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        background-color: $primaryColor;
+        color: $whiteColor;
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 500;
+        transition: $transition;
+
+        .backIcon {
+          font-size: 1.2rem;
+        }
+
+        &:hover {
+          background-color: darken($primaryColor, 10%);
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .errorWrapper {
+      padding: 1.5rem;
+    }
+
+    .errorImageWrapper {
+      .errorIcon {
+        font-size: 4rem;
+      }
+
+      .errorText {
+        padding: 1rem 1.5rem;
+
+        h2 {
+          font-size: 2rem;
+        }
+
+        p {
+          font-size: 1rem;
+          max-width: 90%;
+        }
+
+        .backButton {
+          padding: 0.5rem 1rem;
+          font-size: 1rem;
+
+          .backIcon {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .errorWrapper {
+      padding: 1rem;
+    }
+
+    .errorImageWrapper {
+      .errorIcon {
+        font-size: 3rem;
+      }
+
+      .errorText {
+        padding: 0.75rem 1rem;
+
+        h2 {
+          font-size: 1.5rem;
+        }
+
+        p {
+          font-size: 0.9rem;
+          max-width: 95%;
+        }
+
+        .backButton {
+          padding: 0.5rem 0.75rem;
+          font-size: 0.9rem;
+
+          .backIcon {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+  }
+}
