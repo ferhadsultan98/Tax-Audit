@@ -25,28 +25,40 @@ const HeroSection = () => {
     },
     {
       image: HeroImage4,
-      title: "Third Slide",
-      description: "This is the third slide description.",
+      title: "Fourth Slide",
+      description: "This is the fourth slide description.",
     },
   ];
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHoveringLeft, setIsHoveringLeft] = useState(false);
   const [isHoveringRight, setIsHoveringRight] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [direction, setDirection] = useState("right");
+  const [showBottomDesign, setShowBottomDesign] = useState(true);
 
   const nextSlide = () => {
     if (!isTransitioning) {
       setIsTransitioning(true);
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-      setTimeout(() => setIsTransitioning(false), 500); // Match animation duration
+      setDirection("right");
+      setShowBottomDesign(false);
+      setTimeout(() => {
+        setCurrentSlide((prev) => (prev + 1) % slides.length);
+        setShowBottomDesign(true);
+        setTimeout(() => setIsTransitioning(false), 500);
+      }, 300);
     }
   };
 
   const prevSlide = () => {
     if (!isTransitioning) {
       setIsTransitioning(true);
-      setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-      setTimeout(() => setIsTransitioning(false), 500); // Match animation duration
+      setDirection("left");
+      setShowBottomDesign(false);
+      setTimeout(() => {
+        setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+        setShowBottomDesign(true);
+        setTimeout(() => setIsTransitioning(false), 500);
+      }, 300);
     }
   };
 
@@ -55,9 +67,9 @@ const HeroSection = () => {
       if (!isHoveringLeft && !isHoveringRight && !isTransitioning) {
         nextSlide();
       }
-    }, 5000); // Change slide every 5 seconds
+    }, 5000);
 
-    return () => clearInterval(interval); // Cleanup on unmount
+    return () => clearInterval(interval);
   }, [isHoveringLeft, isHoveringRight, isTransitioning]);
 
   return (
@@ -85,16 +97,28 @@ const HeroSection = () => {
             </div>
           )}
         </div>
-        <div className="sliderContent">
+        <div className="heroSectionSliderContent">
           <div className="slideImageWrapper">
             <img
               src={slides[currentSlide].image}
               alt={slides[currentSlide].title}
-              className={`slideImage ${isTransitioning ? "fade" : ""}`}
+              className={`slideImage ${
+                isTransitioning
+                  ? direction === "right"
+                    ? "slide-in-right"
+                    : "slide-in-left"
+                  : ""
+              }`}
             />
-            {/* <div className="slideText">
-              <h2>{slides[currentSlide].title}</h2>
-              <p>{slides[currentSlide].description}</p>
+            {/* <div
+              className={`bottomDesign ${
+                showBottomDesign ? "fade-in" : "fade-out"
+              }`}
+            >
+              <div className="slideText">
+                <h2>{slides[currentSlide].title}</h2>
+                <p>{slides[currentSlide].description}</p>
+              </div>
             </div> */}
           </div>
         </div>

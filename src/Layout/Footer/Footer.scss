@@ -17,18 +17,6 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
 @keyframes slideInRight {
   from {
     transform: translateX(-10px);
@@ -45,9 +33,11 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   color: $lightText;
   position: relative;
   overflow: hidden;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -62,7 +52,7 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       bottom: 0;
       left: 50%;
@@ -102,9 +92,7 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         img {
           height: 120px;
           width: auto;
-          filter: brightness(0) invert(1);
           transition: $transition;
-       
 
           &:hover {
             filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba($primaryColor, 0.5));
@@ -155,7 +143,7 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       padding-bottom: 15px;
 
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: 0;
         left: 0;
@@ -320,34 +308,8 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
     }
   }
-
-  .scrollTop {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    background: $primaryColor;
-    border: none;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: $whiteColor;
-    cursor: pointer;
-    transition: $transition;
-    z-index: 100;
-    box-shadow: 0 5px 20px rgba($primaryColor, 0.3);
-
-    &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba($primaryColor, 0.4);
-      animation: pulse 1s ease-in-out infinite;
-    }
-  }
 }
 
-// Responsive
 @media (max-width: 992px) {
   .footer {
     .footerTop {
@@ -427,13 +389,6 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
       }
     }
-
-    .scrollTop {
-      bottom: 20px;
-      right: 20px;
-      width: 45px;
-      height: 45px;
-    }
   }
 }
 
@@ -496,7 +451,8 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         .copyright,
         .bottomLinks,
         .createdBy {
-          p, a {
+          p,
+          a {
             font-size: 13px;
           }
         }

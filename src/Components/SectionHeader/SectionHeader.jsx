@@ -1,13 +1,12 @@
 import React from 'react';
 import './SectionHeader.scss';
 
-const SectionHeader = ({ title, subtitle }) => {
+const SectionHeader = ({ label, title, description, centered = true }) => {
   return (
-    <div className="componentSectionHeader">
-      <div className="headerContent">
-        <h2 className="headerTitle">{title}</h2>
-        {subtitle && <p className="headerSubtitle">{subtitle}</p>}
-      </div>
+    <div className={`sectionHeader ${centered ? 'centered' : ''}`}>
+      <span className="headerLabel">{label}</span>
+      <h2 className="headerTitle">{title}</h2>
+      {description && <p className="headerDescription">{description}</p>}
     </div>
   );
 };

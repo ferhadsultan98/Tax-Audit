@@ -1,0 +1,316 @@
+$primaryColor: #54e7b3;
+$whiteColor: #ffffff;
+$darkColor: #1a1a1a;
+$grayColor: #666666;
+$lightGray: #f8f9fa;
+$borderColor: #e5e5e5;
+$shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+$transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.loginPage {
+  min-height: 100vh;
+  background: linear-gradient(135deg, $darkColor 0%, lighten($darkColor, 10%) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba($primaryColor, 0.1) 0%, transparent 50%);
+  }
+
+  .loginContainer {
+    max-width: 400px;
+    width: 100%;
+    background: $whiteColor;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: $shadow;
+    animation: fadeInUp 0.8s ease-out;
+    position: relative;
+    z-index: 2;
+
+    .loginHeader {
+      text-align: center;
+      margin-bottom: 30px;
+
+      .companyLogo {
+        max-width: 100px;
+        height: auto;
+        margin-bottom: 20px;
+      }
+
+      .loginTitle {
+        font-size: 28px;
+        font-weight: 700;
+        color: $darkColor;
+        margin-bottom: 10px;
+        line-height: 1.2;
+      }
+
+      .loginSubtitle {
+        font-size: 16px;
+        color: $grayColor;
+        line-height: 1.5;
+      }
+    }
+
+    .loginForm {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .formGroup {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .formLabel {
+          font-size: 14px;
+          font-weight: 600;
+          color: $darkColor;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+
+        .passwordContainer {
+          position: relative;
+
+          .passwordInput {
+            padding: 12px 40px 12px 16px; // Adjusted padding for icon
+            border: 1px solid $borderColor;
+            border-radius: 10px;
+            font-size: 16px;
+            color: $darkColor;
+            background: $lightGray;
+            transition: $transition;
+            width: 100%; // Ensure full width
+
+            &::placeholder {
+              color: $grayColor;
+              opacity: 0.6;
+            }
+
+            &:focus {
+              outline: none;
+              border-color: $primaryColor;
+              background: $whiteColor;
+              transform: translateY(-2px);
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+          }
+
+          .passwordToggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: $grayColor;
+            font-size: 18px;
+            transition: $transition;
+
+            &:hover {
+              color: $primaryColor;
+            }
+          }
+        }
+
+        .formInput:not(.passwordInput) {
+          padding: 12px 16px;
+          border: 1px solid $borderColor;
+          border-radius: 10px;
+          font-size: 16px;
+          color: $darkColor;
+          background: $lightGray;
+          transition: $transition;
+
+          &::placeholder {
+            color: $grayColor;
+            opacity: 0.6;
+          }
+
+          &:focus {
+            outline: none;
+            border-color: $primaryColor;
+            background: $whiteColor;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+          }
+        }
+      }
+
+      .errorMessage {
+        color: #e74c3c;
+        font-size: 14px;
+        text-align: center;
+        margin: 0;
+      }
+
+      .loginButton {
+        padding: 12px;
+        background: $primaryColor;
+        color: $whiteColor;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: $transition;
+
+        &:hover {
+          background: darken($primaryColor, 10%);
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          animation: pulse 1.5s ease-in-out infinite;
+        }
+      }
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .loginPage {
+    padding: 40px 20px;
+
+    .loginContainer {
+      padding: 30px;
+
+      .loginHeader {
+        .loginTitle {
+          font-size: 24px;
+        }
+
+        .loginSubtitle {
+          font-size: 14px;
+        }
+
+        .companyLogo {
+          max-width: 80px;
+        }
+      }
+
+      .loginForm {
+        .formGroup {
+          .formLabel {
+            font-size: 12px;
+          }
+
+          .passwordContainer {
+            .passwordInput {
+              padding: 10px 36px 10px 14px; // Adjusted for responsive
+              font-size: 14px;
+            }
+
+            .passwordToggle {
+              right: 10px;
+              font-size: 16px;
+            }
+          }
+
+          .formInput:not(.passwordInput) {
+            padding: 10px 14px;
+            font-size: 14px;
+          }
+        }
+
+        .loginButton {
+          padding: 10px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .loginPage {
+    padding: 20px 15px;
+
+    .loginContainer {
+      padding: 20px;
+
+      .loginHeader {
+        .loginTitle {
+          font-size: 20px;
+        }
+
+        .loginSubtitle {
+          font-size: 12px;
+        }
+
+        .companyLogo {
+          max-width: 60px;
+        }
+      }
+
+      .loginForm {
+        gap: 15px;
+
+        .formGroup {
+          .formLabel {
+            font-size: 11px;
+          }
+
+          .passwordContainer {
+            .passwordInput {
+              padding: 8px 32px 8px 12px; // Adjusted for smaller screens
+              font-size: 13px;
+            }
+
+            .passwordToggle {
+              right: 8px;
+              font-size: 14px;
+            }
+          }
+
+          .formInput:not(.passwordInput) {
+            padding: 8px 12px;
+            font-size: 13px;
+          }
+        }
+
+        .loginButton {
+          padding: 8px;
+          font-size: 13px;
+        }
+
+        .errorMessage {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

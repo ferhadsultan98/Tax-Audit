@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import Hamburger from "hamburger-react";
 import { FaChevronDown } from "react-icons/fa";
 import { TbWorld } from "react-icons/tb";
@@ -6,6 +8,7 @@ import "./Header.scss";
 import TaxLogo from "../../assets/tax.webp";
 
 const Header = () => {
+  const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [servicesDropdown, setServicesDropdown] = useState(false);
   const [langDropdown, setLangDropdown] = useState(false);
@@ -45,63 +48,76 @@ const Header = () => {
 
   const handleLinkClick = () => {
     setIsOpen(false);
+    setServicesDropdown(false);
+  };
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+    setLangDropdown(false);
+    handleLinkClick();
   };
 
   return (
     <header className={`header ${scrolled ? "scrolled" : ""}`}>
       <div className="header-container">
         <div className="logo">
-          <a href="/">
+          <Link to="/">
             <img src={TaxLogo} alt="Tax Logo" />
-          </a>
+          </Link>
         </div>
 
         <nav className={`nav ${isOpen ? "open" : ""}`}>
           <ul className="navList">
             <li>
-              <a href="/about" className="navLink" onClick={handleLinkClick}>
-                About us
-              </a>
+              <Link to="/about" className="navLink" onClick={handleLinkClick}>
+                {t("header.about_us")}
+              </Link>
             </li>
             <li className="services" ref={servicesRef}>
               <button
                 className="navLink"
                 onClick={() => setServicesDropdown(!servicesDropdown)}
               >
-                Services
+                {t("header.services")}
                 <FaChevronDown
                   className={`chevron ${servicesDropdown ? "rotate" : ""}`}
                 />
               </button>
               <div className={`dropdown ${servicesDropdown ? "active" : ""}`}>
-                <a href="/service1" onClick={handleLinkClick}>
-                  Audit Xidməti
-                </a>
-                <a href="/service2" onClick={handleLinkClick}>
-                  Mühasibatlıq Xidməti
-                </a>
-                <a href="/service3" onClick={handleLinkClick}>
-                  Vergi və Hüquq Xidməti
-                </a>
-                <a href="/service4" onClick={handleLinkClick}>
-                  Konsaltinq Xidməti
-                </a>
+                <Link to="/services/audit" onClick={handleLinkClick}>
+                  {t("header.services_dropdown.audit")}
+                </Link>
+                <Link to="/services/valuation" onClick={handleLinkClick}>
+                  {t("header.services_dropdown.valuation")}
+                </Link>
+                <Link to="/services/tax-legal" onClick={handleLinkClick}>
+                  {t("header.services_dropdown.tax_legal")}
+                </Link>
+                <Link to="/services/consulting" onClick={handleLinkClick}>
+                  {t("header.services_dropdown.consulting")}
+                </Link>
+                <Link to="/services/accounting" onClick={handleLinkClick}>
+                  {t("header.services_dropdown.accounting")}
+                </Link>
+                <Link to="/services/hr" onClick={handleLinkClick}>
+                  {t("header.services_dropdown.humanresources")}
+                </Link>
               </div>
             </li>
             <li>
-              <a href="/blog" className="navLink" onClick={handleLinkClick}>
-                Blog
-              </a>
+              <Link to="/blog" className="navLink" onClick={handleLinkClick}>
+                {t("header.blog")}
+              </Link>
             </li>
             <li>
-              <a href="/faq" className="navLink" onClick={handleLinkClick}>
-                FAQ
-              </a>
+              <Link to="/faq" className="navLink" onClick={handleLinkClick}>
+                {t("header.faq")}
+              </Link>
             </li>
             <li>
-              <a href="/contact" className="navLink" onClick={handleLinkClick}>
-                Contact
-              </a>
+              <Link to="/contact" className="navLink" onClick={handleLinkClick}>
+                {t("header.contact")}
+              </Link>
             </li>
             <li className="language" ref={langRef}>
               <button
@@ -113,15 +129,15 @@ const Header = () => {
                 </i>
               </button>
               <div className={`langOptions ${langDropdown ? "active" : ""}`}>
-                <a href="#" onClick={handleLinkClick}>
+                <Link to="#" onClick={() => changeLanguage("az")}>
                   AZ
-                </a>
-                <a href="#" onClick={handleLinkClick}>
-                  RU
-                </a>
-                <a href="#" onClick={handleLinkClick}>
+                </Link>
+                <Link to="#" onClick={() => changeLanguage("en")}>
                   EN
-                </a>
+                </Link>
+                <Link to="#" onClick={() => changeLanguage("ru")}>
+                  RU
+                </Link>
               </div>
             </li>
           </ul>
@@ -140,7 +156,6 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile menu overlay */}
       {isOpen && <div className="overlay" onClick={() => setIsOpen(false)} />}
     </header>
   );

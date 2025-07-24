@@ -1,0 +1,661 @@
+$primaryColor: #54e7b3;
+$whiteColor: #ffffff;
+$darkColor: #1a1a1a;
+$grayColor: #666666;
+$lightGray: #f8f9fa;
+$borderColor: #e5e5e5;
+$shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+$transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.contactPage {
+  min-height: 100vh;
+  background: $whiteColor;
+
+  // Hero Section
+  .contactHero {
+    background: linear-gradient(135deg, $darkColor 0%, lighten($darkColor, 10%) 100%);
+    padding: 140px 0 100px;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 70% 50%, rgba($primaryColor, 0.1) 0%, transparent 50%);
+    }
+
+    .heroContainer {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 0.8s ease-out;
+
+      .heroLabel {
+        color: $primaryColor;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        display: inline-block;
+        margin-bottom: 20px;
+      }
+
+      .heroTitle {
+        font-size: 48px;
+        font-weight: 700;
+        color: $whiteColor;
+        margin-bottom: 25px;
+        line-height: 1.2;
+      }
+
+      .heroDescription {
+        font-size: 20px;
+        color: rgba($whiteColor, 0.85);
+        line-height: 1.8;
+      }
+    }
+  }
+
+  // Contact Info Cards
+  .contactCards {
+    margin-top: -60px;
+    position: relative;
+    z-index: 5;
+    padding: 0 20px;
+
+    .cardsContainer {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .cardsGrid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    .infoCard {
+      background: $whiteColor;
+      border-radius: 16px;
+      padding: 35px 25px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: $transition;
+      animation: fadeInUp 0.6s ease-out;
+      animation-fill-mode: both;
+
+      @for $i from 1 through 4 {
+        &:nth-child(#{$i}) {
+          animation-delay: #{$i * 0.1}s;
+        }
+      }
+
+      &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+
+        .cardIcon {
+          background: var(--card-color);
+          color: $whiteColor;
+          transform: scale(1.1);
+          svg{
+            color: $whiteColor;
+          }
+        }
+      }
+
+      .cardIcon {
+        width: 70px;
+        height: 70px;
+        background: rgba($primaryColor, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        transition: $transition;
+
+        svg {
+          color: var(--card-color);
+        }
+      }
+
+      h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: $darkColor;
+        margin-bottom: 15px;
+      }
+
+      .cardDetails {
+        p {
+          font-size: 14px;
+          color: $grayColor;
+          line-height: 1.6;
+          margin: 0 0 8px 0;
+
+          &:last-child {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+
+  // Main Contact Section
+  .contactMain {
+    padding: 100px 0;
+    background: $lightGray;
+
+    .mainContainer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .contactGrid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+    }
+
+    // Contact Form
+    .contactForm {
+      background: $whiteColor;
+      border-radius: 20px;
+      padding: 50px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      animation: slideInLeft 0.8s ease-out;
+
+      .formHeader {
+        margin-bottom: 40px;
+
+        h2 {
+          font-size: 32px;
+          font-weight: 700;
+          color: $darkColor;
+          margin-bottom: 10px;
+        }
+
+        p {
+          font-size: 16px;
+          color: $grayColor;
+        }
+      }
+
+      .form {
+        .formRow {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 25px;
+          margin-bottom: 25px;
+        }
+
+        .formGroup {
+          margin-bottom: 0;
+
+          label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: $darkColor;
+            margin-bottom: 10px;
+          }
+
+          input,
+          select,
+          textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid $borderColor;
+            border-radius: 10px;
+            font-size: 15px;
+            color: $darkColor;
+            background: $whiteColor;
+            transition: $transition;
+
+            &::placeholder {
+              color: #b0b0b0;
+            }
+
+            &:focus {
+              outline: none;
+              border-color: $primaryColor;
+              box-shadow: 0 0 0 3px rgba($primaryColor, 0.1);
+            }
+          }
+
+          select {
+            cursor: pointer;
+          }
+
+          textarea {
+            resize: vertical;
+            min-height: 120px;
+          }
+        }
+
+        .submitBtn {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background: linear-gradient(135deg, $primaryColor, darken($primaryColor, 5%));
+          color: $whiteColor;
+          padding: 18px 40px;
+          border: none;
+          border-radius: 50px;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: $transition;
+          margin-top: 20px;
+
+          &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba($primaryColor, 0.3);
+            gap: 15px;
+
+            svg {
+              transform: translateX(5px);
+            }
+          }
+
+          svg {
+            transition: transform 0.3s ease;
+          }
+        }
+      }
+    }
+
+    // Contact Sidebar
+    .contactSidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+
+      // Map Card
+      .mapCard {
+        background: $whiteColor;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+        iframe {
+          width: 100%;
+          height: 300px;
+          border: none;
+        }
+      }
+
+      // Why Card
+      .whyCard {
+        background: $whiteColor;
+        border-radius: 20px;
+        padding: 35px 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+        h3 {
+          font-size: 22px;
+          font-weight: 600;
+          color: $darkColor;
+          margin-bottom: 25px;
+        }
+
+        .reasonsList {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .reasonItem {
+          display: flex;
+          align-items: flex-start;
+          gap: 15px;
+
+          .reasonIcon {
+            width: 40px;
+            height: 40px;
+            background: rgba($primaryColor, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: $transition;
+
+            svg {
+              color: $primaryColor;
+            }
+          }
+
+          .reasonContent {
+            flex: 1;
+
+            h4 {
+              font-size: 16px;
+              font-weight: 600;
+              color: $darkColor;
+              margin-bottom: 5px;
+            }
+
+            p {
+              font-size: 14px;
+              color: $grayColor;
+              margin: 0;
+            }
+          }
+
+          &:hover {
+            .reasonIcon {
+              background: $primaryColor;
+              transform: scale(1.1);
+
+              svg {
+                color: $whiteColor;
+              }
+            }
+          }
+        }
+      }
+
+      // Social Card
+      .socialCard {
+        background: linear-gradient(135deg, $primaryColor, darken($primaryColor, 10%));
+        border-radius: 20px;
+        padding: 35px 30px;
+        text-align: center;
+        color: $whiteColor;
+
+        h3 {
+          font-size: 22px;
+          font-weight: 600;
+          margin-bottom: 20px;
+        }
+
+        .socialLinks {
+          display: flex;
+          justify-content: center;
+          gap: 15px;
+
+          a {
+            width: 45px;
+            height: 45px;
+            background: rgba($whiteColor, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $whiteColor;
+            transition: $transition;
+
+            &:hover {
+              background: $whiteColor;
+              color: $primaryColor;
+              transform: translateY(-3px);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 1200px) {
+  .contactPage {
+    .contactCards {
+      .cardsGrid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .contactPage {
+    .contactHero {
+      padding: 120px 0 80px;
+
+      .heroContainer {
+        .heroTitle {
+          font-size: 40px;
+        }
+
+        .heroDescription {
+          font-size: 18px;
+        }
+      }
+    }
+
+    .contactCards {
+      margin-top: -40px;
+
+      .cardsGrid {
+        gap: 20px;
+      }
+    }
+
+    .contactMain {
+      padding: 80px 0;
+
+      .contactGrid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .contactForm {
+        padding: 40px;
+
+        .formHeader {
+          h2 {
+            font-size: 28px;
+          }
+        }
+      }
+
+      .contactSidebar {
+     
+        gap: 20px;
+
+        .mapCard {
+          grid-column: span 2;
+
+          iframe {
+            height: 250px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .contactPage {
+    .contactHero {
+      padding: 100px 0 60px;
+
+      .heroContainer {
+        .heroTitle {
+          font-size: 32px;
+        }
+
+        .heroDescription {
+          font-size: 16px;
+        }
+      }
+    }
+
+    .contactCards {
+      .cardsGrid {
+        grid-template-columns: 1fr;
+      }
+
+      .infoCard {
+        padding: 30px 20px;
+      }
+    }
+
+    .contactMain {
+      padding: 60px 0;
+
+      .contactForm {
+        padding: 30px;
+
+        .form {
+          .formRow {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+        }
+      }
+
+      .contactSidebar {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .contactPage {
+    .contactHero {
+      padding: 80px 0 50px;
+
+      .heroContainer {
+        .heroLabel {
+          font-size: 12px;
+        }
+
+        .heroTitle {
+          font-size: 26px;
+          margin-bottom: 20px;
+        }
+
+        .heroDescription {
+          font-size: 15px;
+        }
+      }
+    }
+
+    .contactCards {
+      .infoCard {
+        .cardIcon {
+          width: 60px;
+          height: 60px;
+
+          svg {
+            width: 24px;
+            height: 24px;
+          }
+        }
+
+        h3 {
+          font-size: 18px;
+        }
+
+        .cardDetails {
+          p {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+
+    .contactMain {
+      padding: 50px 0;
+
+      .contactForm {
+        padding: 25px 20px;
+
+        .formHeader {
+          margin-bottom: 30px;
+
+          h2 {
+            font-size: 24px;
+          }
+
+          p {
+            font-size: 14px;
+          }
+        }
+
+        .form {
+          .formGroup {
+            label {
+              font-size: 13px;
+            }
+
+            input,
+            select,
+            textarea {
+              padding: 12px 15px;
+              font-size: 14px;
+            }
+          }
+
+          .submitBtn {
+            width: 100%;
+            justify-content: center;
+            padding: 15px 30px;
+          }
+        }
+      }
+
+      .contactSidebar {
+        .mapCard {
+          iframe {
+            height: 200px;
+          }
+        }
+
+        .whyCard,
+        .socialCard {
+          padding: 30px 25px;
+
+          h3 {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}

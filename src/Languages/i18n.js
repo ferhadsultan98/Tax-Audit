@@ -3,9 +3,9 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
 
-import AZ from '../Languages/AZ/AZ.json'
-import EN from '../Languages/EN/EN.json'
-import RU from '../Languages/RU/RU.json'
+import AZ from './AZ/AZ.json'
+import EN from './EN/EN.json'
+import RU from './RU/RU.json'
 
 
 const resources = {

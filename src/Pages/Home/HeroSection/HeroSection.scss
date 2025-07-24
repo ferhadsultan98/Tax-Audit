@@ -6,36 +6,66 @@ $transition: all 0.5s ease-in-out;
 @keyframes slideInRight {
   from {
     transform: translateX(100%);
+    opacity: 0;
   }
   to {
     transform: translateX(0);
+    opacity: 1;
   }
 }
 
 @keyframes slideOutLeft {
   from {
     transform: translateX(0);
+    opacity: 1;
   }
   to {
     transform: translateX(-100%);
+    opacity: 0;
   }
 }
 
 @keyframes slideInLeft {
   from {
     transform: translateX(-100%);
+    opacity: 0;
   }
   to {
     transform: translateX(0);
+    opacity: 1;
   }
 }
 
 @keyframes slideOutRight {
   from {
     transform: translateX(0);
+    opacity: 1;
   }
   to {
     transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
   }
 }
 
@@ -53,7 +83,7 @@ $transition: all 0.5s ease-in-out;
     width: 100%;
   }
 
-  .sliderContent {
+  .heroSectionSliderContent {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -73,7 +103,7 @@ $transition: all 0.5s ease-in-out;
       position: absolute;
       top: 0;
       left: 0;
-      transition: transform 0.5s ease-in-out;
+      transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
     }
 
     .slideImage.fade {
@@ -81,42 +111,60 @@ $transition: all 0.5s ease-in-out;
     }
 
     .slideImage.slide-in-right {
-      animation: slideInRight 0.5s ease-in-out forwards;
+      animation: slideInRight 0.7s ease-in-out forwards;
     }
 
     .slideImage.slide-out-left {
-      animation: slideOutLeft 0.5s ease-in-out forwards;
+      animation: slideOutLeft 0.7s ease-in-out forwards;
     }
 
     .slideImage.slide-in-left {
-      animation: slideInLeft 0.5s ease-in-out forwards;
+      animation: slideInLeft 0.7s ease-in-out forwards;
     }
 
     .slideImage.slide-out-right {
-      animation: slideOutRight 0.5s ease-in-out forwards;
+      animation: slideOutRight 0.7s ease-in-out forwards;
     }
 
-    .slideText {
+    .bottomDesign {
       position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      color: $whiteColor;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-      padding: 1rem 2rem;
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: 12px;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 2rem 0;
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+      z-index: 2;
+      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 
-      h2 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        font-weight: 700;
+      &.fade-in {
+        animation: fadeIn 0.5s ease-in-out forwards;
       }
 
-      p {
-        font-size: 1.5rem;
-        max-width: 800px;
+      &.fade-out {
+        animation: fadeOut 0.3s ease-in-out forwards;
+      }
+
+      .slideText {
+        position: relative;
+        text-align: center;
+        color: $whiteColor;
+        padding: 1rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+
+        h2 {
+          font-size: 3rem;
+          margin-bottom: 1rem;
+          font-weight: 700;
+        }
+
+        p {
+          font-size: 1.5rem;
+          max-width: 800px;
+          margin: 0 auto;
+        }
       }
     }
   }
@@ -139,9 +187,11 @@ $transition: all 0.5s ease-in-out;
     user-select: none;
     z-index: 5;
     overflow: hidden;
+
     i {
       display: flex;
     }
+
     &:hover {
       background-color: $primaryColor;
       transform: translateY(-50%) scale(1.1);
@@ -173,17 +223,22 @@ $transition: all 0.5s ease-in-out;
   }
 
   @media (max-width: 768px) {
-    .slideText {
-      bottom: 1.5rem;
-      padding: 0.75rem 1.5rem;
+    .slideImageWrapper {
+      .bottomDesign {
+        padding: 1.5rem 0;
 
-      h2 {
-        font-size: 2rem;
-      }
+        .slideText {
+          padding: 0.75rem 1.5rem;
 
-      p {
-        font-size: 1.2rem;
-        max-width: 90%;
+          h2 {
+            font-size: 2rem;
+          }
+
+          p {
+            font-size: 1.2rem;
+            max-width: 90%;
+          }
+        }
       }
     }
 
@@ -203,21 +258,24 @@ $transition: all 0.5s ease-in-out;
   }
 
   @media (max-width: 480px) {
-   
     .slideImageWrapper {
-        height: 40vh;
-    }
-    .slideText {
-      bottom: 1rem;
-      padding: 0.5rem 1rem;
+      height: 40vh;
 
-      h2 {
-        font-size: 1.5rem;
-      }
+      .bottomDesign {
+        padding: 1rem 0;
 
-      p {
-        font-size: 1rem;
-        max-width: 95%;
+        .slideText {
+          padding: 0.5rem 1rem;
+
+          h2 {
+            font-size: 1.5rem;
+          }
+
+          p {
+            font-size: 1rem;
+            max-width: 95%;
+          }
+        }
       }
     }
 

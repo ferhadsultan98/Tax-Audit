@@ -1,0 +1,81 @@
+$primaryColor: #54e7b3;
+$darkColor: #1a1a1a;
+$whiteColor: #ffffff;
+$borderColor: rgba(255, 255, 255, 0.1);
+$transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: #54e7b3;
+  border: 1px solid $borderColor;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: $transition;
+  z-index: 1000;
+  animation: fadeInUp 0.6s ease-out;
+  animation-fill-mode: both;
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &:hover {
+    background: $primaryColor;
+    border-color: $primaryColor;
+    color: $whiteColor;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba($primaryColor, 0.3);
+  }
+
+  svg {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .scroll-to-top {
+    width: 40px;
+    height: 40px;
+    bottom: 20px;
+    right: 20px;
+
+    svg {
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-to-top {
+    width: 35px;
+    height: 35px;
+    bottom: 15px;
+    right: 15px;
+
+    svg {
+      font-size: 14px;
+    }
+  }
+}

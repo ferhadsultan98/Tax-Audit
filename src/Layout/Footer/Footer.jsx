@@ -1,29 +1,14 @@
 import React from 'react';
 import './Footer.scss';
-import { 
-  MapPin, 
-  Phone, 
-  Mail, 
-  Facebook, 
-  Linkedin, 
-  Instagram,
-  Twitter,
-  ChevronRight,
-  ArrowUp
-} from 'lucide-react';
-import FooterLogo from '../../assets/tax.webp'
+import { MapPin, Phone, Mail, Facebook, Linkedin, Instagram, Twitter, ChevronRight } from 'lucide-react';
+import FooterLogo from '../../assets/taxgreen.png'
 
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <footer className="footer">
       <div className="footerTop">
         <div className="footerContainer">
           <div className="footerGrid">
-            {/* Company Info */}
             <div className="footerColumn companyInfo">
               <div className="footerLogo">
                 <img src={FooterLogo} alt="TACS Logo" />
@@ -49,7 +34,6 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Quick Links */}
             <div className="footerColumn">
               <h3 className="columnTitle">Quick Links</h3>
               <ul className="footerLinks">
@@ -86,7 +70,6 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Services */}
             <div className="footerColumn">
               <h3 className="columnTitle">Our Services</h3>
               <ul className="footerLinks">
@@ -123,7 +106,6 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Contact Info */}
             <div className="footerColumn">
               <h3 className="columnTitle">Contact Us</h3>
               <div className="contactInfo">
@@ -162,7 +144,7 @@ const Footer = () => {
         <div className="footerContainer">
           <div className="bottomContent">
             <div className="copyright">
-              <p>&copy; {new Date().getFullYear()} TACS. All rights reserved.</p>
+              <p>© {new Date().getFullYear()} TACS. All rights reserved.</p>
             </div>
             <div className="bottomLinks">
               <a href="/privacy">Privacy Policy</a>
@@ -175,10 +157,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
-      <button className="scrollTop" onClick={scrollToTop} aria-label="Scroll to top">
-        <ArrowUp size={20} />
-      </button>
     </footer>
   );
 };
