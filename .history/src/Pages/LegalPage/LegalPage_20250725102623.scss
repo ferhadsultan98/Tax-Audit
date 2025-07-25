@@ -1,0 +1,731 @@
+$primaryColor: #54e7b3;
+$whiteColor: #ffffff;
+$darkColor: #1a1a1a;
+$grayColor: #666666;
+$lightGray: #f8f9fa;
+$borderColor: #e5e5e5;
+$shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+$transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.legalPages {
+  min-height: 100vh;
+  background: $whiteColor;
+
+  // Hero Section
+  .legalHero {
+    background: linear-gradient(135deg, $darkColor 0%, lighten($darkColor, 10%) 100%);
+    padding: 140px 0 80px;
+    position: relative;
+    overflow: hidden;
+
+    .heroContainer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .heroContent {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      animation: fadeInUp 0.8s ease-out;
+
+      .heroLabel {
+        color: $primaryColor;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        display: inline-block;
+        margin-bottom: 20px;
+      }
+
+      .heroTitle {
+        font-size: 48px;
+        font-weight: 700;
+        color: $whiteColor;
+        margin-bottom: 25px;
+        line-height: 1.2;
+      }
+
+      .heroDescription {
+        font-size: 20px;
+        color: rgba($whiteColor, 0.85);
+        line-height: 1.8;
+        margin-bottom: 30px;
+      }
+
+      .heroMeta {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+
+        .metaItem {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          color: rgba($whiteColor, 0.7);
+          font-size: 14px;
+
+          svg {
+            color: $primaryColor;
+          }
+        }
+      }
+    }
+
+    .heroPattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        radial-gradient(circle at 20% 50%, rgba($primaryColor, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba($primaryColor, 0.05) 0%, transparent 50%);
+      z-index: 1;
+    }
+  }
+
+  // Navigation Tabs
+  .legalNav {
+    background: $lightGray;
+    border-bottom: 1px solid $borderColor;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+
+    .navContainer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      gap: 0;
+    }
+
+    .navTab {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 20px;
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      cursor: pointer;
+      transition: $transition;
+      color: $grayColor;
+      font-size: 16px;
+      font-weight: 600;
+      position: relative;
+
+      &:hover {
+        background: rgba($primaryColor, 0.05);
+        color: $primaryColor;
+      }
+
+      &.active {
+        color: $primaryColor;
+        border-bottom-color: $primaryColor;
+        background: $whiteColor;
+
+        svg {
+          color: $primaryColor;
+        }
+      }
+
+      svg {
+        transition: $transition;
+      }
+    }
+  }
+
+  // Main Content
+  .legalContent {
+    padding: 80px 0;
+    background: $whiteColor;
+
+    .contentContainer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .contentGrid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    // Sidebar
+    .contentSidebar {
+      position: sticky;
+      top: 100px;
+      animation: slideInLeft 0.8s ease-out;
+
+      .sidebarCard {
+        background: $lightGray;
+        border-radius: 16px;
+        padding: 30px;
+        margin-bottom: 20px;
+        transition: $transition;
+
+        &:hover {
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        h3, h4 {
+          font-size: 18px;
+          font-weight: 600;
+          color: $darkColor;
+          margin-bottom: 20px;
+        }
+
+        &.highlight {
+          background: linear-gradient(135deg, rgba($primaryColor, 0.1) 0%, rgba($primaryColor, 0.05) 100%);
+          text-align: center;
+          border: 1px solid rgba($primaryColor, 0.2);
+
+          svg {
+            color: $primaryColor;
+            margin-bottom: 15px;
+          }
+
+          h4 {
+            color: $primaryColor;
+          }
+
+          p {
+            font-size: 14px;
+            color: $grayColor;
+            line-height: 1.6;
+            margin: 0;
+          }
+        }
+
+        &.contact {
+          background: $darkColor;
+          color: $whiteColor;
+
+          h4 {
+            color: $whiteColor;
+          }
+
+          p {
+            color: rgba($whiteColor, 0.8);
+            font-size: 14px;
+            margin-bottom: 15px;
+          }
+
+          .contactLink {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: $primaryColor;
+            text-decoration: none;
+            font-weight: 600;
+            transition: $transition;
+
+            &:hover {
+              transform: translateX(5px);
+            }
+          }
+        }
+
+        .sidebarNav {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+
+          .navLink {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            color: $grayColor;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: $transition;
+            font-size: 14px;
+
+            &:hover {
+              background: $whiteColor;
+              color: $primaryColor;
+              padding-left: 24px;
+
+              svg {
+                color: $primaryColor;
+              }
+            }
+
+            svg {
+              flex-shrink: 0;
+              transition: $transition;
+            }
+          }
+        }
+      }
+    }
+
+    // Main Content Area
+    .contentMain {
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+
+      .contentIntro {
+        background: $lightGray;
+        border-radius: 16px;
+        padding: 30px;
+        margin-bottom: 40px;
+        border-left: 4px solid $primaryColor;
+
+        p {
+          font-size: 16px;
+          line-height: 1.8;
+          color: $grayColor;
+          margin: 0;
+        }
+      }
+
+      .contentSection {
+        margin-bottom: 50px;
+        padding-bottom: 50px;
+        border-bottom: 1px solid $borderColor;
+
+        &:last-of-type {
+          border-bottom: none;
+        }
+
+        .sectionTitle {
+          font-size: 28px;
+          font-weight: 600;
+          color: $darkColor;
+          margin-bottom: 25px;
+          display: flex;
+          align-items: center;
+          gap: 15px;
+
+          .sectionNumber {
+            color: $primaryColor;
+            font-size: 24px;
+            font-weight: 700;
+          }
+        }
+
+        .sectionContent {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+
+          li {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding: 15px 20px;
+            background: $lightGray;
+            border-radius: 10px;
+            transition: $transition;
+
+            &:hover {
+              background: rgba($primaryColor, 0.05);
+              transform: translateX(10px);
+            }
+
+            svg {
+              color: $primaryColor;
+              flex-shrink: 0;
+              margin-top: 2px;
+            }
+
+            span {
+              font-size: 15px;
+              line-height: 1.7;
+              color: $grayColor;
+            }
+          }
+        }
+      }
+
+      .additionalInfo {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin: 50px 0;
+
+        .infoCard {
+          display: flex;
+          align-items: flex-start;
+          gap: 20px;
+          padding: 25px;
+          background: linear-gradient(135deg, rgba($primaryColor, 0.05) 0%, rgba($primaryColor, 0.02) 100%);
+          border-radius: 12px;
+          border: 1px solid rgba($primaryColor, 0.1);
+
+          svg {
+            color: $primaryColor;
+            flex-shrink: 0;
+          }
+
+          h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: $darkColor;
+            margin-bottom: 8px;
+          }
+
+          p {
+            font-size: 14px;
+            color: $grayColor;
+            line-height: 1.6;
+            margin: 0;
+          }
+        }
+      }
+
+      .agreementSection {
+        background: $darkColor;
+        color: $whiteColor;
+        border-radius: 16px;
+        padding: 40px;
+        margin-top: 50px;
+
+        h3 {
+          font-size: 24px;
+          font-weight: 600;
+          margin-bottom: 20px;
+        }
+
+        p {
+          font-size: 16px;
+          line-height: 1.8;
+          color: rgba($whiteColor, 0.9);
+          margin-bottom: 25px;
+        }
+
+        .updateNotice {
+          display: flex;
+          align-items: flex-start;
+          gap: 15px;
+          padding: 20px;
+          background: rgba($whiteColor, 0.1);
+          border-radius: 12px;
+          border: 1px solid rgba($whiteColor, 0.2);
+
+          svg {
+            color: $primaryColor;
+            flex-shrink: 0;
+            margin-top: 2px;
+          }
+
+          p {
+            margin: 0;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 992px) {
+  .legalPages {
+    .legalHero {
+      padding: 120px 0 60px;
+
+      .heroContent {
+        .heroTitle {
+          font-size: 40px;
+        }
+
+        .heroDescription {
+          font-size: 18px;
+        }
+      }
+    }
+
+    .legalContent {
+      padding: 60px 0;
+
+      .contentGrid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .contentSidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+
+        .sidebarCard {
+          &:first-child {
+            grid-column: span 2;
+          }
+        }
+      }
+
+      .contentMain {
+        .additionalInfo {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .legalPages {
+    .legalHero {
+      padding: 100px 0 50px;
+
+      .heroContent {
+        .heroTitle {
+          font-size: 32px;
+        }
+
+        .heroDescription {
+          font-size: 16px;
+          margin-bottom: 20px;
+        }
+
+        .heroMeta {
+          gap: 20px;
+
+          .metaItem {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+
+    .legalNav {
+      .navTab {
+        padding: 15px;
+        font-size: 14px;
+
+        svg {
+          width: 18px;
+          height: 18px;
+        }
+      }
+    }
+
+    .legalContent {
+      padding: 50px 0;
+
+      .contentSidebar {
+        grid-template-columns: 1fr;
+
+        .sidebarCard {
+          padding: 25px;
+
+          h3, h4 {
+            font-size: 16px;
+          }
+        }
+      }
+
+      .contentMain {
+        .contentIntro {
+          padding: 25px;
+
+          p {
+            font-size: 15px;
+          }
+        }
+
+        .contentSection {
+          margin-bottom: 40px;
+          padding-bottom: 40px;
+
+          .sectionTitle {
+            font-size: 24px;
+
+            .sectionNumber {
+              font-size: 20px;
+            }
+          }
+
+          .sectionContent {
+            li {
+              padding: 12px 15px;
+              gap: 12px;
+
+              span {
+                font-size: 14px;
+              }
+            }
+          }
+        }
+
+        .agreementSection {
+          padding: 30px;
+
+          h3 {
+            font-size: 20px;
+          }
+
+          p {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .legalPages {
+    .legalHero {
+      padding: 80px 0 40px;
+
+      .heroContent {
+        .heroLabel {
+          font-size: 12px;
+        }
+
+        .heroTitle {
+          font-size: 26px;
+          margin-bottom: 20px;
+        }
+
+        .heroDescription {
+          font-size: 15px;
+        }
+
+        .heroMeta {
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+    }
+
+    .legalNav {
+      .navContainer {
+        gap: 0;
+      }
+
+      .navTab {
+        padding: 12px 10px;
+        font-size: 13px;
+        gap: 6px;
+
+        span {
+          display: none;
+          
+          @media (min-width: 360px) {
+            display: block;
+          }
+        }
+      }
+    }
+
+    .legalContent {
+      padding: 40px 0;
+
+      .contentSidebar {
+        .sidebarCard {
+          padding: 20px;
+          margin-bottom: 15px;
+
+          .sidebarNav {
+            .navLink {
+              padding: 10px 12px;
+              font-size: 13px;
+            }
+          }
+        }
+      }
+
+      .contentMain {
+        .contentIntro {
+          padding: 20px;
+          border-left-width: 3px;
+        }
+
+        .contentSection {
+          .sectionTitle {
+            font-size: 20px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 5px;
+          }
+
+          .sectionContent {
+            li {
+              &:hover {
+                transform: translateX(5px);
+              }
+            }
+          }
+        }
+
+        .additionalInfo {
+          gap: 15px;
+
+          .infoCard {
+            padding: 20px;
+            gap: 15px;
+
+            h4 {
+              font-size: 16px;
+            }
+
+            p {
+              font-size: 13px;
+            }
+          }
+        }
+
+        .agreementSection {
+          padding: 25px 20px;
+          border-radius: 12px;
+
+          h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+          }
+
+          p {
+            font-size: 14px;
+            margin-bottom: 20px;
+          }
+
+          .updateNotice {
+            padding: 15px;
+            gap: 12px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "icon": "PieChart",
+    "title": "Financial Consulting",
+    "description": "Strategic financial planning and analysis to optimize your business performance and drive sustainable growth.",
+    "link": "/services/consulting"
+  },
+  {
+    "id": 2,
+    "icon": "ClipboardCheck",
+    "title": "Audit & Assurance",
+    "description": "Comprehensive audit services ensuring compliance, transparency, and confidence in your financial reporting.",
+    "link": "/services/audit"
+  },
+  {
+    "id": 3,
+    "icon": "Calculator",
+    "title": "Tax Advisory",
+    "description": "Expert tax planning and compliance services to minimize liabilities and maximize your financial efficiency.",
+    "link": "/services/tax"
+  },
+  {
+    "id": 4,
+    "icon": "Shield",
+    "title": "Risk Management",
+    "description": "Identify, assess, and mitigate business risks with our comprehensive risk management solutions.",
+    "link": "/services/risk"
+  },
+  {
+    "id": 5,
+    "icon": "Coins",
+    "title": "Corporate Finance",
+    "description": "Strategic corporate finance advisory for mergers, acquisitions, and capital restructuring initiatives.",
+    "link": "/services/finance"
+  },
+  {
+    "id": 6,
+    "icon": "TrendingUp",
+    "title": "Business Analytics",
+    "description": "Transform your data into actionable insights with our advanced business analytics and reporting services.",
+    "link": "/services/analytics"
+  }
+]
