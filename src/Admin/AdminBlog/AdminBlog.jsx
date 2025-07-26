@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./AdminBlog.scss";
+import { FaUser } from "react-icons/fa";
+import { FaRegCalendarCheck } from "react-icons/fa6";
 
 const AdminBlog = () => {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -120,7 +122,11 @@ const AdminBlog = () => {
         trending: false,
       });
     } catch (err) {
-      alert(editingId ? "Failed to update blog post!" : "Failed to create blog post!");
+      alert(
+        editingId
+          ? "Failed to update blog post!"
+          : "Failed to create blog post!"
+      );
     }
   };
 
@@ -216,7 +222,11 @@ const AdminBlog = () => {
               value={formData[`title_${language}`]}
               onChange={handleChange}
               placeholder={`Enter blog title in ${
-                language === "az" ? "Azerbaijani" : language === "en" ? "English" : "Russian"
+                language === "az"
+                  ? "Azerbaijani"
+                  : language === "en"
+                  ? "English"
+                  : "Russian"
               }`}
               required
             />
@@ -234,7 +244,11 @@ const AdminBlog = () => {
           </div>
           <div className="formGroup">
             <label>Category</label>
-            <select name="category" value={formData.category} onChange={handleChange}>
+            <select
+              name="category"
+              value={formData.category}
+              onChange={handleChange}
+            >
               <option value="tax">Tax Advisory</option>
               <option value="audit">Audit & Compliance</option>
               <option value="consulting">Business Consulting</option>
@@ -244,7 +258,12 @@ const AdminBlog = () => {
           </div>
           <div className="formGroup">
             <label>Featured Image</label>
-            <input type="file" name="image" accept="image/*" onChange={handleChange} />
+            <input
+              type="file"
+              name="image"
+              accept="image/*"
+              onChange={handleChange}
+            />
           </div>
           <div className="formGroup">
             <label>
@@ -277,7 +296,11 @@ const AdminBlog = () => {
             value={formData[`excerpt_${language}`]}
             onChange={handleChange}
             placeholder={`Enter a brief description in ${
-              language === "az" ? "Azerbaijani" : language === "en" ? "English" : "Russian"
+              language === "az"
+                ? "Azerbaijani"
+                : language === "en"
+                ? "English"
+                : "Russian"
             }`}
             rows="3"
             required
@@ -291,7 +314,11 @@ const AdminBlog = () => {
             value={formData[`content_${language}`]}
             onChange={handleChange}
             placeholder={`Enter the full blog content in ${
-              language === "az" ? "Azerbaijani" : language === "en" ? "English" : "Russian"
+              language === "az"
+                ? "Azerbaijani"
+                : language === "en"
+                ? "English"
+                : "Russian"
             }`}
             rows="8"
             required
@@ -303,7 +330,11 @@ const AdminBlog = () => {
             {editingId ? "Update Post" : "Create Post"}
           </button>
           {editingId && (
-            <button type="button" className="cancelBtn" onClick={handleCancelEdit}>
+            <button
+              type="button"
+              className="cancelBtn"
+              onClick={handleCancelEdit}
+            >
               Cancel Edit
             </button>
           )}
@@ -334,13 +365,17 @@ const AdminBlog = () => {
             <div key={post.id} className="blogCard">
               <div className="cardImage">
                 {post.image_id ? (
-                  <img src={`http://127.0.0.1:8000/api/blog/images/${post.image_id}/`} />
+                  <img
+                    src={`http://127.0.0.1:8000/api/blog/images/${post.image_id}/`}
+                  />
                 ) : (
                   <div className="noImage">
                     <i className="fas fa-image"></i>
                   </div>
                 )}
-                <span className={`categoryBadge ${post.category}`}>{post.category}</span>
+                <span className={`categoryBadge ${post.category}`}>
+                  {post.category}
+                </span>
               </div>
 
               <div className="cardContent">
@@ -351,11 +386,15 @@ const AdminBlog = () => {
 
                 <div className="cardMeta">
                   <div className="metaItem">
-                    <i className="fas fa-user"></i>
+                    <i>
+                      <FaUser />
+                    </i>
                     <span>{post.author}</span>
                   </div>
                   <div className="metaItem">
-                    <i className="fas fa-calendar"></i>
+                    <i>
+                      <FaRegCalendarCheck />
+                    </i>
                     <span>{new Date(post.date).toLocaleDateString()}</span>
                   </div>
                 </div>
@@ -365,7 +404,10 @@ const AdminBlog = () => {
                     <i className="fas fa-edit"></i>
                     Edit
                   </button>
-                  <button className="deleteBtn" onClick={() => handleDelete(post.id)}>
+                  <button
+                    className="deleteBtn"
+                    onClick={() => handleDelete(post.id)}
+                  >
                     <i className="fas fa-trash"></i>
                     Delete
                   </button>

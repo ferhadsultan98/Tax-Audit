@@ -1,40 +1,46 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import './Login.scss';
-import LoginLogo from '../../assets/taxgreen.png';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import "./Login.scss";
+import LoginLogo from "../../assets/taxgreen.png";
+import ButtonLoading from "../../Components/ButtonLoading/ButtonLoading";
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); 
   const navigate = useNavigate();
 
- const handleSubmit = async (e) => {
-  e.preventDefault();
-  setError('');
-  try {
-    const response = await fetch('http://127.0.0.1:8000/api/auth/token/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password }),
-    });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setIsLoading(true); 
 
-    if (response.ok) {
-      const data = await response.json();
-      localStorage.setItem('accessToken', data.access);
-      localStorage.setItem('refreshToken', data.refresh);
-      console.log("Fetch uğurla edildi");
-      navigate('/admin');
-    } else {
-      setError('Invalid username or password');
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/auth/token/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem("accessToken", data.access);
+        localStorage.setItem("refreshToken", data.refresh);
+        localStorage.setItem("isAuthenticated", "true");
+        console.log("Fetch uğurla edildi");
+        navigate("/admin");
+      } else {
+        setError("Invalid username or password");
+      }
+    } catch (err) {
+      setError("Server error. Please try again later.");
+    } finally {
+      setIsLoading(false); 
     }
-  } catch (err) {
-    setError('Server error. Please try again later.');
-  }
-};
-
+  };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -69,7 +75,7 @@ const Login = () => {
             </label>
             <div className="passwordContainer">
               <input
-                type={showPassword ? 'text' : 'password'}
+                type={showPassword ? "text" : "password"}
                 id="password"
                 className="formInput passwordInput"
                 value={password}
@@ -77,14 +83,21 @@ const Login = () => {
                 placeholder="Enter password"
                 required
               />
-              <span className="passwordToggle" onClick={togglePasswordVisibility}>
+              <span
+                className="passwordToggle"
+                onClick={togglePasswordVisibility}
+              >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </span>
             </div>
           </div>
           {error && <p className="errorMessage">{error}</p>}
-          <button type="submit" className="loginButton">
-            Sign In
+          <button
+            type="submit"
+            className="loginButton"
+            disabled={isLoading} // Yükleme sırasında butonu devre dışı bırak
+          >
+            {isLoading ? <ButtonLoading /> : "Sign In"}
           </button>
         </form>
       </div>

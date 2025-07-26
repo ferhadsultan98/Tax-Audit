@@ -11,7 +11,7 @@ const AdminLayout = ({ children, title }) => {
       <aside className="sidebar">
         <div className="sidebarHeader">
           <div className="logo">Admin Panel</div>
-          <div className="adminTitle">TACS</div>
+          <div className="adminTitle">Content Management</div>
         </div>
         <nav className="navMenu">
           <ul>
