@@ -114,13 +114,13 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   .mainContent {
     margin-left: 280px;
     flex: 1;
-    padding: 40px;
+
     min-height: 100vh;
 
     .contentWrapper {
       background: $whiteColor;
       border-radius: 12px;
-      padding: 30px;
+     
       box-shadow: $shadow;
       animation: fadeInUp 0.6s ease-out 0.2s both;
     }

@@ -203,13 +203,6 @@ const AdminBlog = () => {
      
 
       <form className="createBlogForm" onSubmit={handleSubmit}>
-         <div className="languageFilter">
-        <select value={language} onChange={(e) => setLanguage(e.target.value)}>
-          <option value="az">Azerbaijani</option>
-          <option value="en">English</option>
-          <option value="ru">Russian</option>
-        </select>
-      </div>
         <h3 className="formTitle">
           {editingId ? "Edit Blog Post" : "Create New Blog Post"}
         </h3>

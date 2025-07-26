@@ -111,6 +111,7 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       .socialLinks {
         display: flex;
         gap: 12px;
+        
 
         a {
           width: 40px;
@@ -328,7 +329,7 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         text-align: center;
 
         .socialLinks {
-          justify-content: start;
+          justify-content: center;
         }
       }
     }

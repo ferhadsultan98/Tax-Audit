@@ -44,8 +44,8 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 .blogManagement {
   background: $lightGray;
   min-height: 100vh;
+  padding: 40px 0;
   animation: fadeInUp 0.6s ease-out;
-  padding: 10px;
 
  
 
@@ -496,8 +496,7 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       gap: 12px;
       justify-content: center;
-      flex-wrap: wrap;
-     
+      
 
       .submitBtn {
         width: 200px;

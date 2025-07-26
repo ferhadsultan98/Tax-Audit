@@ -105,7 +105,6 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         line-height: 1.8;
         margin-bottom: 30px;
         color: $lightText;
-        text-align: start;
       }
 
       .socialLinks {
@@ -328,7 +327,7 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         text-align: center;
 
         .socialLinks {
-          justify-content: start;
+          justify-content: center;
         }
       }
     }
