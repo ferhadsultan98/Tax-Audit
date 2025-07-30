@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import "./AdminBlog.scss";
 import { FaUser } from "react-icons/fa";
 import { FaRegCalendarCheck } from "react-icons/fa6";
+import Switch from "react-switch";
 
 const AdminBlog = () => {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -16,11 +19,10 @@ const AdminBlog = () => {
     content_az: "",
     content_en: "",
     content_ru: "",
-    category: "tax",
+    category: "audit",
     author: "",
     image: null,
     featured: false,
-    trending: false,
   });
   const [editingId, setEditingId] = useState(null);
   const [filterCategory, setFilterCategory] = useState("all");
@@ -28,36 +30,54 @@ const AdminBlog = () => {
   const [language, setLanguage] = useState("az");
   const postsPerPage = 6;
 
+  const quillModules = {
+    toolbar: [
+      [{ header: [1, 2, 3, false] }],
+      ["bold", "italic", "underline", "strike"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["link", "image"],
+      ["clean"],
+    ],
+  };
+
   useEffect(() => {
     axios
       .get("http://127.0.0.1:8000/api/blog/posts/")
       .then((res) => {
-        if (Array.isArray(res.data)) {
-          setBlogPosts(res.data);
-        } else {
-          setBlogPosts([res.data]);
-        }
+        setBlogPosts(Array.isArray(res.data) ? res.data : [res.data]);
       })
       .catch((err) => {
-        console.error("Error loading blogs:", err);
-        alert("Failed to load blog posts!");
+        console.error("Bloqları yükləmə xətası:", err);
+        alert("Bloq yazıları yüklənə bilmədi!");
       });
   }, []);
 
-  const handleChange = (e) => {
-    const { name, value, files, type, checked } = e.target;
-    if (type === "checkbox" && name === "featured") {
+  const handleChange = (value, event, name) => {
+    if (name === "featured") {
       const hasFeatured = blogPosts.some(
         (post) => post.featured && post.id !== editingId
       );
-      if (hasFeatured && checked) {
-        alert("Only one post can be featured at a time!");
+      if (hasFeatured && value) {
+        alert("Eyni anda yalnız bir yazı seçilə bilər!");
         return;
       }
+      setFormData((prev) => ({
+        ...prev,
+        featured: value,
+      }));
+    } else {
+      const { value: inputValue, files } = event.target;
+      setFormData((prev) => ({
+        ...prev,
+        [name]: files ? files[0] : inputValue,
+      }));
     }
+  };
+
+  const handleQuillChange = (value, field) => {
     setFormData((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? checked : files ? files[0] : value,
+      [field]: value,
     }));
   };
 
@@ -76,7 +96,6 @@ const AdminBlog = () => {
     data.append("category", formData.category);
     data.append("author", formData.author);
     data.append("featured", formData.featured);
-    data.append("trending", formData.trending);
     if (formData.image) data.append("image", formData.image);
 
     try {
@@ -84,25 +103,21 @@ const AdminBlog = () => {
         const res = await axios.put(
           `http://127.0.0.1:8000/api/blog/posts/${editingId}/`,
           data,
-          {
-            headers: { "Content-Type": "multipart/form-data" },
-          }
+          { headers: { "Content-Type": "multipart/form-data" } }
         );
         setBlogPosts((prev) =>
           prev.map((post) => (post.id === editingId ? res.data : post))
         );
         setEditingId(null);
-        alert("Blog post updated successfully!");
+        alert("Bloq yazısı uğurla yeniləndi!");
       } else {
         const res = await axios.post(
           "http://127.0.0.1:8000/api/blog/posts/",
           data,
-          {
-            headers: { "Content-Type": "multipart/form-data" },
-          }
+          { headers: { "Content-Type": "multipart/form-data" } }
         );
         setBlogPosts((prev) => [res.data, ...prev]);
-        alert("Blog post created successfully!");
+        alert("Bloq yazısı uğurla yaradıldı!");
       }
 
       setFormData({
@@ -115,17 +130,16 @@ const AdminBlog = () => {
         content_az: "",
         content_en: "",
         content_ru: "",
-        category: "tax",
+        category: "audit",
         author: "",
         image: null,
         featured: false,
-        trending: false,
       });
     } catch (err) {
       alert(
         editingId
-          ? "Failed to update blog post!"
-          : "Failed to create blog post!"
+          ? "Bloq yazısını yeniləmək alınmadı!"
+          : "Bloq yazısını yaratmaq alınmadı!"
       );
     }
   };
@@ -142,23 +156,22 @@ const AdminBlog = () => {
       content_az: post.content_az || "",
       content_en: post.content_en || "",
       content_ru: post.content_ru || "",
-      category: post.category || "tax",
+      category: post.category || "audit",
       author: post.author || "",
       image: null,
       featured: post.featured || false,
-      trending: post.trending || false,
     });
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleDelete = async (id) => {
-    if (window.confirm("Are you sure you want to delete this post?")) {
+    if (window.confirm("Bu yazını silmək istədiyinizə əminsiniz?")) {
       try {
         await axios.delete(`http://127.0.0.1:8000/api/blog/posts/${id}/`);
         setBlogPosts((prev) => prev.filter((post) => post.id !== id));
-        alert("Blog post deleted successfully!");
+        alert("Bloq yazısı uğurla silindi!");
       } catch (err) {
-        alert("Failed to delete blog post!");
+        alert("Bloq yazısını silmək alınmadı!");
       }
     }
   };
@@ -175,11 +188,10 @@ const AdminBlog = () => {
       content_az: "",
       content_en: "",
       content_ru: "",
-      category: "tax",
+      category: "audit",
       author: "",
       image: null,
       featured: false,
-      trending: false,
     });
   };
 
@@ -188,10 +200,16 @@ const AdminBlog = () => {
       ? blogPosts
       : blogPosts.filter((post) => post.category === filterCategory);
 
+  const sortedPosts = [...filteredPosts].sort((a, b) => {
+    if (a.featured && !b.featured) return -1;
+    if (!a.featured && b.featured) return 1;
+    return 0;
+  });
+
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
-  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+  const currentPosts = sortedPosts.slice(indexOfFirstPost, indexOfLastPost);
+  const totalPages = Math.ceil(sortedPosts.length / postsPerPage);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -200,135 +218,127 @@ const AdminBlog = () => {
 
   return (
     <section className="blogManagement">
-     
-
-      <form className="createBlogForm" onSubmit={handleSubmit}>
-         <div className="languageFilter">
-        <select value={language} onChange={(e) => setLanguage(e.target.value)}>
-          <option value="az">Azerbaijani</option>
-          <option value="en">English</option>
-          <option value="ru">Russian</option>
-        </select>
-      </div>
+      <div className="createBlogForm">
+        <div className="languageFilter">
+          <select value={language} onChange={(e) => setLanguage(e.target.value)}>
+            <option value="az">Azərbaycanca</option>
+            <option value="en">İngiliscə</option>
+            <option value="ru">Rusca</option>
+          </select>
+        </div>
         <h3 className="formTitle">
-          {editingId ? "Edit Blog Post" : "Create New Blog Post"}
+          {editingId ? "Bloq Yazısını Redaktə Et" : "Yeni Bloq Yazısı Yarat"}
         </h3>
 
         <div className="formGrid">
           <div className="formGroup">
-            <label>Title</label>
+            <label>Başlıq</label>
             <input
               type="text"
               name={`title_${language}`}
               value={formData[`title_${language}`]}
-              onChange={handleChange}
-              placeholder={`Enter blog title in ${
+              onChange={(e) => handleChange(e.target.value, e, `title_${language}`)}
+              placeholder={`Bloq başlığını ${
                 language === "az"
-                  ? "Azerbaijani"
+                  ? "Azərbaycanca"
                   : language === "en"
-                  ? "English"
-                  : "Russian"
-              }`}
+                  ? "İngiliscə"
+                  : "Rusca"
+              } daxil edin`}
               required
             />
           </div>
           <div className="formGroup">
-            <label>Author</label>
+            <label>Müəllif</label>
             <input
               type="text"
               name="author"
               value={formData.author}
-              onChange={handleChange}
-              placeholder="Enter author name"
+              onChange={(e) => handleChange(e.target.value, e, "author")}
+              placeholder="Müəllifin adını daxil edin"
               required
             />
           </div>
           <div className="formGroup">
-            <label>Category</label>
+            <label>Kateqoriya</label>
             <select
               name="category"
               value={formData.category}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e.target.value, e, "category")}
             >
-              <option value="tax">Tax Advisory</option>
-              <option value="audit">Audit & Compliance</option>
-              <option value="consulting">Business Consulting</option>
-              <option value="accounting">Accounting</option>
-              <option value="legal">Legal Updates</option>
+              <option value="audit">Audit Xidmətləri</option>
+              <option value="valuation">Qiymətləndirmə Xidmətləri</option>
+              <option value="tax-legal">Vergi və Hüquqi Xidmətlər</option>
+              <option value="consulting">Konsultasiya Xidmətləri</option>
+              <option value="accounting">Mühasibat Xidmətləri</option>
+              <option value="hr">İnsan Resursları Xidmətləri</option>
             </select>
           </div>
           <div className="formGroup">
-            <label>Featured Image</label>
+            <label>Seçilmiş Şəkil</label>
             <input
               type="file"
               name="image"
               accept="image/*"
-              onChange={handleChange}
+              onChange={(e) => handleChange(null, e, "image")}
             />
           </div>
           <div className="formGroup">
-            <label>
-              <input
-                type="checkbox"
-                name="featured"
-                checked={formData.featured}
-                onChange={handleChange}
-              />
-              Featured
-            </label>
+            <label>Seçilmiş</label>
+            <Switch
+              checked={formData.featured}
+              onChange={(checked) => handleChange(checked, {}, "featured")}
+              onColor="#86d3ff"
+              onHandleColor="#2693e6"
+              handleDiameter={20}
+              uncheckedIcon={false}
+              checkedIcon={false}
+              boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+              activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+              height={20}
+              width={40}
+            />
           </div>
-          <div className="formGroup">
-            <label>
-              <input
-                type="checkbox"
-                name="trending"
-                checked={formData.trending}
-                onChange={handleChange}
-              />
-              Trending
-            </label>
-          </div>
+          <div className="formGroup"></div>
         </div>
 
         <div className="formGroup fullWidth">
-          <label>Excerpt</label>
-          <textarea
-            name={`excerpt_${language}`}
+          <label>Qısa Təsvir</label>
+          <ReactQuill
+            theme="snow"
             value={formData[`excerpt_${language}`]}
-            onChange={handleChange}
-            placeholder={`Enter a brief description in ${
+            onChange={(value) => handleQuillChange(value, `excerpt_${language}`)}
+            modules={quillModules}
+            placeholder={`Qısa təsviri ${
               language === "az"
-                ? "Azerbaijani"
+                ? "Azərbaycanca"
                 : language === "en"
-                ? "English"
-                : "Russian"
-            }`}
-            rows="3"
-            required
-          ></textarea>
+                ? "İngiliscə"
+                : "Rusca"
+            } daxil edin`}
+          />
         </div>
 
         <div className="formGroup fullWidth">
-          <label>Content</label>
-          <textarea
-            name={`content_${language}`}
+          <label>Məzmun</label>
+          <ReactQuill
+            theme="snow"
             value={formData[`content_${language}`]}
-            onChange={handleChange}
-            placeholder={`Enter the full blog content in ${
+            onChange={(value) => handleQuillChange(value, `content_${language}`)}
+            modules={quillModules}
+            placeholder={`Tam bloq məzmununu ${
               language === "az"
-                ? "Azerbaijani"
+                ? "Azərbaycanca"
                 : language === "en"
-                ? "English"
-                : "Russian"
-            }`}
-            rows="8"
-            required
-          ></textarea>
+                ? "İngiliscə"
+                : "Rusca"
+            } daxil edin`}
+          />
         </div>
 
         <div className="formActions">
-          <button type="submit" className="submitBtn">
-            {editingId ? "Update Post" : "Create Post"}
+          <button type="submit" className="submitBtn" onClick={handleSubmit}>
+            {editingId ? "Yazını Yenilə" : "Yazı Yarat"}
           </button>
           {editingId && (
             <button
@@ -336,11 +346,11 @@ const AdminBlog = () => {
               className="cancelBtn"
               onClick={handleCancelEdit}
             >
-              Cancel Edit
+              Redaktəni Ləğv Et
             </button>
           )}
         </div>
-      </form>
+      </div>
 
       <div className="filterContainer">
         <select
@@ -351,12 +361,13 @@ const AdminBlog = () => {
             setCurrentPage(1);
           }}
         >
-          <option value="all">All Categories</option>
-          <option value="tax">Tax Advisory</option>
-          <option value="audit">Audit & Compliance</option>
-          <option value="consulting">Business Consulting</option>
-          <option value="accounting">Accounting</option>
-          <option value="legal">Legal Updates</option>
+          <option value="all">Bütün Kateqoriyalar</option>
+          <option value="audit">Audit Xidmətləri</option>
+          <option value="valuation">Qiymətləndirmə Xidmətləri</option>
+          <option value="tax-legal">Vergi və Hüquqi Xidmətlər</option>
+          <option value="consulting">Konsultasiya Xidmətləri</option>
+          <option value="accounting">Mühasibat Xidmətləri</option>
+          <option value="hr">İnsan Resursları Xidmətləri</option>
         </select>
       </div>
 
@@ -375,14 +386,29 @@ const AdminBlog = () => {
                   </div>
                 )}
                 <span className={`categoryBadge ${post.category}`}>
-                  {post.category}
+                  {post.category === "audit"
+                    ? "Audit Xidmətləri"
+                    : post.category === "valuation"
+                    ? "Qiymətləndirmə Xidmətləri"
+                    : post.category === "tax-legal"
+                    ? "Vergi və Hüquqi Xidmətlər"
+                    : post.category === "consulting"
+                    ? "Konsultasiya Xidmətləri"
+                    : post.category === "accounting"
+                    ? "Mühasibat Xidmətləri"
+                    : "İnsan Resursları Xidmətləri"}
                 </span>
               </div>
 
               <div className="cardContent">
                 <div className="cardHeader">
                   <h3 className="blogTitle">{post[`title_${language}`]}</h3>
-                  <p className="blogExcerpt">{post[`excerpt_${language}`]}</p>
+                  <div
+                    className="blogExcerpt"
+                    dangerouslySetInnerHTML={{
+                      __html: post[`excerpt_${language}`],
+                    }}
+                  />
                 </div>
 
                 <div className="cardMeta">
@@ -403,14 +429,14 @@ const AdminBlog = () => {
                 <div className="cardActions">
                   <button className="editBtn" onClick={() => handleEdit(post)}>
                     <i className="fas fa-edit"></i>
-                    Edit
+                    Redaktə Et
                   </button>
                   <button
                     className="deleteBtn"
                     onClick={() => handleDelete(post.id)}
                   >
                     <i className="fas fa-trash"></i>
-                    Delete
+                    Sil
                   </button>
                 </div>
               </div>
@@ -419,8 +445,8 @@ const AdminBlog = () => {
         ) : (
           <div className="emptyState">
             <i className="fas fa-newspaper"></i>
-            <h3>No Blog Posts Yet</h3>
-            <p>Create your first blog post using the form above.</p>
+            <h3>Hələ Bloq Yazısı Yoxdur</h3>
+            <p>Yuxarıdakı formadan istifadə edərək ilk bloq yazınızı yaradın.</p>
           </div>
         )}
       </div>

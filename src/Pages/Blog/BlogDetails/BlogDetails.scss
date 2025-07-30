@@ -23,11 +23,7 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   background: $whiteColor;
 
   .blogDetailsHero {
-    background: linear-gradient(
-      135deg,
-      $darkColor 0%,
-      lighten($darkColor, 10%) 100%
-    );
+    background: linear-gradient(135deg, $darkColor 0%, lighten($darkColor, 10%) 100%);
     padding: 120px 0 80px;
     position: relative;
     overflow: hidden;
@@ -39,11 +35,7 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       left: 0;
       right: 0;
       bottom: 0;
-      background: radial-gradient(
-        circle at 50% 50%,
-        rgba($primaryColor, 0.1) 0%,
-        transparent 50%
-      );
+      background: radial-gradient(circle at 50% 50%, rgba($primaryColor, 0.1) 0%, transparent 50%);
     }
 
     .heroContainer {
@@ -123,6 +115,9 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         font-size: 18px;
         line-height: 1.9;
         color: $grayColor;
+        max-width: 100%; // Ensure it doesn't exceed container
+        word-wrap: break-word; // Prevent overflow from long words
+        overflow-wrap: break-word; // Modern equivalent
 
         h2 {
           font-size: 32px;
@@ -164,11 +159,7 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         .authorAvatar {
           width: 60px;
           height: 60px;
-          background: linear-gradient(
-            135deg,
-            $primaryColor,
-            darken($primaryColor, 10%)
-          );
+          background: linear-gradient(135deg, $primaryColor, darken($primaryColor, 10%));
           border-radius: 50%;
           display: flex;
           align-items: center;

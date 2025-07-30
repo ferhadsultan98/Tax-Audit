@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shusha Scientific Journal - Where Innovation Meets Integrity</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .headerContent {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #4a5568;
+            text-decoration: none;
+        }
+
+        .navigation {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .navLink {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .navLink:hover {
+            color: #667eea;
+        }
+
+        /* Main Content */
+        .mainContent {
+            margin-top: 80px;
+            background: white;
+            border-radius: 20px;
+            margin: 100px 20px 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            padding: 3rem 2rem;
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #4c63d2 0%, #7c3aed 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            display: block !important;
+        }
+
+        .heroTitle {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .heroSubtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .heroDescription {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .ctaButtons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btnPrimary, .btnSecondary {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btnPrimary {
+            background: white;
+            color: #4c63d2;
+        }
+
+        .btnPrimary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btnSecondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btnSecondary:hover {
+            background: white;
+            color: #4c63d2;
+        }
+
+        /* Research Areas */
+        .researchGrid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .researchCard {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .researchCard:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .researchIcon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .researchTitle {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .researchDescription {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        /* Section Titles */
+        .sectionTitle {
+            font-size: 2.5rem;
+            color: #2d3748;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .sectionSubtitle {
+            font-size: 1.2rem;
+            color: #4a5568;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        /* Editorial Board */
+        .boardGrid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .boardCard {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .boardCard:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .boardAvatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .boardName {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .boardRole {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .boardDescription {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        /* Submission Guidelines */
+        .guidelinesGrid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .guidelineCard {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            border-top: 4px solid #667eea;
+        }
+
+        .guidelineTitle {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+
+        .guidelineList {
+            list-style: none;
+            color: #4a5568;
+        }
+
+        .guidelineList li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .guidelineList li:before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Table Styles */
+        .requirementsTable {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .requirementsTable th,
+        .requirementsTable td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .requirementsTable th {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
+        }
+
+        .requirementsTable tr:hover {
+            background: #f8fafc;
+        }
+
+        /* Archives */
+        .archiveCard {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #10b981;
+        }
+
+        .volumeTitle {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .volumeInfo {
+            color: #4a5568;
+            margin-bottom: 1rem;
+        }
+
+        .accessLink {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .accessLink:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Form */
+        .contactForm {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+        }
+
+        .formGroup {
+            margin-bottom: 1.5rem;
+        }
+
+        .formLabel {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .formInput,
+        .formTextarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .formInput:focus,
+        .formTextarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .formTextarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 0;
+        }
+
+        .footerContent {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footerInfo {
+            margin-bottom: 1rem;
+        }
+
+        .footerLinks {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footerLink {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footerLink:hover {
+            color: #667eea;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .navigation {
+                display: none;
+            }
+
+            .heroTitle {
+                font-size: 2rem;
+            }
+
+            .heroSubtitle {
+                font-size: 1.1rem;
+            }
+
+            .ctaButtons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .sectionTitle {
+                font-size: 2rem;
+            }
+
+            .mainContent {
+                margin: 90px 10px 10px;
+                border-radius: 10px;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section.active {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="headerContent">
+                <a href="#" class="logo">🌐 Shusha Scientific Journal</a>
+                <nav>
+                    <ul class="navigation">
+                        <li><a href="#" class="navLink" onclick="showSection('home')">Home</a></li>
+                        <li><a href="#" class="navLink" onclick="showSection('about')">About</a></li>
+                        <li><a href="#" class="navLink" onclick="showSection('editorial')">Editorial Board</a></li>
+                        <li><a href="#" class="navLink" onclick="showSection('authors')">For Authors</a></li>
+                        <li><a href="#" class="navLink" onclick="showSection('archives')">Archives</a></li>
+                        <li><a href="#" class="navLink" onclick="showSection('contact')">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="mainContent">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <h1 class="heroTitle">Shusha Scientific Journal</h1>
+                <p class="heroSubtitle">Where Innovation Meets Integrity in Scientific Publishing</p>
+                <p class="heroDescription">
+                    The Shusha Scientific Journal (SSJ) is an open-access, peer-reviewed academic platform committed to promoting transformative research and intellectual exchange across disciplines. Rooted in the historic and resilient city of Shusha, SSJ represents the convergence of tradition, progress, and global scientific excellence.
+                </p>
+                <div class="ctaButtons">
+                    <a href="#" class="btnPrimary" onclick="showSection('authors')">Submit Your Article</a>
+                    <a href="#" class="btnSecondary" onclick="showSection('archives')">Browse Current Issue</a>
+                </div>
+            </div>
+
+            <div class="container">
+                <h2 class="sectionTitle">Latest Issue</h2>
+                <p class="sectionSubtitle">📘 Volume 1, Issue 1 (2025)</p>
+                <p style="text-align: center; color: #4a5568; margin-bottom: 3rem;">
+                    Explore our inaugural issue featuring pioneering work that reflects our core values: innovation, ethics, and interdisciplinary collaboration.
+                </p>
+
+                <h2 class="sectionTitle">Explore Cutting-Edge Research Across Disciplines</h2>
+
+                <div class="researchGrid">
+                    <div class="researchCard">
+                        <div class="researchIcon">🤖</div>
+                        <h3 class="researchTitle">Artificial Intelligence & Ethics</h3>
+                        <p class="researchDescription">
+                            Ethically aligned and socially responsible AI applications, governance frameworks, and human-centered machine intelligence.
+                        </p>
+                    </div>
+
+                    <div class="researchCard">
+                        <div class="researchIcon">💻</div>
+                        <h3 class="researchTitle">Educational Technology & Digital Pedagogy</h3>
+                        <p class="researchDescription">
+                            Innovations in e-learning, blended models, AI-assisted education, and equity-driven digital transformation in academia.
+                        </p>
+                    </div>
+
+                    <div class="researchCard">
+                        <div class="researchIcon">🌱</div>
+                        <h3 class="researchTitle">Environmental Sustainability & Green Innovation</h3>
+                        <p class="researchDescription">
+                            Solutions and policies addressing climate change, renewable energy, sustainable development, and biodiversity conservation.
+                        </p>
+                    </div>
+
+                    <div class="researchCard">
+                        <div class="researchIcon">🧠</div>
+                        <h3 class="researchTitle">Social & Cultural Studies</h3>
+                        <p class="researchDescription">
+                            Critical insights into global cultures, social transformations, public policy, and human behavior in the digital age.
+                        </p>
+                    </div>
+
+                    <div class="researchCard">
+                        <div class="researchIcon">🔬</div>
+                        <h3 class="researchTitle">Engineering & Applied Physics</h3>
+                        <p class="researchDescription">
+                            Research on emerging technologies, systems engineering, materials science, smart infrastructure, and real-world applications.
+                        </p>
+                    </div>
+
+                    <div class="researchCard">
+                        <div class="researchIcon">🎶</div>
+                        <h3 class="researchTitle">Music and Cultural Heritage Studies</h3>
+                        <p class="researchDescription">
+                            Scholarly research on music, traditional arts, and cultural heritage, with a special focus on Shusha's historical role as a center of Azerbaijani music and culture.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="sectionTitle">About the Journal</h2>
+
+                <div style="margin-bottom: 3rem;">
+                    <h3 style="color: #667eea; font-size: 1.5rem; margin-bottom: 1rem;">🎯 Mission</h3>
+                    <p style="color: #4a5568; line-height: 1.8; margin-bottom: 2rem;">
+                        The mission of the Shusha Scientific Journal (SSJ) is to empower scientific inquiry and innovation by providing an inclusive, ethical, and globally recognized platform for researchers, educators, and practitioners. We are committed to nurturing knowledge that drives positive social change, technological advancement, and environmental sustainability—starting from the heart of Shusha, Azerbaijan, to the world.
+                    </p>
+
+                    <h3 style="color: #667eea; font-size: 1.5rem; margin-bottom: 1rem;">🌟 Vision</h3>
+                    <p style="color: #4a5568; line-height: 1.8; margin-bottom: 2rem;">
+                        To become a globally respected interdisciplinary journal that bridges regional knowledge with international standards, promotes ethical research, and contributes to shaping a smarter, more just, and sustainable future through science and education.
+                    </p>
+
+                    <h3 style="color: #667eea; font-size: 1.5rem; margin-bottom: 1rem;">📌 Aims & Scope</h3>
+                    <p style="color: #4a5568; line-height: 1.8;">
+                        Shusha Scientific Journal is dedicated to publishing high-impact, peer-reviewed, and ethically sound research that addresses critical global and regional challenges. Inspired by Shusha's rich cultural heritage, intellectual tradition, and resilience, the journal fosters a scholarly ecosystem where science, society, and innovation converge.
+                    </p>
+                </div>
+
+                <h3 style="color: #2d3748; font-size: 1.8rem; margin-bottom: 2rem; text-align: center;">📘 Journal Information</h3>
+                
+                <div class="guidelinesGrid">
+                    <div class="guidelineCard">
+                        <h4 class="guidelineTitle">Publication Details</h4>
+                        <ul class="guidelineList">
+                            <li>Frequency: Biannual (Two issues per year)</li>
+                            <li>Review Process: Double-blind peer review</li>
+                            <li>Open Access: Gold Open Access model</li>
+                            <li>License: Creative Commons Attribution (CC BY 4.0)</li>
+                        </ul>
+                    </div>
+
+                    <div class="guidelineCard">
+                        <h4 class="guidelineTitle">Technical & Applied Sciences</h4>
+                        <ul class="guidelineList">
+                            <li>Artificial Intelligence & Machine Learning</li>
+                            <li>Big Data & Analytics</li>
+                            <li>Robotics & Automation</li>
+                            <li>Green Technologies & Sustainable Development</li>
+                        </ul>
+                    </div>
+
+                    <div class="guidelineCard">
+                        <h4 class="guidelineTitle">Humanities & Social Sciences</h4>
+                        <ul class="guidelineList">
+                            <li>AI & Ethics</li>
+                            <li>Educational Technology & Digital Learning</li>
+                            <li>International Relations & Diplomacy</li>
+                            <li>Cultural Studies and Globalization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Editorial Board Section -->
+        <section id="editorial" class="section">
+            <div class="container">
+                <h2 class="sectionTitle">Editorial Board</h2>
+                <p class="sectionSubtitle">
+                    Distinguished scholars and thought leaders dedicated to upholding the highest standards of academic excellence
+                </p>
+
+                <div class="boardGrid">
+                    <div class="boardCard">
+                        <div class="boardAvatar">BM</div>
+                        <h3 class="boardName">Prof. Dr. Boyukaga Mikayilli</h3>
+                        <p class="boardRole">Editor-in-Chief (Azerbaijan)</p>
+                        <p class="boardDescription">
+                            An esteemed academic leader and visionary, Prof. Mikayilli brings decades of experience in research, publication, and academic leadership. As Editor-in-Chief, he sets the strategic vision for the journal.
+                        </p>
+                    </div>
+
+                    <div class="boardCard">
+                        <div class="boardAvatar">IA</div>
+                        <h3 class="boardName">Dr. Irphan Ali</h3>
+                        <p class="boardRole">Editor-in-Chief (English)</p>
+                        <p class="boardDescription">
+                            A global academic and strategic advisor, Dr. Ali supports the Editor-in-Chief in overseeing journal operations and content development. He leads initiatives related to quality assurance and international partnerships.
+                        </p>
+                    </div>
+
+                    <div class="boardCard">
+                        <div class="boardAvatar">SH</div>
+                        <h3 class="boardName">Dr. Suma Huseynova</h3>
+                        <p class="boardRole">Executive Editor</p>
+                        <p class="boardDescription">
+                            With expertise in academic publishing, editorial processes, and scholarly communication, Dr. Huseynova manages the editorial workflow and coordinates with authors and reviewers.
+                        </p>
+                    </div>
+
+                    <div class="boardCard">
+                        <div class="boardAvatar">MQ</div>
+                        <h3 class="boardName">Dr. Mafkura Qocayeva</h3>
+                        <p class="boardRole">Section Editor - Natural Sciences</p>
+                        <p class="boardDescription">
+                            Specialist in natural sciences research, Dr. Qocayeva oversees the evaluation of submissions related to physics, chemistry, biology, and related scientific disciplines.
+                        </p>
+                    </div>
+
+                    <div class="boardCard">
+                        <div class="boardAvatar">SM</div>
+                        <h3 class="boardName">Dr. Sheraz Mehmood</h3>
+                        <p class="boardRole">Section Editor - Social Sciences</p>
+                        <p class="boardDescription">
+                            Specialist in cross-cultural and societal studies, Dr. Mehmood oversees the evaluation of submissions related to sociology, political science, and international relations.
+                        </p>
+                    </div>
+
+                    <div class="boardCard">
+                        <div class="boardAvatar">AA</div>
+                        <h3 class="boardName">Dr. Aytan Aliyeva</h3>
+                        <p class="boardRole">Section Editor - Technology & AI</p>
+                        <p class="boardDescription">
+                            A researcher and practitioner in AI ethics, educational technology, and smart systems, Dr. Aliyeva leads the editorial evaluation of technology-focused submissions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- For Authors Section -->
+        <section id="authors" class="section">
+            <div class="container">
+                <h2 class="sectionTitle">For Authors</h2>
+                <p class="sectionSubtitle">Submission Guidelines and Requirements</p>
+
+                <h3 style="color: #2d3748; font-size: 1.5rem; margin-bottom: 1.5rem;">📚 Types of Manuscripts Accepted</h3>
+                <div class="guidelinesGrid">
+                    <div class="guidelineCard">
+                        <h4 class="guidelineTitle">Original Research Articles</h4>
+                        <p style="color: #4a5568;">Detailed reports of original studies with clear methodology, analysis, and conclusions.</p>
+                    </div>
+                    <div class="guidelineCard">
+                        <h4 class="guidelineTitle">Theoretical Reviews</h4>
+                        <p style="color: #4a5568;">Comprehensive reviews of existing literature and conceptual frameworks that offer new perspectives.</p>
+                    </div>
+                    <div class="guidelineCard">
+                        <h4 class="guidelineTitle">Case Studies</h4>
+                        <p style="color: #4a5568;">In-depth analyses of individual, organizational, or community-based cases with practical implications.</p>
+                    </div>
+                    <div class="guidelineCard">
+                        <h4 class="guidelineTitle">Conference Papers</h4>
+                        <p style="color: #4a5568;">Refined and extended versions of papers presented at reputable academic conferences.</p>
+                    </div>
+                </div>
+
+                <h3 style="color: #2d3748; font-size: 1.5rem; margin: 3rem 0 1.5rem;">🔧 Manuscript Formatting Requirements</h3>
+                <table class="requirementsTable">
+                    <thead>
+                        <tr>
+                            <th>Criteria</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Word Count</td>
+                            <td>4,000 to 8,000 words (excluding references)</td>
+                        </tr>
+                        <tr>
+                            <td>Abstract</td>
+                            <td>150–250 words summarizing objectives, methods, and findings</td>
+                        </tr>
+                        <tr>
+                            <td>Keywords</td>
+                            <td>5–7 keywords representing core themes</td>
+                        </tr>
+                        <tr>
+                            <td>Referencing Style</td>
+                            <td>APA 7th Edition (Humanities & Social Sciences) or IEEE (Technical Sciences)</td>
+                        </tr>
+                        <tr>
+                            <td>File Format</td>
+                            <td>Microsoft Word (.doc/.docx) or PDF</td>
+                        </tr>
+                        <tr>
+                            <td>Font & Spacing</td>
+                            <td>Times New Roman, 12 pt, 1.5 line spacing, 2.5 cm margins</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 style="color: #2d3748; font-size: 1.5rem; margin: 3rem 0 1.5rem;">🔄 Review Process & Timeline</h3>
+                <div class="guidelinesGrid">
+                    <div class="guidelineCard">
+                        <h4 class="guidelineTitle">Review Process</h4>
+                        <p style="color: #4a5568;">Double-blind peer review (both author and reviewer identities are concealed)</p>
+                    </div>
+                    <div class="guidelineCard">
+                        <h4 class="guidelineTitle">Initial Screening</h4>
+                        <p style="color: #4a5568;">Within 5–7 days</p>
+                    </div>
+                    <div class="guidelineCard">
+                        <h4 class="guidelineTitle">Peer Review Duration</h4>
+                        <p style="color: #4a5568;">2–4 weeks</p>
+                    </div>
+                    <div class="guidelineCard">
+                        <h4 class="guidelineTitle">Final Decision</h4>
+                        <p style="color: #4a5568;">4–6 weeks from submission</p>
+                    </div>
+                </div>
+
+                <div style="background: #f0f9ff; padding: 2rem; border-radius: 12px; margin: 2rem 0; border-left: 4px solid #0ea5e9;">
+                    <h4 style="color: #0369a1; margin-bottom: 1rem;">❗ Important Notes</h4>
+                    <ul style="color: #0369a1; line-height: 1.6;">
+                        <li>Manuscripts with similarity above 20% (plagiarism) will be rejected without review</li>
+                        <li>Submissions must be unpublished and not under review elsewhere</li>
+                        <li>Authors must disclose any conflicts of interest or funding sources</li>
+                        <li>Articles should reflect ethical research practices</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Archives Section -->
+        <section id="archives" class="section">
+            <div class="container">
+                <h2 class="sectionTitle">Archives</h2>
+                <p class="sectionSubtitle">
+                    Explore the full archive of peer-reviewed research articles spanning diverse academic disciplines
+                </p>
+
+                <div class="archiveCard">
+                    <h3 class="volumeTitle">Volume 1, Issue 1</h3>
+                    <p class="volumeInfo">Published: 2025 | Articles: Multiple research papers</p>
+                    <p style="color: #4a5568; margin-bottom: 1rem;">
+                        Explore our inaugural issue featuring pioneering work that reflects our core values: innovation, ethics, and interdisciplinary collaboration.
+                    </p><p style="color: #4a5568; margin-bottom: 1rem;">
+                        Explore our inaugural issue featuring pioneering work that reflects our core values: innovation, ethics, and interdisciplinary collaboration.
+                    </p>
+                    <a href="#" class="accessLink">Access Volume 1, Issue 1 →</a>
+                </div>
+
+                <div class="archiveCard">
+                    <h3 class="volumeTitle">Future Issues</h3>
+                    <p class="volumeInfo">Coming Soon | Call for Papers Open</p>
+                    <p style="color: #4a5568; margin-bottom: 1rem;">
+                        We are actively accepting submissions for upcoming issues. Join our growing community of researchers and scholars making an impact across disciplines.
+                    </p>
+                    <a href="#" class="accessLink" onclick="showSection('authors')">Submit Your Research →</a>
+                </div>
+
+                <div style="background: #f8fafc; padding: 2rem; border-radius: 12px; margin-top: 2rem; border-left: 4px solid #10b981;">
+                    <h4 style="color: #047857; font-size: 1.3rem; margin-bottom: 1rem;">📊 Journal Metrics & Impact</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 1rem;">
+                        <div style="text-align: center; padding: 1rem;">
+                            <div style="font-size: 2rem; font-weight: bold; color: #059669;">12+</div>
+                            <div style="color: #065f46;">Articles Published</div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem;">
+                            <div style="font-size: 2rem; font-weight: bold; color: #059669;">6</div>
+                            <div style="color: #065f46;">Countries Represented</div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem;">
+                            <div style="font-size: 2rem; font-weight: bold; color: #059669;">95%</div>
+                            <div style="color: #065f46;">Author Satisfaction</div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem;">
+                            <div style="font-size: 2rem; font-weight: bold; color: #059669;">4-6</div>
+                            <div style="color: #065f46;">Weeks Review Time</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="sectionTitle">Contact Us</h2>
+                <p class="sectionSubtitle">
+                    Get in touch with our editorial team for inquiries, submissions, or collaboration opportunities
+                </p>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin: 3rem 0;">
+                    <div>
+                        <h3 style="color: #2d3748; font-size: 1.3rem; margin-bottom: 1rem;">📍 Editorial Office</h3>
+                        <div style="background: #f8fafc; padding: 2rem; border-radius: 12px; border-left: 4px solid #667eea;">
+                            <p style="color: #4a5568; line-height: 1.8; margin-bottom: 1rem;">
+                                <strong>Shusha Scientific Journal</strong><br>
+                                Editorial Office<br>
+                                Shusha, Azerbaijan
+                            </p>
+                            <p style="color: #4a5568; line-height: 1.8;">
+                                📧 Email: editorial@shushascientific.az<br>
+                                📞 Phone: +994 (XX) XXX-XX-XX<br>
+                                🌐 Web: www.shushascientific.az
+                            </p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 style="color: #2d3748; font-size: 1.3rem; margin-bottom: 1rem;">⏰ Editorial Hours</h3>
+                        <div style="background: #f8fafc; padding: 2rem; border-radius: 12px; border-left: 4px solid #10b981;">
+                            <p style="color: #4a5568; line-height: 1.8;">
+                                Monday - Friday: 9:00 AM - 6:00 PM (GMT+4)<br>
+                                Saturday: 10:00 AM - 2:00 PM (GMT+4)<br>
+                                Sunday: Closed
+                            </p>
+                            <p style="color: #6b7280; font-size: 0.9rem; margin-top: 1rem;">
+                                We typically respond to inquiries within 24-48 hours during business days.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contactForm">
+                    <h3 style="color: #2d3748; font-size: 1.3rem; margin-bottom: 1.5rem; text-align: center;">📬 Send Us a Message</h3>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                        <div class="formGroup">
+                            <label class="formLabel">Full Name *</label>
+                            <input type="text" class="formInput" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="formGroup">
+                            <label class="formLabel">Email Address *</label>
+                            <input type="email" class="formInput" placeholder="Enter your email" required>
+                        </div>
+                    </div>
+
+                    <div class="formGroup">
+                        <label class="formLabel">Affiliation/Organization</label>
+                        <input type="text" class="formInput" placeholder="University, Institution, or Company">
+                    </div>
+
+                    <div class="formGroup">
+                        <label class="formLabel">Subject *</label>
+                        <select class="formInput" required>
+                            <option value="">Select inquiry type</option>
+                            <option value="submission">Manuscript Submission</option>
+                            <option value="review">Peer Review Process</option>
+                            <option value="collaboration">Collaboration Opportunity</option>
+                            <option value="technical">Technical Support</option>
+                            <option value="editorial">Editorial Board Inquiry</option>
+                            <option value="other">General Inquiry</option>
+                        </select>
+                    </div>
+
+                    <div class="formGroup">
+                        <label class="formLabel">Message *</label>
+                        <textarea class="formTextarea" placeholder="Please provide details about your inquiry..." required></textarea>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <button type="submit" class="btnPrimary" style="background: #667eea; color: white; padding: 12px 30px;">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+
+                <div style="background: #fef3c7; padding: 2rem; border-radius: 12px; margin-top: 3rem; border-left: 4px solid #f59e0b;">
+                    <h4 style="color: #92400e; margin-bottom: 1rem;">💡 Quick Links for Authors</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <a href="#" onclick="showSection('authors')" style="color: #92400e; text-decoration: none; font-weight: 600;">📄 Submission Guidelines</a>
+                        <a href="#" onclick="showSection('editorial')" style="color: #92400e; text-decoration: none; font-weight: 600;">👥 Editorial Board</a>
+                        <a href="#" onclick="showSection('archives')" style="color: #92400e; text-decoration: none; font-weight: 600;">📚 Recent Publications</a>
+                        <a href="#" onclick="showSection('about')" style="color: #92400e; text-decoration: none; font-weight: 600;">ℹ️ About the Journal</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footerContent">
+            <div class="footerInfo">
+                <h3 style="margin-bottom: 1rem;">🌐 Shusha Scientific Journal</h3>
+                <p style="color: #a0aec0; margin-bottom: 1rem;">
+                    Where Innovation Meets Integrity in Scientific Publishing
+                </p>
+            </div>
+            
+            <div class="footerLinks">
+                <a href="#" class="footerLink" onclick="showSection('about')">About</a>
+                <a href="#" class="footerLink" onclick="showSection('editorial')">Editorial Board</a>
+                <a href="#" class="footerLink" onclick="showSection('authors')">For Authors</a>
+                <a href="#" class="footerLink" onclick="showSection('archives')">Archives</a>
+                <a href="#" class="footerLink" onclick="showSection('contact')">Contact</a>
+            </div>
+            
+            <div style="border-top: 1px solid #4a5568; padding-top: 1rem; color: #a0aec0;">
+                <p>&copy; 2025 Shusha Scientific Journal. All rights reserved.</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">
+                    Published under Creative Commons Attribution (CC BY 4.0) License
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show the selected section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            // Scroll to top smoothly
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Handle form submission
+        document.querySelector('.contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = this.querySelector('input[placeholder="Enter your full name"]').value;
+            const email = this.querySelector('input[placeholder="Enter your email"]').value;
+            const subject = this.querySelector('select').value;
+            const message = this.querySelector('textarea').value;
+            
+            if (name && email && subject && message) {
+                alert('Thank you for your message! We will get back to you within 24-48 hours.');
+                this.reset();
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        });
+
+        // Add smooth scrolling for all navigation links
+        document.querySelectorAll('.navLink, .footerLink').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+            });
+        });
+
+        // Add interactive hover effects for cards
+        document.querySelectorAll('.researchCard, .boardCard, .guidelineCard, .archiveCard').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px)';
+                this.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '';
+            });
+        });
+
+        // Add loading animation for buttons
+        document.querySelectorAll('.btnPrimary, .btnSecondary').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (this.type === 'submit') return;
+                
+                e.preventDefault();
+                const originalText = this.textContent;
+                this.textContent = 'Loading...';
+                this.style.opacity = '0.7';
+                
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.style.opacity = '1';
+                }, 1000);
+            });
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ensure home section is active on load
+            showSection('home');
+            
+            // Add fade-in animation to sections
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.researchCard, .boardCard').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

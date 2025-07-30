@@ -102,6 +102,10 @@ const Footer = () => {
                     <ChevronRight size={16} />
                     Legal Services
                   </a>
+                  <a href="/services/legal">
+                    <ChevronRight size={16} />
+                    Huma
+                  </a>
                 </li>
               </ul>
             </div>
@@ -147,7 +151,7 @@ const Footer = () => {
               <p>© {new Date().getFullYear()} TACS. All rights reserved.</p>
             </div>
             <div className="bottomLinks">
-              <a href="/privacy">Privacy Policy</a>
+              <a href="/terms">Privacy Policy</a>
               <span className="separator">|</span>
               <a href="/terms">Terms of Service</a>
             </div>

@@ -21,7 +21,7 @@ const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [isWideLayout, setIsWideLayout] = useState(true);
+  const [isWideLayout, setIsWideLayout] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 4;
   const language = i18n.language;
@@ -185,10 +185,10 @@ const Blog = () => {
                           }
                         )}
                       </span>
-                      <span className="readTime">
+                      {/* <span className="readTime">
                         <Clock size={16} />
                         {featuredPost.readTime}
-                      </span>
+                      </span> */}
                     </div>
                     <a href={`/blog/${featuredPost.id}`} className="readMore">
                       Read Full Article
@@ -253,10 +253,10 @@ const Blog = () => {
                             year: "numeric",
                           })}
                         </span>
-                        <span className="readTime">
+                        {/* <span className="readTime">
                           <Clock size={14} />
                           {post.readTime}
-                        </span>
+                        </span> */}
                       </div>
                     </div>
                   </article>

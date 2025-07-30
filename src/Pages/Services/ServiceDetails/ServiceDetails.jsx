@@ -1,206 +1,234 @@
-import React from 'react';
-import { useParams, Link } from 'react-router-dom';
-import './ServiceDetails.scss';
-import { 
-  FileCheck, 
-  Calculator, 
-  Scale, 
-  Lightbulb, 
-  BookOpen, 
+import React from "react";
+import { useParams, Link } from "react-router-dom";
+import "./ServiceDetails.scss";
+import {
+  FileCheck,
+  Calculator,
+  Scale,
+  Lightbulb,
+  BookOpen,
   Users,
   CheckCircle,
   ArrowRight,
-  Phone
-} from 'lucide-react';
+  Phone,
+} from "lucide-react";
+import Breadcrumb from "../../../Components/Breadcrumb/Breadcrumb";
+import SectionHeader from "../../../Components/SectionHeader/SectionHeader";
 
 const ServiceDetails = () => {
   const { serviceId } = useParams(); // Extract serviceId from URL
 
   const servicesData = {
-    'audit': {
+    audit: {
       icon: FileCheck,
-      title: 'Audit Services',
-      subtitle: 'Ensuring Financial Transparency and Compliance',
-      description: 'Our audit services provide comprehensive examination and verification of your financial statements, ensuring compliance with international and national standards while identifying opportunities for improvement.',
+      title: "Audit Services",
+      subtitle: "Ensuring Financial Transparency and Compliance",
+      description:
+        "Our audit services provide comprehensive examination and verification of your financial statements, ensuring compliance with international and national standards while identifying opportunities for improvement.",
       features: [
         {
-          title: 'Financial Statement Audit',
-          description: 'Complete audit of financial statements in accordance with International Standards on Auditing (ISA) and national regulations, providing stakeholders with confidence in your financial reporting.'
+          title: "Financial Statement Audit",
+          description:
+            "Complete audit of financial statements in accordance with International Standards on Auditing (ISA) and national regulations, providing stakeholders with confidence in your financial reporting.",
         },
         {
-          title: 'Special Purpose Audits',
-          description: 'Customized audit solutions for specific needs including project audits, donor-funded program audits, and internal control assessments tailored to your requirements.'
+          title: "Special Purpose Audits",
+          description:
+            "Customized audit solutions for specific needs including project audits, donor-funded program audits, and internal control assessments tailored to your requirements.",
         },
         {
-          title: 'Financial Analysis & Verification',
-          description: 'In-depth analysis and verification of financial data to ensure accuracy, identify discrepancies, and provide insights for better financial management.'
+          title: "Financial Analysis & Verification",
+          description:
+            "In-depth analysis and verification of financial data to ensure accuracy, identify discrepancies, and provide insights for better financial management.",
         },
         {
-          title: 'Risk Management & Recommendations',
-          description: 'Comprehensive risk assessment with practical recommendations to strengthen internal controls and improve operational efficiency.'
-        }
+          title: "Risk Management & Recommendations",
+          description:
+            "Comprehensive risk assessment with practical recommendations to strengthen internal controls and improve operational efficiency.",
+        },
       ],
       benefits: [
-        'Enhanced credibility with stakeholders',
-        'Improved internal controls',
-        'Regulatory compliance assurance',
-        'Risk identification and mitigation',
-        'Operational efficiency improvements',
-        'Better decision-making insights'
-      ]
+        "Enhanced credibility with stakeholders",
+        "Improved internal controls",
+        "Regulatory compliance assurance",
+        "Risk identification and mitigation",
+        "Operational efficiency improvements",
+        "Better decision-making insights",
+      ],
     },
-    'valuation': {
+    valuation: {
       icon: Calculator,
-      title: 'Valuation Services',
-      subtitle: 'Professional Asset Valuation and Expertise',
-      description: 'Our valuation services provide accurate and reliable assessments of your assets, helping you make informed decisions for transactions, financial reporting, and strategic planning.',
+      title: "Valuation Services",
+      subtitle: "Professional Asset Valuation and Expertise",
+      description:
+        "Our valuation services provide accurate and reliable assessments of your assets, helping you make informed decisions for transactions, financial reporting, and strategic planning.",
       features: [
         {
-          title: 'Property Valuation',
-          description: 'Professional valuation of real estate, commercial properties, and industrial assets using internationally recognized methodologies and standards.'
+          title: "Property Valuation",
+          description:
+            "Professional valuation of real estate, commercial properties, and industrial assets using internationally recognized methodologies and standards.",
         },
         {
-          title: 'Asset Value Expertise',
-          description: 'Expert determination of fair market value for various assets including equipment, inventory, intangible assets, and business valuations.'
-        }
+          title: "Asset Value Expertise",
+          description:
+            "Expert determination of fair market value for various assets including equipment, inventory, intangible assets, and business valuations.",
+        },
       ],
       benefits: [
-        'Accurate asset valuations',
-        'Compliance with accounting standards',
-        'Support for M&A transactions',
-        'Insurance claim substantiation',
-        'Tax planning optimization',
-        'Investment decision support'
-      ]
+        "Accurate asset valuations",
+        "Compliance with accounting standards",
+        "Support for M&A transactions",
+        "Insurance claim substantiation",
+        "Tax planning optimization",
+        "Investment decision support",
+      ],
     },
-    'tax-legal': {
+    "tax-legal": {
       icon: Scale,
-      title: 'Tax and Legal Services',
-      subtitle: 'Expert Guidance for Compliance and Optimization',
-      description: 'Navigate complex tax regulations and legal requirements with our comprehensive advisory services, ensuring compliance while optimizing your tax position.',
+      title: "Tax and Legal Services",
+      subtitle: "Expert Guidance for Compliance and Optimization",
+      description:
+        "Navigate complex tax regulations and legal requirements with our comprehensive advisory services, ensuring compliance while optimizing your tax position.",
       features: [
         {
-          title: 'Tax Planning & Consulting',
-          description: 'Strategic tax planning to minimize liabilities, optimize tax positions, and ensure full compliance with local and international tax regulations.'
+          title: "Tax Planning & Consulting",
+          description:
+            "Strategic tax planning to minimize liabilities, optimize tax positions, and ensure full compliance with local and international tax regulations.",
         },
         {
-          title: 'Legal Documentation',
-          description: 'Preparation of legal documents, contracts, and agreements with expert legal opinions to protect your business interests.'
+          title: "Legal Documentation",
+          description:
+            "Preparation of legal documents, contracts, and agreements with expert legal opinions to protect your business interests.",
         },
         {
-          title: 'Audit Support',
-          description: 'Professional representation and support during tax inspections, audits, and disputes with tax authorities.'
-        }
+          title: "Audit Support",
+          description:
+            "Professional representation and support during tax inspections, audits, and disputes with tax authorities.",
+        },
       ],
       benefits: [
-        'Tax optimization strategies',
-        'Legal compliance assurance',
-        'Risk mitigation',
-        'Expert representation',
-        'Cost-effective solutions',
-        'Peace of mind'
-      ]
+        "Tax optimization strategies",
+        "Legal compliance assurance",
+        "Risk mitigation",
+        "Expert representation",
+        "Cost-effective solutions",
+        "Peace of mind",
+      ],
     },
-    'consulting': {
+    consulting: {
       icon: Lightbulb,
-      title: 'Consulting Services',
-      subtitle: 'Strategic Solutions for Business Excellence',
-      description: 'Transform your business with our strategic consulting services, designed to optimize operations, improve performance, and drive sustainable growth.',
+      title: "Consulting Services",
+      subtitle: "Strategic Solutions for Business Excellence",
+      description:
+        "Transform your business with our strategic consulting services, designed to optimize operations, improve performance, and drive sustainable growth.",
       features: [
         {
-          title: 'Strategic Consulting',
-          description: 'Development of comprehensive business strategies, market entry plans, and growth initiatives aligned with your vision and objectives.'
+          title: "Strategic Consulting",
+          description:
+            "Development of comprehensive business strategies, market entry plans, and growth initiatives aligned with your vision and objectives.",
         },
         {
-          title: 'Operational Excellence',
-          description: 'Process optimization, efficiency improvements, and operational restructuring to enhance productivity and reduce costs.'
+          title: "Operational Excellence",
+          description:
+            "Process optimization, efficiency improvements, and operational restructuring to enhance productivity and reduce costs.",
         },
         {
-          title: 'Management Systems',
-          description: 'Design and implementation of robust internal management systems, governance structures, and performance measurement frameworks.'
-        }
+          title: "Management Systems",
+          description:
+            "Design and implementation of robust internal management systems, governance structures, and performance measurement frameworks.",
+        },
       ],
       benefits: [
-        'Improved operational efficiency',
-        'Strategic clarity and direction',
-        'Enhanced competitiveness',
-        'Better resource utilization',
-        'Sustainable growth strategies',
-        'Performance optimization'
-      ]
+        "Improved operational efficiency",
+        "Strategic clarity and direction",
+        "Enhanced competitiveness",
+        "Better resource utilization",
+        "Sustainable growth strategies",
+        "Performance optimization",
+      ],
     },
-    'accounting': {
+    accounting: {
       icon: BookOpen,
-      title: 'Accounting Services',
-      subtitle: 'Complete Financial Management Solutions',
-      description: 'Streamline your financial operations with our comprehensive accounting services, ensuring accurate record-keeping and timely compliance with all regulatory requirements.',
+      title: "Accounting Services",
+      subtitle: "Complete Financial Management Solutions",
+      description:
+        "Streamline your financial operations with our comprehensive accounting services, ensuring accurate record-keeping and timely compliance with all regulatory requirements.",
       features: [
         {
-          title: 'Financial & Tax Accounting',
-          description: 'Complete organization and maintenance of financial and tax accounting records in compliance with national standards and regulations.'
+          title: "Financial & Tax Accounting",
+          description:
+            "Complete organization and maintenance of financial and tax accounting records in compliance with national standards and regulations.",
         },
         {
-          title: 'Declaration Services',
-          description: 'Timely preparation and submission of all required tax declarations, financial reports, and regulatory filings.'
+          title: "Declaration Services",
+          description:
+            "Timely preparation and submission of all required tax declarations, financial reports, and regulatory filings.",
         },
         {
-          title: 'System Implementation',
-          description: 'Setup and ongoing support of accounting systems tailored to your business needs, including software selection and process design.'
-        }
+          title: "System Implementation",
+          description:
+            "Setup and ongoing support of accounting systems tailored to your business needs, including software selection and process design.",
+        },
       ],
       benefits: [
-        'Accurate financial records',
-        'Timely regulatory compliance',
-        'Reduced administrative burden',
-        'Better financial visibility',
-        'Cost-effective solutions',
-        'Expert ongoing support'
-      ]
+        "Accurate financial records",
+        "Timely regulatory compliance",
+        "Reduced administrative burden",
+        "Better financial visibility",
+        "Cost-effective solutions",
+        "Expert ongoing support",
+      ],
     },
-    'hr': {
+    hr: {
       icon: Users,
-      title: 'Human Resources Services',
-      subtitle: 'Comprehensive HR Solutions for Your Business',
-      description: 'Build and maintain a strong workforce with our full-spectrum HR services, from recruitment to strategic HR management and compliance.',
+      title: "Human Resources Services",
+      subtitle: "Comprehensive HR Solutions for Your Business",
+      description:
+        "Build and maintain a strong workforce with our full-spectrum HR services, from recruitment to strategic HR management and compliance.",
       features: [
         {
-          title: 'Recruitment & Documentation',
-          description: 'End-to-end recruitment services and complete personnel documentation management ensuring compliance with labor laws.'
+          title: "Recruitment & Documentation",
+          description:
+            "End-to-end recruitment services and complete personnel documentation management ensuring compliance with labor laws.",
         },
         {
-          title: 'HR Policy Development',
-          description: 'Creation of comprehensive HR policies, procedures, and employee handbooks aligned with best practices and legal requirements.'
+          title: "HR Policy Development",
+          description:
+            "Creation of comprehensive HR policies, procedures, and employee handbooks aligned with best practices and legal requirements.",
         },
         {
-          title: 'Strategic HR Services',
-          description: 'Strategic workforce planning, organizational design, and talent management to align human capital with business objectives.'
+          title: "Strategic HR Services",
+          description:
+            "Strategic workforce planning, organizational design, and talent management to align human capital with business objectives.",
         },
         {
-          title: 'Health & Safety',
-          description: 'Development and implementation of workplace health and safety programs ensuring compliance and employee wellbeing.'
+          title: "Health & Safety",
+          description:
+            "Development and implementation of workplace health and safety programs ensuring compliance and employee wellbeing.",
         },
         {
-          title: 'HR Audit',
-          description: 'Comprehensive HR audits to assess compliance, identify risks, and recommend improvements in HR practices and procedures.'
-        }
+          title: "HR Audit",
+          description:
+            "Comprehensive HR audits to assess compliance, identify risks, and recommend improvements in HR practices and procedures.",
+        },
       ],
       benefits: [
-        'Improved talent acquisition',
-        'Legal compliance assurance',
-        'Enhanced employee engagement',
-        'Reduced HR risks',
-        'Streamlined HR processes',
-        'Strategic workforce alignment'
-      ]
-    }
+        "Improved talent acquisition",
+        "Legal compliance assurance",
+        "Enhanced employee engagement",
+        "Reduced HR risks",
+        "Streamlined HR processes",
+        "Strategic workforce alignment",
+      ],
+    },
   };
 
-  const service = servicesData[serviceId] || servicesData['audit'];
+  const service = servicesData[serviceId] || servicesData["audit"];
 
   return (
     <section className="serviceDetails">
       {/* Hero Section */}
-      <div className="detailsHero">
+      {/* <div className="detailsHero">
         <div className="heroContainer">
           <div className="heroContent">
             <div className="heroText">
@@ -223,9 +251,16 @@ const ServiceDetails = () => {
                 <p>15+ years of excellence</p>
               </div>
             </div>
+            <Breadcrumb/>
           </div>
         </div>
-      </div>
+      </div> */}
+      <SectionHeader
+        label={service.title}
+        title={service.subtitle}
+        description={service.description}
+      />
+
 
       {/* Features Section */}
       <div className="featuresSection">
@@ -265,7 +300,10 @@ const ServiceDetails = () => {
             </div>
             <div className="benefitsImage">
               <div className="imageBox">
-                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&h=400&fit=crop" alt="Benefits" />
+                <img
+                  src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&h=400&fit=crop"
+                  alt="Benefits"
+                />
               </div>
               <div className="statsOverlay">
                 <div className="statItem">
@@ -286,7 +324,10 @@ const ServiceDetails = () => {
       <div className="ctaSection">
         <div className="ctaContainer">
           <h2>Ready to Get Started?</h2>
-          <p>Let our experts help you achieve your business goals with professional {service.title.toLowerCase()}</p>
+          <p>
+            Let our experts help you achieve your business goals with
+            professional {service.title.toLowerCase()}
+          </p>
           <div className="ctaButtons">
             <Link to="/contact" className="ctaButton primary">
               Get Free Consultation

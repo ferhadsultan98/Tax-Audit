@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Calendar, Clock, User } from "lucide-react";
 import axios from "axios";
 import "./BlogDetails.scss";
+import Breadcrumb from "../../../Components/Breadcrumb/Breadcrumb";
 
 const BlogDetails = () => {
   const { blogId } = useParams();
@@ -48,11 +49,12 @@ const BlogDetails = () => {
               <Calendar size={16} />
               {new Date(post.date).toLocaleDateString()}
             </span>
-            <span className="readTime">
+            {/* <span className="readTime">
               <Clock size={16} />
               {post.readTime}
-            </span>
+            </span> */}
           </div>
+          <Breadcrumb/>
         </div>
       </div>
 

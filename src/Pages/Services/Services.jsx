@@ -11,6 +11,7 @@ import {
   ArrowRight,
   CheckCircle
 } from 'lucide-react';
+import SectionHeader from '../../Components/SectionHeader/SectionHeader';
 
 const Services = () => {
   const services = [
@@ -93,7 +94,7 @@ const Services = () => {
   return (
     <section className="servicesPage">
       {/* Hero Section */}
-      <div className="servicesHero">
+      {/* <div className="servicesHero">
         <div className="heroContainer">
           <span className="heroLabel">Our Services</span>
           <h1 className="heroTitle">Professional Solutions for Your Business</h1>
@@ -102,7 +103,13 @@ const Services = () => {
             and help you achieve sustainable growth
           </p>
         </div>
-      </div>
+      </div> */}
+     <SectionHeader
+        label="Our Services"
+        title="Professional Solutions for Your Business"
+        description="We offer comprehensive professional services tailored to meet your business needs 
+            and help you achieve sustainable growth"
+      />
 
       {/* Services Grid */}
       <div className="servicesContent">

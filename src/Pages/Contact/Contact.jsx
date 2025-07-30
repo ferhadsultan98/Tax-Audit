@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import './Contact.scss';
-import { 
-  MapPin, 
-  Phone, 
-  Mail, 
+import React, { useState } from "react";
+import "./Contact.scss";
+import {
+  MapPin,
+  Phone,
+  Mail,
   Clock,
   Send,
   Facebook,
@@ -12,88 +12,79 @@ import {
   Twitter,
   MessageCircle,
   Headphones,
-  Globe
-} from 'lucide-react';
-import SectionHeader from '../../Components/SectionHeader/SectionHeader';
+  Globe,
+} from "lucide-react";
+import SectionHeader from "../../Components/SectionHeader/SectionHeader";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
   });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
     // Handle form submission
   };
 
   const contactInfo = [
     {
       icon: MapPin,
-      title: 'Visit Us',
+      title: "Visit Us",
       details: [
-        'AZ 1069, Baku city, Nasimi district',
-        'A. Salamzade str., 65A'
+        "AZ 1069, Baku city, Nasimi district",
+        "A. Salamzade str., 65A",
       ],
-      color: '#54e7b3'
+      color: "#54e7b3",
     },
     {
       icon: Phone,
-      title: 'Call Us',
-      details: [
-        '+994 12 562 66 13',
-        'Mon-Fri: 9:00 AM - 6:00 PM'
-      ],
-      color: '#4fd1c5'
+      title: "Call Us",
+      details: ["+994 12 562 66 13", "Mon-Fri: 9:00 AM - 6:00 PM"],
+      color: "#4fd1c5",
     },
     {
       icon: Mail,
-      title: 'Email Us',
-      details: [
-        'office@tacs.az',
-        'support@tacs.az'
-      ],
-      color: '#38b2ac'
+      title: "Email Us",
+      details: ["office@tacs.az", "support@tacs.az"],
+      color: "#38b2ac",
     },
     {
       icon: Clock,
-      title: 'Working Hours',
-      details: [
-        'Monday - Friday: 9:00 - 18:00',
-        'Saturday - Sunday: Closed'
-      ],
-      color: '#319795'
-    }
+      title: "Working Hours",
+      details: ["Monday - Friday: 9:00 - 18:00", "Saturday - Sunday: Closed"],
+      color: "#319795",
+    },
   ];
 
   const reasons = [
     {
       icon: Headphones,
-      title: '24/7 Support',
-      description: 'Always here to help with your queries'
+      title: "24/7 Support",
+      description: "Always here to help with your queries",
     },
     {
       icon: MessageCircle,
-      title: 'Quick Response',
-      description: 'We respond within 24 hours'
+      title: "Quick Response",
+      description: "We respond within 24 hours",
     },
     {
       icon: Globe,
-      title: 'Global Reach',
-      description: 'Serving clients worldwide'
-    }
+      title: "Global Reach",
+      description: "Serving clients worldwide",
+    },
   ];
 
   return (
@@ -109,9 +100,9 @@ const Contact = () => {
           </p>
         </div>
       </div> */}
-       <SectionHeader
-      label="Contact Us"
-        title="Get In Touch" 
+      <SectionHeader
+        label="Contact Us"
+        title="Get In Touch"
         description="We're here to help you with all your audit, tax, and consulting needs. Reach out to us for professional assistance and expert guidance."
       />
 
@@ -120,10 +111,10 @@ const Contact = () => {
         <div className="cardsContainer">
           <div className="cardsGrid">
             {contactInfo.map((info, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="infoCard"
-                style={{ '--card-color': info.color }}
+                style={{ "--card-color": info.color }}
               >
                 <div className="cardIcon">
                   <info.icon size={30} />
@@ -148,9 +139,12 @@ const Contact = () => {
             <div className="contactForm">
               <div className="formHeader">
                 <h2>Send Us a Message</h2>
-                <p>Fill out the form below and we'll get back to you as soon as possible</p>
+                <p>
+                  Fill out the form below and we'll get back to you as soon as
+                  possible
+                </p>
               </div>
-              
+
               <div className="form">
                 <div className="formRow">
                   <div className="formGroup">
@@ -178,7 +172,7 @@ const Contact = () => {
                     />
                   </div>
                 </div>
-                
+
                 <div className="formRow">
                   <div className="formGroup">
                     <label htmlFor="phone">Phone Number</label>
@@ -209,7 +203,7 @@ const Contact = () => {
                     </select>
                   </div>
                 </div>
-                
+
                 <div className="formGroup">
                   <label htmlFor="message">Message *</label>
                   <textarea
@@ -222,9 +216,9 @@ const Contact = () => {
                     required
                   ></textarea>
                 </div>
-                
-                <button 
-                  type="submit" 
+
+                <button
+                  type="submit"
                   className="submitBtn"
                   onClick={handleSubmit}
                 >
@@ -271,16 +265,32 @@ const Contact = () => {
               <div className="socialCard">
                 <h3>Connect With Us</h3>
                 <div className="socialLinks">
-                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="https://facebook.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Facebook size={20} />
                   </a>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="https://linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Linkedin size={20} />
                   </a>
-                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="https://instagram.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Instagram size={20} />
                   </a>
-                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="https://twitter.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <Twitter size={20} />
                   </a>
                 </div>

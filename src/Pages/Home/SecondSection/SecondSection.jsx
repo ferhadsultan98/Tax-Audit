@@ -1,6 +1,7 @@
 import React from "react";
 import "./SecondSection.scss";
 import { FaArrowRight } from "react-icons/fa6";
+import LogoAbout from '../../../assets/taxgreen.png'
 
 const HomeAbout = () => {
   return (
@@ -44,7 +45,7 @@ const HomeAbout = () => {
           <div className="imageSide">
             <div className="imageBox">
               <img
-                src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=700&h=800&fit=crop"
+                src={LogoAbout}
                 alt="Modern office building"
               />
               <div className="imageOverlay"></div>
