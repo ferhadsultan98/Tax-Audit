@@ -1,75 +1,58 @@
-import React, { useState } from 'react';
-import './SertificateSection.scss';
-import { Award, X, Download, ExternalLink } from 'lucide-react';
+import React, { useState } from "react";
+import "./SertificateSection.scss";
+import { Award, X, Download, ExternalLink } from "lucide-react";
+import Sertificate1 from "../../../assets/Sertificates/sertifikat1.jpg";
+import Sertificate2 from "../../../assets/Sertificates/sertifikat2.jpg";
+import Sertificate3 from "../../../assets/Sertificates/sertifikat3.jpg";
+import Sertificate4 from "../../../assets/Sertificates/sertifikat4.jpg";
+import { useTranslation } from "react-i18next";
 
 const SertificateSection = () => {
+  const { t } = useTranslation();
   const [selectedAward, setSelectedAward] = useState(null);
 
   const awards = [
     {
       id: 1,
-      title: 'ISO 9001:2015 Certification',
-      category: 'Quality Management',
-      year: '2024',
-      description: 'International certification for quality management systems, demonstrating our commitment to consistent quality and continuous improvement.',
-      image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&h=800&fit=crop',
-      issuer: 'International Organization for Standardization'
+      title: t('home.sertificateSection.iso_9001_title'),
+      year: "2025",
+      description: t('home.sertificateSection.iso_9001_description'),
+      image: Sertificate1,
+      issuer: "ANKA Global",
     },
     {
       id: 2,
-      title: 'Best Audit Firm of the Year',
-      category: 'Excellence Award',
-      year: '2024',
-      description: 'Recognition for outstanding audit services and client satisfaction in the professional services industry.',
-      image: 'https://images.unsplash.com/photo-1620283085068-5aab84e2db8e?w=600&h=800&fit=crop',
-      issuer: 'National Accounting Association'
+      title: t('home.sertificateSection.iso_14001_title'),
+      year: "2025",
+      description: t('home.sertificateSection.iso_14001_description'),
+      image: Sertificate2,
+      issuer: "ANKA Global",
     },
     {
       id: 3,
-      title: 'ACCA Approved Employer',
-      category: 'Professional Development',
-      year: '2023',
-      description: 'Certified as an ACCA Approved Employer, recognizing our commitment to training and developing finance professionals.',
-      image: 'https://images.unsplash.com/photo-1551836022-8b2858c9c69b?w=600&h=800&fit=crop',
-      issuer: 'Association of Chartered Certified Accountants'
+      title: t('home.sertificateSection.iso_45001_title'),
+      year: "2025",
+      description: t('home.sertificateSection.iso_45001_description'),
+      image: Sertificate3,
+      issuer: "ANKA Global",
     },
     {
       id: 4,
-      title: 'Digital Innovation Award',
-      category: 'Technology',
-      year: '2024',
-      description: 'Award for implementing cutting-edge digital solutions in audit and financial advisory services.',
-      image: 'https://images.unsplash.com/photo-1559523161-0fc0d8b38a7a?w=600&h=800&fit=crop',
-      issuer: 'Tech Excellence Awards'
+      title: t('home.sertificateSection.icaze_title'),
+      year: "2023",
+      image: Sertificate4,
+      issuer: "Azərbaycan Respublikasının Auditorlar Palatası",
     },
-    {
-      id: 5,
-      title: 'Client Service Excellence',
-      category: 'Customer Satisfaction',
-      year: '2023',
-      description: 'Recognition for maintaining exceptional client satisfaction ratings and service delivery standards.',
-      image: 'https://images.unsplash.com/photo-1551836022-4c4c79ecde51?w=600&h=800&fit=crop',
-      issuer: 'Business Excellence Institute'
-    },
-    {
-      id: 6,
-      title: 'ESG Leadership Certificate',
-      category: 'Sustainability',
-      year: '2024',
-      description: 'Certification for leadership in Environmental, Social, and Governance practices and reporting.',
-      image: 'https://images.unsplash.com/photo-1620283085439-39620a1e21c4?w=600&h=800&fit=crop',
-      issuer: 'Global Sustainability Council'
-    }
   ];
 
   const openModal = (award) => {
     setSelectedAward(award);
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
   };
 
   const closeModal = () => {
     setSelectedAward(null);
-    document.body.style.overflow = 'unset';
+    document.body.style.overflow = "unset";
   };
 
   return (
@@ -77,19 +60,17 @@ const SertificateSection = () => {
       <section className="homeAwards">
         <div className="awardsContainer">
           <div className="awardsHeader">
-            <span className="sectionLabel">Recognition</span>
-            <h2 className="sectionTitle">
-              Our Awards & Certifications
-            </h2>
+            <span className="sectionLabel">{t('home.sertificateSection.section_label')}</span>
+            <h2 className="sectionTitle">{t('home.sertificateSection.section_title')}</h2>
             <p className="sectionDesc">
-              Recognized for excellence in professional services and commitment to quality
+              {t('home.sertificateSection.section_description')}
             </p>
           </div>
 
           <div className="awardsGrid">
             {awards.map((award, index) => (
-              <div 
-                key={award.id} 
+              <div
+                key={award.id}
                 className="awardCard"
                 onClick={() => openModal(award)}
               >
@@ -111,7 +92,7 @@ const SertificateSection = () => {
                     <div className="backContent">
                       <Award size={30} />
                       <h4>{award.title}</h4>
-                      <p>Click to view details</p>
+                      <p>{t('home.sertificateSection.click_to_view_details')}</p>
                     </div>
                   </div>
                 </div>
@@ -128,13 +109,13 @@ const SertificateSection = () => {
             <button className="closeBtn" onClick={closeModal}>
               <X size={24} />
             </button>
-            
+
             <div className="modalBody">
               <div className="modalImage">
                 <img src={selectedAward.image} alt={selectedAward.title} />
-                <span className="modalCategory">{selectedAward.category}</span>
+                {/* <span className="modalCategory">{selectedAward.category}</span> */}
               </div>
-              
+
               <div className="modalInfo">
                 <h3 className="modalTitle">{selectedAward.title}</h3>
                 <div className="modalMeta">
@@ -148,17 +129,8 @@ const SertificateSection = () => {
                   </span>
                 </div>
                 <p className="modalDesc">{selectedAward.description}</p>
-                
-                <div className="modalActions">
-                  <button className="actionBtn primary">
-                    <Download size={18} />
-                    Download Certificate
-                  </button>
-                  <button className="actionBtn secondary">
-                    <ExternalLink size={18} />
-                    Verify Online
-                  </button>
-                </div>
+
+               
               </div>
             </div>
           </div>

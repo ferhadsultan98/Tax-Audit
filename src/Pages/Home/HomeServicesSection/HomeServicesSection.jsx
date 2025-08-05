@@ -9,50 +9,32 @@ import {
   TrendingUp,
   ArrowRight 
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const HomeServicesSection = () => {
+  const { t } = useTranslation();
+
   const services = [
     {
       id: 1,
       icon: PieChart,
-      title: 'Financial Consulting',
-      description: 'Strategic financial planning and analysis to optimize your business performance and drive sustainable growth.',
+      title: t('home.homeServices.financial_consulting'),
+      description: t('home.homeServices.financial_consulting_desc'),
       link: '/services/consulting'
     },
     {
       id: 2,
       icon: ClipboardCheck,
-      title: 'Audit & Assurance',
-      description: 'Comprehensive audit services ensuring compliance, transparency, and confidence in your financial reporting.',
+      title: t('home.homeServices.audit_assurance'),
+      description: t('home.homeServices.audit_assurance_desc'),
       link: '/services/audit'
     },
     {
       id: 3,
       icon: Calculator,
-      title: 'Tax Advisory',
-      description: 'Expert tax planning and compliance services to minimize liabilities and maximize your financial efficiency.',
+      title: t('home.homeServices.tax_advisory'),
+      description: t('home.homeServices.tax_advisory_desc'),
       link: '/services/tax'
-    },
-    {
-      id: 4,
-      icon: Shield,
-      title: 'Risk Management',
-      description: 'Identify, assess, and mitigate business risks with our comprehensive risk management solutions.',
-      link: '/services/risk'
-    },
-    {
-      id: 5,
-      icon: Coins,
-      title: 'Corporate Finance',
-      description: 'Strategic corporate finance advisory for mergers, acquisitions, and capital restructuring initiatives.',
-      link: '/services/finance'
-    },
-    {
-      id: 6,
-      icon: TrendingUp,
-      title: 'Business Analytics',
-      description: 'Transform your data into actionable insights with our advanced business analytics and reporting services.',
-      link: '/services/analytics'
     }
   ];
 
@@ -60,12 +42,12 @@ const HomeServicesSection = () => {
     <section className="homeServices">
       <div className="servicesContainer">
         <div className="servicesHeader">
-          <span className="labelText">What We Do</span>
+          <span className="labelText">{t('home.homeServices.what_we_do')}</span>
           <h2 className="servicesTitle">
-            Our Professional Services
+            {t('home.homeServices.our_professional_services')}
           </h2>
           <p className="servicesSubtitle">
-            We deliver comprehensive solutions tailored to meet your unique business needs
+            {t('home.homeServices.services_subtitle')}
           </p>
         </div>
 
@@ -79,7 +61,7 @@ const HomeServicesSection = () => {
                 <h3 className="serviceTitle">{service.title}</h3>
                 <p className="serviceDesc">{service.description}</p>
                 <a href={service.link} className="serviceLink">
-                  Learn More
+                  {t('home.homeServices.learn_more')}
                   <ArrowRight size={16} />
                 </a>
               </div>
@@ -90,7 +72,7 @@ const HomeServicesSection = () => {
 
         <div className="servicesFooter">
           <a href="/services" className="allServicesBtn">
-            View All Services
+            {t('home.homeServices.view_all_services')}
             <ArrowRight size={20} />
           </a>
         </div>

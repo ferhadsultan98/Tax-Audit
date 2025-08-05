@@ -1,53 +1,47 @@
-import React from "react";
-import "./SecondSection.scss";
-import { FaArrowRight } from "react-icons/fa6";
-import LogoAbout from '../../../assets/taxgreen.png'
+import React from 'react';
+import './SecondSection.scss';
+import { FaArrowRight } from 'react-icons/fa6';
+import LogoAbout from '../../../assets/taxgreen.png';
+import { useTranslation } from 'react-i18next';
 
 const HomeAbout = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="homeAbout">
       <div className="aboutContainer">
         <div className="aboutContent">
           <div className="textSide">
-            <span className="labelText">Who We Are</span>
+            <span className="labelText">{t('home.homeAbout.who_we_are')}</span>
             <h2 className="aboutTitle">
-              Professional Audit &
-              <span className="highlightText"> Consulting Services</span>
+              {t('home.homeAbout.professional_audit')}{' '}
+              <span className="highlightText">{t('home.homeAbout.consulting_services')}</span>
             </h2>
-            <p className="aboutDesc">
-              We provide comprehensive audit, accounting and consulting services
-              in accordance with international standards. Our expert team
-              ensures your business meets all regulatory requirements while
-              optimizing financial performance.
-            </p>
+            <p className="aboutDesc">{t('home.homeAbout.about_description')}</p>
             <div className="aboutStats">
               <div className="statBox">
-                <h3>250+</h3>
-                <p>Happy Clients</p>
+                <h3>450+</h3>
+                <p>{t('home.homeAbout.happy_clients')}</p>
               </div>
               <div className="statBox">
                 <h3>98%</h3>
-                <p>Success Rate</p>
+                <p>{t('home.homeAbout.success_rate')}</p>
               </div>
               <div className="statBox">
-                <h3>12+</h3>
-                <p>Years Experience</p>
+                <h3>15+</h3>
+                <p>{t('home.homeAbout.years_experience')}</p>
               </div>
             </div>
             <a href="/about" className="aboutBtn">
-              Learn More
+              {t('home.homeAbout.learn_more')}
               <i>
                 <FaArrowRight />
               </i>
-              <i className="fas fa-arrow-right"></i>
             </a>
           </div>
           <div className="imageSide">
             <div className="imageBox">
-              <img
-                src={LogoAbout}
-                alt="Modern office building"
-              />
+              <img src={LogoAbout} alt={t('home.homeAbout.office_building_alt')} />
               <div className="imageOverlay"></div>
             </div>
           </div>

@@ -2,10 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import {
   Calendar,
-  Clock,
   User,
   ArrowRight,
-  Search,
   TrendingUp,
   Filter,
   ChevronLeft,
@@ -16,7 +14,7 @@ import "./Blog.scss";
 import { MdGridView } from "react-icons/md";
 
 const Blog = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [blogPosts, setBlogPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -27,18 +25,19 @@ const Blog = () => {
   const language = i18n.language;
 
   const categories = [
-    { id: "all", name: "All Posts" },
-    { id: "tax", name: "Tax Advisory" },
-    { id: "audit", name: "Audit & Compliance" },
-    { id: "consulting", name: "Business Consulting" },
-    { id: "accounting", name: "Accounting" },
-    { id: "legal", name: "Legal Updates" },
+    { id: "all", name: t('blogSection.categories.all') },
+    { id: "audit", name: t('blogSection.categories.audit') },
+    { id: "valuation", name: t('blogSection.categories.valuation') },
+    { id: "tax-legal", name: t('blogSection.categories.tax-legal') },
+    { id: "consulting", name: t('blogSection.categories.consulting') },
+    { id: "accounting", name: t('blogSection.categories.accounting') },
+    { id: "hr", name: t('blogSection.categories.hr') },
   ];
 
   useEffect(() => {
     fetch("http://127.0.0.1:8000/api/blog/posts/")
       .then((res) => res.json())
-      .then((data) => setBlogPosts(data))
+      .then((data) => setBlogPosts(Array.isArray(data) ? data : [data]))
       .catch((err) => console.error("Failed to fetch blog posts:", err));
   }, []);
 
@@ -55,7 +54,6 @@ const Blog = () => {
 
   const featuredPost = filteredPosts.find((post) => post.featured);
   const regularPosts = filteredPosts.filter((post) => !post.featured);
-
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = regularPosts.slice(indexOfFirstPost, indexOfLastPost);
@@ -66,20 +64,26 @@ const Blog = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const truncateText = (text, maxLength) => {
+    if (text.length > maxLength) {
+      return text.substring(0, maxLength) + "...";
+    }
+    return text;
+  };
+
   return (
     <section className="blogPage">
       <SectionHeader
-        label="salam"
-        title="About Us"
-        description="Discover our story and mission to create impactful solutions."
+        label={t('blogSection.sectionHeader.label')}
+        title={t('blogSection.sectionHeader.title')}
+        description={t('blogSection.sectionHeader.description')}
       />
-
       <div className="blogContent">
         <div className="contentContainer">
           <div className="contentGrid">
             <aside className="blogSidebar">
               <div className="sidebarSection">
-                <h3>Categories</h3>
+                <h3>{t('blogSection.sidebar.categoriesTitle')}</h3>
                 <ul className="categoryList">
                   {categories.map((category) => (
                     <li key={category.id}>
@@ -99,7 +103,6 @@ const Blog = () => {
                 </ul>
               </div>
             </aside>
-
             <div className="blogMain">
               <div className="actionButton">
                 <button
@@ -107,7 +110,7 @@ const Blog = () => {
                   onClick={() => setIsFilterOpen(!isFilterOpen)}
                 >
                   <Filter size={20} />
-                  Filter Posts
+                  {t('blogSection.actionButtons.filter')}
                 </button>
                 <button
                   className="layout-toggle-btn"
@@ -116,17 +119,18 @@ const Blog = () => {
                   <i>
                     <MdGridView />
                   </i>
-                  {isWideLayout ? "Switch to Card View" : "Switch to Wide View"}
+                  {isWideLayout
+                    ? t('blogSection.actionButtons.cardLayout')
+                    : t('blogSection.actionButtons.wideLayout')}
                 </button>
               </div>
-
               <div className={`mobileSidebar ${isFilterOpen ? "open" : ""}`}>
                 <div className="sidebarHeader">
-                  <h3>Filter Posts</h3>
+                  <h3>{t('blogSection.mobileSidebar.title')}</h3>
                   <button onClick={() => setIsFilterOpen(false)}>×</button>
                 </div>
                 <div className="sidebarContent">
-                  <h4>Categories</h4>
+                  <h4>{t('blogSection.mobileSidebar.categoriesTitle')}</h4>
                   {categories.map((category) => (
                     <button
                       key={category.id}
@@ -144,7 +148,6 @@ const Blog = () => {
                   ))}
                 </div>
               </div>
-
               {featuredPost && (
                 <article
                   className={`featuredPost ${
@@ -153,21 +156,35 @@ const Blog = () => {
                 >
                   <div className="featuredImage">
                     <img
-                      src={`http://127.0.0.1:8000/api/blog/images/${featuredPost.image_id}/`}
+                      src={
+                        featuredPost.image_id
+                          ? `http://127.0.0.1:8000/api/blog/images/${featuredPost.image_id}/`
+                          : ""
+                      }
                       alt={featuredPost[`title_${language}`] || ""}
                     />
-                    {featuredPost.trending && (
+                    {featuredPost.featured && (
                       <span className="trendingBadge">
                         <TrendingUp size={14} />
-                        Trending
+                        {t('blogSection.featuredPost.badge')}
                       </span>
                     )}
                   </div>
                   <div className="featuredContent">
-                    <span className="categoryTag">{featuredPost.category}</span>
-                    <h2>{featuredPost[`title_${language}`] || ""}</h2>
+                    <span className="categoryTag">
+                      {t(`blogSection.categories.${featuredPost.category}`)}
+                    </span>
+                    <h2>
+                      {truncateText(
+                        featuredPost[`title_${language}`] || "",
+                        isWideLayout ? 50 : 80
+                      )}
+                    </h2>
                     <p className="excerpt">
-                      {featuredPost[`excerpt_${language}`] || ""}
+                      {truncateText(
+                        featuredPost[`excerpt_${language}`] || "",
+                        isWideLayout ? 100 : 150
+                      )}
                     </p>
                     <div className="postMeta">
                       <span className="author">
@@ -177,7 +194,7 @@ const Blog = () => {
                       <span className="date">
                         <Calendar size={16} />
                         {new Date(featuredPost.date).toLocaleDateString(
-                          "en-US",
+                          language,
                           {
                             month: "numeric",
                             day: "numeric",
@@ -185,85 +202,104 @@ const Blog = () => {
                           }
                         )}
                       </span>
-                      {/* <span className="readTime">
-                        <Clock size={16} />
-                        {featuredPost.readTime}
-                      </span> */}
                     </div>
-                    <a href={`/blog/${featuredPost.id}`} className="readMore">
-                      Read Full Article
+                    <a
+                      href={`/blog/${featuredPost.id}`}
+                      className="readMore"
+                    >
+                      {t('blogSection.featuredPost.readMore')}
                       <ArrowRight size={18} />
                     </a>
                   </div>
                 </article>
               )}
-
               <div className={`postsGrid ${isWideLayout ? "wide-layout" : ""}`}>
-                {currentPosts.map((post) => (
-                  <article
-                    key={post.id}
-                    className={`postCard ${isWideLayout ? "wide-card" : ""}`}
-                  >
-                    <div className="postImage">
-                      {post.image_id ? (
-                        <img
-                          src={`http://127.0.0.1:8000/api/blog/images/${post.image_id}/`}
-                          alt={post[`title_${language}`] || ""}
-                        />
-                      ) : (
-                        <div className="noImage">No Image</div>
-                      )}
-                      {post.trending && (
-                        <span className="trendingBadge">
-                          <TrendingUp size={12} />
-                          Trending
+                {currentPosts.length > 0 ? (
+                  currentPosts.map((post) => (
+                    <article
+                      key={post.id}
+                      className={`postCard ${isWideLayout ? "wide-card" : ""}`}
+                    >
+                      <div className="postImage">
+                        {post.image_id ? (
+                          <img
+                            src={`http://127.0.0.1:8000/api/blog/images/${post.image_id}/`}
+                            alt={post[`title_${language}`] || ""}
+                          />
+                        ) : (
+                          <div className="noImage">
+                            {t('blogSection.posts.noImage')}
+                          </div>
+                        )}
+                        {post.featured && (
+                          <span className="trendingBadge">
+                            <TrendingUp size={12} />
+                            {t('blogSection.posts.badge')}
+                          </span>
+                        )}
+                        <span className="categoryOverlay">
+                          {t(`blogSection.categories.${post.category}`)}
                         </span>
-                      )}
-                      <span className="categoryOverlay">{post.category}</span>
-                    </div>
-                    <div className="postContent">
-                      <div className="postHeader">
-                        <h3>{post[`title_${language}`] || ""}</h3>
                       </div>
-                      <p className="excerpt">
-                        {post[`excerpt_${language}`] || ""}
-                      </p>
-                      <div className="postFooter">
-                        <div className="authorInfo">
-                          <div className="authorAvatar">
-                            {post.author.charAt(0)}
-                          </div>
-                          <div className="authorDetails">
-                            <span className="authorName">{post.author}</span>
-                            <span className="authorRole">
-                              {post.authorRole}
-                            </span>
-                          </div>
+                      <div className="postContent">
+                        <div className="postHeader">
+                          <h3>
+                            {truncateText(
+                              post[`title_${language}`] || "",
+                              isWideLayout ? 50 : 80
+                            )}
+                          </h3>
                         </div>
-                        <a href={`/blog/${post.id}`} className="readLink">
-                          <ArrowRight size={18} />
-                        </a>
+                        <p className="excerpt">
+                          {truncateText(
+                            post[`excerpt_${language}`] || "",
+                            isWideLayout ? 100 : 150
+                          )}
+                        </p>
+                        <div className="postFooter">
+                          <div className="authorInfo">
+                            <div className="authorAvatar">
+                              {post.author.charAt(0)}
+                            </div>
+                            <div className="authorDetails">
+                              <span className="authorName">{post.author}</span>
+                            </div>
+                          </div>
+                          <a href={`/blog/${post.id}`} className="readLink">
+                            <ArrowRight size={18} />
+                          </a>
+                        </div>
+                        <div className="postMeta">
+                          <span className="date">
+                            <Calendar size={14} />
+                            {new Date(post.date).toLocaleDateString(language, {
+                              month: "numeric",
+                              day: "numeric",
+                              year: "numeric",
+                            })}
+                          </span>
+                        </div>
                       </div>
-                      <div className="postMeta">
-                        <span className="date">
-                          <Calendar size={14} />
-                          {new Date(post.date).toLocaleDateString("en-US", {
-                            month: "numeric",
-                            day: "numeric",
-                            year: "numeric",
-                          })}
-                        </span>
-                        {/* <span className="readTime">
-                          <Clock size={14} />
-                          {post.readTime}
-                        </span> */}
-                      </div>
-                    </div>
-                  </article>
-                ))}
+                    </article>
+                  ))
+                ) : (
+                  <div className="noPosts">
+                    <h3>{t('blogSection.noPosts.title')}</h3>
+                    <p>{t('blogSection.noPosts.description')}</p>
+                    <button
+                      className="backToAllBtn"
+                      onClick={() => {
+                        setSelectedCategory("all");
+                        setCurrentPage(1);
+                      }}
+                    >
+                      {t('blogSection.noPosts.button')}
+                      <ArrowRight size={18} />
+                    </button>
+                  </div>
+                )}
               </div>
-
-              {totalPages > 1 && (
+              {totalPages > 1 && currentPosts.length > 0 && (
                 <div className="pagination">
                   <button
                     className="paginationBtn"
@@ -271,7 +307,7 @@ const Blog = () => {
                     onClick={() => handlePageChange(currentPage - 1)}
                   >
                     <ChevronLeft size={18} />
-                    Previous
+                    {t('blogSection.pagination.previous')}
                   </button>
                   <div className="paginationNumbers">
                     {Array.from({ length: totalPages }, (_, i) => i + 1).map(
@@ -293,7 +329,7 @@ const Blog = () => {
                     disabled={currentPage === totalPages}
                     onClick={() => handlePageChange(currentPage + 1)}
                   >
-                    Next
+                    {t('blogSection.pagination.next')}
                     <ChevronRight size={18} />
                   </button>
                 </div>

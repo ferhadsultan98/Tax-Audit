@@ -1,0 +1,288 @@
+$primaryColor: #54e7b3;
+$whiteColor: #ffffff;
+$shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+$transition: all 0.5s ease-in-out;
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+.heroSection {
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  .sliderWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .heroSectionSliderContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .slideImageWrapper {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+
+    .slideImage {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    }
+
+    .slideImage.fade {
+      animation: none;
+    }
+
+    .slideImage.slide-in-right {
+      animation: slideInRight 0.7s ease-in-out forwards;
+    }
+
+    .slideImage.slide-out-left {
+      animation: slideOutLeft 0.7s ease-in-out forwards;
+    }
+
+    .slideImage.slide-in-left {
+      animation: slideInLeft 0.7s ease-in-out forwards;
+    }
+
+    .slideImage.slide-out-right {
+      animation: slideOutRight 0.7s ease-in-out forwards;
+    }
+
+    .bottomDesign {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 2rem 0;
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+      z-index: 2;
+      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+      &.fade-in {
+        animation: fadeIn 0.5s ease-in-out forwards;
+      }
+
+      &.fade-out {
+        animation: fadeOut 0.3s ease-in-out forwards;
+      }
+
+      .slideText {
+        position: relative;
+        text-align: center;
+        color: $whiteColor;
+        padding: 1rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+
+        h2 {
+          font-size: 3rem;
+          margin-bottom: 1rem;
+          font-weight: 700;
+        }
+
+        p {
+          font-size: 1.5rem;
+          max-width: 800px;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80px;
+    height: 80px;
+    background-color: rgba($primaryColor, 0.8);
+    color: $whiteColor;
+    display: flex;
+    align-items: center;
+    font-size: 3rem;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: $transition;
+    user-select: none;
+    z-index: 5;
+    overflow: hidden;
+
+    i {
+      display: flex;
+    }
+
+    &:hover {
+      background-color: $primaryColor;
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    &.arrowLeft {
+      left: 1rem;
+    }
+
+    &.arrowRight {
+      right: 1rem;
+    }
+
+    .previewImageWrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.7;
+      transition: $transition;
+
+      .previewImage {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .slideImageWrapper {
+      .bottomDesign {
+        padding: 1.5rem 0;
+
+        .slideText {
+          padding: 0.75rem 1.5rem;
+
+          h2 {
+            font-size: 2rem;
+          }
+
+          p {
+            font-size: 1.2rem;
+            max-width: 90%;
+          }
+        }
+      }
+    }
+
+    .arrow {
+      width: 40px;
+      height: 40px;
+      font-size: 1.5rem;
+
+      &.arrowLeft {
+        left: 0.5rem;
+      }
+
+      &.arrowRight {
+        right: 0.5rem;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .slideImageWrapper {
+      height: 40vh;
+
+      .bottomDesign {
+        padding: 1rem 0;
+
+        .slideText {
+          padding: 0.5rem 1rem;
+
+          h2 {
+            font-size: 1.5rem;
+          }
+
+          p {
+            font-size: 1rem;
+            max-width: 95%;
+          }
+        }
+      }
+    }
+
+    .arrow {
+      width: 40px;
+      height: 40px;
+      font-size: 1.2rem;
+    }
+  }
+}

@@ -1,10 +1,19 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FiLogOut } from "react-icons/fi";
-import "./AdminLayout.scss";
 import { BsJournalCheck } from "react-icons/bs";
+import "./AdminLayout.scss";
 
 const AdminLayout = ({ children, title }) => {
   const [activeSection, setActiveSection] = useState("blogs");
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("isAuthenticated");
+    navigate("/login"); // Redirect to login page after logout
+  };
 
   return (
     <div className="adminLayout">
@@ -28,13 +37,7 @@ const AdminLayout = ({ children, title }) => {
               </a>
             </li>
             <li className="logoutItem">
-              <a
-                href="/login"
-                onClick={() => {
-                  localStorage.removeItem("accessToken");
-                  localStorage.removeItem("refreshToken");
-                }}
-              >
+              <a href="#" onClick={handleLogout}>
                 <span className="icon">
                   <FiLogOut />
                 </span>{" "}

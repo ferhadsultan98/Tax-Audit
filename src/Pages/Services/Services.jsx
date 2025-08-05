@@ -11,81 +11,84 @@ import {
   ArrowRight,
   CheckCircle
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import SectionHeader from '../../Components/SectionHeader/SectionHeader';
 
 const Services = () => {
+  const { t } = useTranslation();
+
   const services = [
     {
       id: 'audit',
       icon: FileCheck,
-      title: 'Audit Services',
-      description: 'Comprehensive audit solutions ensuring compliance with international and national standards',
+      title: t('servicesSection.audit.title'),
+      description: t('servicesSection.audit.description'),
       features: [
-        'Audit of financial statements in accordance with international and national standards',
-        'Special purpose audits (project, donor, internal needs)',
-        'Verification and analysis of financial statements',
-        'Audit recommendations and risk management'
+        t('servicesSection.audit.features.0'),
+        t('servicesSection.audit.features.1'),
+        t('servicesSection.audit.features.2'),
+        t('servicesSection.audit.features.3')
       ],
       color: '#54e7b3'
     },
     {
       id: 'valuation',
       icon: Calculator,
-      title: 'Valuation Services',
-      description: 'Professional valuation and expertise services for accurate asset assessment',
+      title: t('servicesSection.valuation.title'),
+      description: t('servicesSection.valuation.description'),
       features: [
-        'Professional valuation of property and other assets',
-        'Expertise services for determining asset values'
+        t('servicesSection.valuation.features.0'),
+        t('servicesSection.valuation.features.1')
       ],
       color: '#4fd1c5'
     },
     {
       id: 'tax-legal',
       icon: Scale,
-      title: 'Tax and Legal Services',
-      description: 'Expert tax planning and legal support to ensure full compliance',
+      title: t('servicesSection.tax-legal.title'),
+      description: t('servicesSection.tax-legal.description'),
       features: [
-        'Tax planning, consulting and compliance services',
-        'Preparation of legal documents and legal opinions',
-        'Support during tax inspections and audits'
+        t('servicesSection.tax-legal.features.0'),
+        t('servicesSection.tax-legal.features.1'),
+        t('servicesSection.tax-legal.features.2')
       ],
       color: '#38b2ac'
     },
     {
       id: 'consulting',
       icon: Lightbulb,
-      title: 'Consulting Services',
-      description: 'Strategic business consulting to optimize operations and improve performance',
+      title: t('servicesSection.consulting.title'),
+      description: t('servicesSection.consulting.description'),
       features: [
-        'Strategic and operational consulting',
-        'Improvement of internal management systems',
-        'Business optimization advice'
+        t('servicesSection.consulting.features.0'),
+        t('servicesSection.consulting.features.1'),
+        t('servicesSection.consulting.features.2')
       ],
       color: '#319795'
     },
     {
       id: 'accounting',
       icon: BookOpen,
-      title: 'Accounting Services',
-      description: 'Complete accounting solutions for efficient financial management',
+      title: t('servicesSection.accounting.title'),
+      description: t('servicesSection.accounting.description'),
       features: [
-        'Organization of financial and tax accounting',
-        'Preparation and submission of declarations',
-        'Establishment and support of accounting systems'
+        t('servicesSection.accounting.features.0'),
+        t('servicesSection.accounting.features.1'),
+        t('servicesSection.accounting.features.2')
       ],
       color: '#2c7a7b'
     },
     {
       id: 'hr',
       icon: Users,
-      title: 'Human Resources Services',
-      description: 'Comprehensive HR solutions to manage and develop your workforce',
+      title: t('servicesSection.hr.title'),
+      description: t('servicesSection.hr.description'),
       features: [
-        'Recruitment and personnel documentation',
-        'Development of HR policies',
-        'Strategic HR services',
-        'Health and safety',
-        'Human Resources Audit'
+        t('servicesSection.hr.features.0'),
+        t('servicesSection.hr.features.1'),
+        t('servicesSection.hr.features.2'),
+        t('servicesSection.hr.features.3'),
+        t('servicesSection.hr.features.4')
       ],
       color: '#285e61'
     }
@@ -93,25 +96,12 @@ const Services = () => {
 
   return (
     <section className="servicesPage">
-      {/* Hero Section */}
-      {/* <div className="servicesHero">
-        <div className="heroContainer">
-          <span className="heroLabel">Our Services</span>
-          <h1 className="heroTitle">Professional Solutions for Your Business</h1>
-          <p className="heroDescription">
-            We offer comprehensive professional services tailored to meet your business needs 
-            and help you achieve sustainable growth
-          </p>
-        </div>
-      </div> */}
-     <SectionHeader
-        label="Our Services"
-        title="Professional Solutions for Your Business"
-        description="We offer comprehensive professional services tailored to meet your business needs 
-            and help you achieve sustainable growth"
+      <SectionHeader
+        label={t('servicesSection.sectionHeader.label')}
+        title={t('servicesSection.sectionHeader.title')}
+        description={t('servicesSection.sectionHeader.description')}
       />
 
-      {/* Services Grid */}
       <div className="servicesContent">
         <div className="servicesContainer">
           <div className="servicesGrid">
@@ -143,7 +133,7 @@ const Services = () => {
                   to={`/services/${service.id}`} 
                   className="serviceLink"
                 >
-                  Learn More
+                  {t('servicesSection.learnMore')}
                   <ArrowRight size={18} />
                 </Link>
               </div>
@@ -152,13 +142,12 @@ const Services = () => {
         </div>
       </div>
 
-      {/* CTA Section */}
       <div className="servicesCTA">
         <div className="ctaContainer">
-          <h2>Ready to Get Started?</h2>
-          <p>Contact us today to discuss how we can help your business thrive</p>
+          <h2>{t('servicesSection.cta.title')}</h2>
+          <p>{t('servicesSection.cta.description')}</p>
           <Link to="/contact" className="ctaButton">
-            Get In Touch
+            {t('servicesSection.cta.button')}
             <ArrowRight size={20} />
           </Link>
         </div>

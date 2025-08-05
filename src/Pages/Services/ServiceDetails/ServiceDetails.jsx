@@ -12,213 +12,190 @@ import {
   ArrowRight,
   Phone,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import Breadcrumb from "../../../Components/Breadcrumb/Breadcrumb";
 import SectionHeader from "../../../Components/SectionHeader/SectionHeader";
+import ServiceDetailsImage from '../../../assets/af1.jpg'
 
 const ServiceDetails = () => {
-  const { serviceId } = useParams(); // Extract serviceId from URL
+  const { t } = useTranslation();
+  const { serviceId } = useParams();
 
   const servicesData = {
     audit: {
       icon: FileCheck,
-      title: "Audit Services",
-      subtitle: "Ensuring Financial Transparency and Compliance",
-      description:
-        "Our audit services provide comprehensive examination and verification of your financial statements, ensuring compliance with international and national standards while identifying opportunities for improvement.",
+      title: t('serviceDetailsSection.audit.title'),
+      subtitle: t('serviceDetailsSection.audit.subtitle'),
+      description: t('serviceDetailsSection.audit.description'),
       features: [
         {
-          title: "Financial Statement Audit",
-          description:
-            "Complete audit of financial statements in accordance with International Standards on Auditing (ISA) and national regulations, providing stakeholders with confidence in your financial reporting.",
+          title: t('serviceDetailsSection.audit.features.0.title'),
+          description: t('serviceDetailsSection.audit.features.0.description'),
         },
         {
-          title: "Special Purpose Audits",
-          description:
-            "Customized audit solutions for specific needs including project audits, donor-funded program audits, and internal control assessments tailored to your requirements.",
+          title: t('serviceDetailsSection.audit.features.1.title'),
+          description: t('serviceDetailsSection.audit.features.1.description'),
         },
         {
-          title: "Financial Analysis & Verification",
-          description:
-            "In-depth analysis and verification of financial data to ensure accuracy, identify discrepancies, and provide insights for better financial management.",
+          title: t('serviceDetailsSection.audit.features.2.title'),
+          description: t('serviceDetailsSection.audit.features.2.description'),
         },
         {
-          title: "Risk Management & Recommendations",
-          description:
-            "Comprehensive risk assessment with practical recommendations to strengthen internal controls and improve operational efficiency.",
+          title: t('serviceDetailsSection.audit.features.3.title'),
+          description: t('serviceDetailsSection.audit.features.3.description'),
         },
       ],
       benefits: [
-        "Enhanced credibility with stakeholders",
-        "Improved internal controls",
-        "Regulatory compliance assurance",
-        "Risk identification and mitigation",
-        "Operational efficiency improvements",
-        "Better decision-making insights",
+        t('serviceDetailsSection.audit.benefits.0'),
+        t('serviceDetailsSection.audit.benefits.1'),
+        t('serviceDetailsSection.audit.benefits.2'),
+        t('serviceDetailsSection.audit.benefits.3'),
+        t('serviceDetailsSection.audit.benefits.4'),
+        t('serviceDetailsSection.audit.benefits.5'),
       ],
     },
     valuation: {
       icon: Calculator,
-      title: "Valuation Services",
-      subtitle: "Professional Asset Valuation and Expertise",
-      description:
-        "Our valuation services provide accurate and reliable assessments of your assets, helping you make informed decisions for transactions, financial reporting, and strategic planning.",
+      title: t('serviceDetailsSection.valuation.title'),
+      subtitle: t('serviceDetailsSection.valuation.subtitle'),
+      description: t('serviceDetailsSection.valuation.description'),
       features: [
         {
-          title: "Property Valuation",
-          description:
-            "Professional valuation of real estate, commercial properties, and industrial assets using internationally recognized methodologies and standards.",
+          title: t('serviceDetailsSection.valuation.features.0.title'),
+          description: t('serviceDetailsSection.valuation.features.0.description'),
         },
         {
-          title: "Asset Value Expertise",
-          description:
-            "Expert determination of fair market value for various assets including equipment, inventory, intangible assets, and business valuations.",
+          title: t('serviceDetailsSection.valuation.features.1.title'),
+          description: t('serviceDetailsSection.valuation.features.1.description'),
         },
       ],
       benefits: [
-        "Accurate asset valuations",
-        "Compliance with accounting standards",
-        "Support for M&A transactions",
-        "Insurance claim substantiation",
-        "Tax planning optimization",
-        "Investment decision support",
+        t('serviceDetailsSection.valuation.benefits.0'),
+        t('serviceDetailsSection.valuation.benefits.1'),
+        t('serviceDetailsSection.valuation.benefits.2'),
+        t('serviceDetailsSection.valuation.benefits.3'),
+        t('serviceDetailsSection.valuation.benefits.4'),
+        t('serviceDetailsSection.valuation.benefits.5'),
       ],
     },
     "tax-legal": {
       icon: Scale,
-      title: "Tax and Legal Services",
-      subtitle: "Expert Guidance for Compliance and Optimization",
-      description:
-        "Navigate complex tax regulations and legal requirements with our comprehensive advisory services, ensuring compliance while optimizing your tax position.",
+      title: t('serviceDetailsSection.tax-legal.title'),
+      subtitle: t('serviceDetailsSection.tax-legal.subtitle'),
+      description: t('serviceDetailsSection.tax-legal.description'),
       features: [
         {
-          title: "Tax Planning & Consulting",
-          description:
-            "Strategic tax planning to minimize liabilities, optimize tax positions, and ensure full compliance with local and international tax regulations.",
+          title: t('serviceDetailsSection.tax-legal.features.0.title'),
+          description: t('serviceDetailsSection.tax-legal.features.0.description'),
         },
         {
-          title: "Legal Documentation",
-          description:
-            "Preparation of legal documents, contracts, and agreements with expert legal opinions to protect your business interests.",
+          title: t('serviceDetailsSection.tax-legal.features.1.title'),
+          description: t('serviceDetailsSection.tax-legal.features.1.description'),
         },
         {
-          title: "Audit Support",
-          description:
-            "Professional representation and support during tax inspections, audits, and disputes with tax authorities.",
+          title: t('serviceDetailsSection.tax-legal.features.2.title'),
+          description: t('serviceDetailsSection.tax-legal.features.2.description'),
         },
       ],
       benefits: [
-        "Tax optimization strategies",
-        "Legal compliance assurance",
-        "Risk mitigation",
-        "Expert representation",
-        "Cost-effective solutions",
-        "Peace of mind",
+        t('serviceDetailsSection.tax-legal.benefits.0'),
+        t('serviceDetailsSection.tax-legal.benefits.1'),
+        t('serviceDetailsSection.tax-legal.benefits.2'),
+        t('serviceDetailsSection.tax-legal.benefits.3'),
+        t('serviceDetailsSection.tax-legal.benefits.4'),
+        t('serviceDetailsSection.tax-legal.benefits.5'),
       ],
     },
     consulting: {
       icon: Lightbulb,
-      title: "Consulting Services",
-      subtitle: "Strategic Solutions for Business Excellence",
-      description:
-        "Transform your business with our strategic consulting services, designed to optimize operations, improve performance, and drive sustainable growth.",
+      title: t('serviceDetailsSection.consulting.title'),
+      subtitle: t('serviceDetailsSection.consulting.subtitle'),
+      description: t('serviceDetailsSection.consulting.description'),
       features: [
         {
-          title: "Strategic Consulting",
-          description:
-            "Development of comprehensive business strategies, market entry plans, and growth initiatives aligned with your vision and objectives.",
+          title: t('serviceDetailsSection.consulting.features.0.title'),
+          description: t('serviceDetailsSection.consulting.features.0.description'),
         },
         {
-          title: "Operational Excellence",
-          description:
-            "Process optimization, efficiency improvements, and operational restructuring to enhance productivity and reduce costs.",
+          title: t('serviceDetailsSection.consulting.features.1.title'),
+          description: t('serviceDetailsSection.consulting.features.1.description'),
         },
         {
-          title: "Management Systems",
-          description:
-            "Design and implementation of robust internal management systems, governance structures, and performance measurement frameworks.",
+          title: t('serviceDetailsSection.consulting.features.2.title'),
+          description: t('serviceDetailsSection.consulting.features.2.description'),
         },
       ],
       benefits: [
-        "Improved operational efficiency",
-        "Strategic clarity and direction",
-        "Enhanced competitiveness",
-        "Better resource utilization",
-        "Sustainable growth strategies",
-        "Performance optimization",
+        t('serviceDetailsSection.consulting.benefits.0'),
+        t('serviceDetailsSection.consulting.benefits.1'),
+        t('serviceDetailsSection.consulting.benefits.2'),
+        t('serviceDetailsSection.consulting.benefits.3'),
+        t('serviceDetailsSection.consulting.benefits.4'),
+        t('serviceDetailsSection.consulting.benefits.5'),
       ],
     },
     accounting: {
       icon: BookOpen,
-      title: "Accounting Services",
-      subtitle: "Complete Financial Management Solutions",
-      description:
-        "Streamline your financial operations with our comprehensive accounting services, ensuring accurate record-keeping and timely compliance with all regulatory requirements.",
+      title: t('serviceDetailsSection.accounting.title'),
+      subtitle: t('serviceDetailsSection.accounting.subtitle'),
+      description: t('serviceDetailsSection.accounting.description'),
       features: [
         {
-          title: "Financial & Tax Accounting",
-          description:
-            "Complete organization and maintenance of financial and tax accounting records in compliance with national standards and regulations.",
+          title: t('serviceDetailsSection.accounting.features.0.title'),
+          description: t('serviceDetailsSection.accounting.features.0.description'),
         },
         {
-          title: "Declaration Services",
-          description:
-            "Timely preparation and submission of all required tax declarations, financial reports, and regulatory filings.",
+          title: t('serviceDetailsSection.accounting.features.1.title'),
+          description: t('serviceDetailsSection.accounting.features.1.description'),
         },
         {
-          title: "System Implementation",
-          description:
-            "Setup and ongoing support of accounting systems tailored to your business needs, including software selection and process design.",
+          title: t('serviceDetailsSection.accounting.features.2.title'),
+          description: t('serviceDetailsSection.accounting.features.2.description'),
         },
       ],
       benefits: [
-        "Accurate financial records",
-        "Timely regulatory compliance",
-        "Reduced administrative burden",
-        "Better financial visibility",
-        "Cost-effective solutions",
-        "Expert ongoing support",
+        t('serviceDetailsSection.accounting.benefits.0'),
+        t('serviceDetailsSection.accounting.benefits.1'),
+        t('serviceDetailsSection.accounting.benefits.2'),
+        t('serviceDetailsSection.accounting.benefits.3'),
+        t('serviceDetailsSection.accounting.benefits.4'),
+        t('serviceDetailsSection.accounting.benefits.5'),
       ],
     },
     hr: {
       icon: Users,
-      title: "Human Resources Services",
-      subtitle: "Comprehensive HR Solutions for Your Business",
-      description:
-        "Build and maintain a strong workforce with our full-spectrum HR services, from recruitment to strategic HR management and compliance.",
+      title: t('serviceDetailsSection.hr.title'),
+      subtitle: t('serviceDetailsSection.hr.subtitle'),
+      description: t('serviceDetailsSection.hr.description'),
       features: [
         {
-          title: "Recruitment & Documentation",
-          description:
-            "End-to-end recruitment services and complete personnel documentation management ensuring compliance with labor laws.",
+          title: t('serviceDetailsSection.hr.features.0.title'),
+          description: t('serviceDetailsSection.hr.features.0.description'),
         },
         {
-          title: "HR Policy Development",
-          description:
-            "Creation of comprehensive HR policies, procedures, and employee handbooks aligned with best practices and legal requirements.",
+          title: t('serviceDetailsSection.hr.features.1.title'),
+          description: t('serviceDetailsSection.hr.features.1.description'),
         },
         {
-          title: "Strategic HR Services",
-          description:
-            "Strategic workforce planning, organizational design, and talent management to align human capital with business objectives.",
+          title: t('serviceDetailsSection.hr.features.2.title'),
+          description: t('serviceDetailsSection.hr.features.2.description'),
         },
         {
-          title: "Health & Safety",
-          description:
-            "Development and implementation of workplace health and safety programs ensuring compliance and employee wellbeing.",
+          title: t('serviceDetailsSection.hr.features.3.title'),
+          description: t('serviceDetailsSection.hr.features.3.description'),
         },
         {
-          title: "HR Audit",
-          description:
-            "Comprehensive HR audits to assess compliance, identify risks, and recommend improvements in HR practices and procedures.",
+          title: t('serviceDetailsSection.hr.features.4.title'),
+          description: t('serviceDetailsSection.hr.features.4.description'),
         },
       ],
       benefits: [
-        "Improved talent acquisition",
-        "Legal compliance assurance",
-        "Enhanced employee engagement",
-        "Reduced HR risks",
-        "Streamlined HR processes",
-        "Strategic workforce alignment",
+        t('serviceDetailsSection.hr.benefits.0'),
+        t('serviceDetailsSection.hr.benefits.1'),
+        t('serviceDetailsSection.hr.benefits.2'),
+        t('serviceDetailsSection.hr.benefits.3'),
+        t('serviceDetailsSection.hr.benefits.4'),
+        t('serviceDetailsSection.hr.benefits.5'),
       ],
     },
   };
@@ -247,8 +224,8 @@ const ServiceDetails = () => {
                 <div className="cardIcon">
                   <CheckCircle size={24} />
                 </div>
-                <h3>Trusted Partner</h3>
-                <p>15+ years of excellence</p>
+                <h3>{t('serviceDetailsSection.floatingCard.title')}</h3>
+                <p>{t('serviceDetailsSection.floatingCard.description')}</p>
               </div>
             </div>
             <Breadcrumb/>
@@ -261,13 +238,11 @@ const ServiceDetails = () => {
         description={service.description}
       />
 
-
-      {/* Features Section */}
       <div className="featuresSection">
         <div className="featuresContainer">
           <div className="serviceSectionHeader">
-            <h2>What We Offer</h2>
-            <p>Comprehensive solutions tailored to your specific needs</p>
+            <h2>{t('serviceDetailsSection.featuresSection.title')}</h2>
+            <p>{t('serviceDetailsSection.featuresSection.description')}</p>
           </div>
           <div className="featuresGrid">
             {service.features.map((feature, index) => (
@@ -283,12 +258,11 @@ const ServiceDetails = () => {
         </div>
       </div>
 
-      {/* Benefits Section */}
       <div className="benefitsSection">
         <div className="benefitsContainer">
           <div className="benefitsContent">
             <div className="benefitsText">
-              <h2>Key Benefits</h2>
+              <h2>{t('serviceDetailsSection.benefitsSection.title')}</h2>
               <ul className="benefitsList">
                 {service.benefits.map((benefit, index) => (
                   <li key={index}>
@@ -301,18 +275,18 @@ const ServiceDetails = () => {
             <div className="benefitsImage">
               <div className="imageBox">
                 <img
-                  src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&h=400&fit=crop"
-                  alt="Benefits"
+                  src={ServiceDetailsImage}
+                  alt={t('serviceDetailsSection.benefitsSection.imageAlt')}
                 />
               </div>
               <div className="statsOverlay">
                 <div className="statItem">
-                  <h4>500+</h4>
-                  <p>Happy Clients</p>
+                  <h4>{t('serviceDetailsSection.statsOverlay.clients.value')}</h4>
+                  <p>{t('serviceDetailsSection.statsOverlay.clients.description')}</p>
                 </div>
                 <div className="statItem">
-                  <h4>98%</h4>
-                  <p>Success Rate</p>
+                  <h4>{t('serviceDetailsSection.statsOverlay.successRate.value')}</h4>
+                  <p>{t('serviceDetailsSection.statsOverlay.successRate.description')}</p>
                 </div>
               </div>
             </div>
@@ -320,22 +294,20 @@ const ServiceDetails = () => {
         </div>
       </div>
 
-      {/* CTA Section */}
       <div className="ctaSection">
         <div className="ctaContainer">
-          <h2>Ready to Get Started?</h2>
+          <h2>{t('serviceDetailsSection.cta.title')}</h2>
           <p>
-            Let our experts help you achieve your business goals with
-            professional {service.title.toLowerCase()}
+            {t('serviceDetailsSection.cta.description', { serviceTitle: service.title.toLowerCase() })}
           </p>
           <div className="ctaButtons">
             <Link to="/contact" className="ctaButton primary">
-              Get Free Consultation
+              {t('serviceDetailsSection.cta.buttons.consultation')}
               <ArrowRight size={20} />
             </Link>
             <a href="tel:+994125626613" className="ctaButton secondary">
               <Phone size={20} />
-              Call Us Now
+              {t('serviceDetailsSection.cta.buttons.call')}
             </a>
           </div>
         </div>

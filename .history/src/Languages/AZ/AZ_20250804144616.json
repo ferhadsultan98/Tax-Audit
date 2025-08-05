@@ -1,0 +1,654 @@
+{
+  "header": {
+    "about_us": "Haqqımızda",
+    "services": "Xidmətlər",
+    "services_dropdown": {
+      "audit": "Audit Xidməti",
+      "accounting": "Mühasibatlıq Xidməti",
+      "tax_legal": "Vergi və Hüquq Xidməti",
+      "consulting": "Konsaltinq Xidməti",
+      "valuation": "Qiymətləndirmə Xidməti",
+      "humanresources": "İnsan resursları xidməti"
+    },
+    "blog": "Bloq",
+    "faq": "FAQ",
+    "contact": "Əlaqə"
+  },
+  "home": {
+    "homeAbout": {
+      "who_we_are": "Biz kimik",
+      "professional_audit": "Peşəkar Audit və",
+      "consulting_services": "Konsultasiya Xidmətləri",
+      "about_description": "Biz beynəlxalq standartlara uyğun hərtərəfli audit, mühasibatlıq və konsultasiya xidmətləri təqdim edirik. Mütəxəssis komandamız biznesinizin bütün tənzimləyici tələblərə cavab verməsini təmin edir və maliyyə performansını optimallaşdırır.",
+      "happy_clients": "Məmnun Müştərilər",
+      "success_rate": "Uğur Faizi",
+      "years_experience": "İllik Təcrübə",
+      "learn_more": "Daha çox öyrən",
+      "office_building_alt": "Müasir ofis binası"
+    },
+    "homePartnerSection": {
+      "sectionLabel": "Tərəfdaşlarımız",
+      "sectionTitle": "Aparıcı Şirkətlər tərəfindən Etibarlıdır"
+    },
+    "homeServices": {
+      "what_we_do": "Nə edirik",
+      "our_professional_services": "Peşəkar Xidmətlərimiz",
+      "services_subtitle": "Biz sizin unikal biznes ehtiyaclarınızı ödəmək üçün hazırlanmış hərtərəfli həllər təqdim edirik",
+      "financial_consulting": "Maliyyə Konsultasiyası",
+      "financial_consulting_desc": "Biznes performansınızı optimallaşdırmaq və davamlı böyüməni təmin etmək üçün strateji maliyyə planlaşdırması və təhlili.",
+      "audit_assurance": "Audit və Təminat",
+      "audit_assurance_desc": "Maliyyə hesabatlarınızda uyğunluq, şəffaflıq və etimadı təmin edən hərtərəfli audit xidmətləri.",
+      "tax_advisory": "Vergi Məsləhəti",
+      "tax_advisory_desc": "Vergi öhdəliklərini minimuma endirmək və maliyyə səmərəliliyinizi artırmaq üçün ekspert vergi planlaşdırması və uyğunluq xidmətləri.",
+      "learn_more": "Daha çox öyrən",
+      "view_all_services": "Bütün Xidmətlərə Bax"
+    },
+    "latestUpdates": {
+      "section_label": "Ən Son Yeniliklər",
+      "section_title": "Xəbərlər və Peşəkar İnsaytlar",
+      "section_description": "Audit, mühasibatlıq və biznes dünyasından ən son xəbərləri, təhlilləri və ekspert məsləhətlərini kəşf edin",
+      "trending": "Trenddə",
+      "read_article": "Məqaləni Oxu",
+      "view_all_articles": "Bütün Məqalələrə Bax"
+    },
+    "sertificateSection": {
+      "section_label": "Təqdir",
+      "section_title": "Mükafatlarımız və Sertifikatlarımız",
+      "section_description": "Peşəkar xidmətlərdə mükəmməlliyə və keyfiyyətə sadiqliyə görə tanınıb",
+      "iso_9001_title": "ISO 9001:2015 Sertifikatı",
+      "iso_9001_description": "Bu, yuxarıda qeyd olunan şirkətin Keyfiyyət İdarəetmə Sistemi tələblərinə cavab verdiyini təsdiqləyir.",
+      "iso_14001_title": "ISO 14001:2015 Sertifikatı",
+      "iso_14001_description": "Bu, yuxarıda qeyd olunan şirkətin Ətraf Mühit İdarəetmə Sistemi tələblərinə cavab verdiyini təsdiqləyir.",
+      "iso_45001_title": "ISO 45001:2018 Sertifikatı",
+      "iso_45001_description": "Bu, yuxarıda qeyd olunan şirkətin İş Sağlamlığı və Təhlükəsizliyi İdarəetmə Sistemi tələblərinə cavab verdiyini təsdiqləyir.",
+      "icaze_title": "İcazə",
+      "click_to_view_details": "Təfərrüatlara baxmaq üçün klikləyin"
+    },
+    "homeFaq": {
+      "sectionLabel": "SSS",
+      "sectionTitle": "Tez-tez Verilən Suallar",
+      "sectionDesc": "Peşəkar xidmətlərimiz haqqında ümumi suallara cavab tapın",
+      "helpCardTitle": "Hələ də suallarınız var?",
+      "helpCardDesc": "Axtardığınız cavabı tapa bilmirsiniz? Komandamız kömək etmək üçün buradadır.",
+      "contactBtn": "Bizimlə Əlaqə Saxlayın",
+      "faq": {
+        "1": {
+          "question": "Şirkətiniz hansı xidmətləri təklif edir?",
+          "answer": "Biz maliyyə auditi, xüsusi məqsədli auditlər və digər audit xidmətləri, vergi və hüquqi xidmətlər, konsaltinq xidmətləri, mühasibat xidmətləri və insan resursları xidmətləri daxil olmaqla geniş peşəkar xidmətlər təklif edirik."
+        },
+        "2": {
+          "question": "Audit xidmətiniz nələri əhatə edir?",
+          "answer": "Audit xidmətlərimiz təşkilatınızın maliyyə şəffaflığını, risklərin idarə edilməsini və əməliyyat səmərəliliyini təmin etmək məqsədi daşıyan peşəkar və obyektiv xidmət paketini əhatə edir. Biz maliyyə hesabatlarının beynəlxalq audit standartlarına uyğun olaraq hərtərəfli yoxlanılmasını və təsdiqlənməsini təmin edirik."
+        },
+        "3": {
+          "question": "Vergi xidmətiniz nələri əhatə edir?",
+          "answer": "Biz sizi vergi məsələlərində həm praktik, həm də strateji səviyyədə dəstəkləyə bilərik. Məqsədimiz şirkətinizin vergi risklərini minimuma endirmək, qanunvericiliyə tam uyğunluğu təmin etmək və qanuni vergi güzəştlərini maksimum dərəcədə artırmaqla vergi yükünü optimallaşdırmaqdır."
+        },
+        "4": {
+          "question": "Hüquqi xidmətlərə nələr daxildir?",
+          "answer": "Hüquqi xidmətlərimiz bizneslərin qanunvericiliyə uyğun və hüquqi cəhətdən təhlükəsiz fəaliyyət göstərməsini təmin etmək məqsədi daşıyan peşəkar dəstəyi əhatə edir. Buraya korporativ hüquq, müqavilələrin idarə edilməsi, normativ uyğunluq və hüquqi risklərin qiymətləndirilməsi daxildir."
+        },
+        "5": {
+          "question": "Hansı sənaye sahələrinə xidmət göstərirsiniz?",
+          "answer": "Audit, vergi və hüquqi xidmətlərimiz müxtəlif sektorlarda fəaliyyət göstərən bizneslərə və şəxslərə yönəldilmişdir. Xidmətlər istehsal, pərakəndə satış, texnologiya, səhiyyə və maliyyə xidmətləri daxil olmaqla, fəaliyyət sahəsinə uyğun olaraq xüsusi ehtiyaclara uyğunlaşdırılır."
+        },
+        "6": {
+          "question": "Beynəlxalq standartlara uyğunluq təmin olunurmu?",
+          "answer": "Bəli, audit, vergi və hüquqi xidmətlərimiz beynəlxalq standartlar və ən yaxşı təcrübələr əsasında həyata keçirilir. Bu, yerli qanunvericilikdə qəbul edilmiş prinsiplərə uyğunluğu təmin etməklə yanaşı, ən yüksək qlobal peşəkar standartların saxlanmasını nəzərdə tutur."
+        }
+      }
+    }
+  },
+  "servicesSection": {
+    "sectionHeader": {
+      "label": "Xidmətlərimiz",
+      "title": "Biznesiniz üçün Peşəkar Həllər",
+      "description": "Biz biznes ehtiyaclarınızı qarşılamaq və davamlı inkişafınızı təmin etmək üçün xüsusi hazırlanmış geniş peşəkar xidmətlər təklif edirik"
+    },
+    "audit": {
+      "title": "Audit Xidmətləri",
+      "description": "Beynəlxalq və milli standartlara uyğunluğu təmin edən hərtərəfli audit həlləri",
+      "features": [
+        "Maliyyə hesabatlarının beynəlxalq və milli standartlara uyğun auditi",
+        "Xüsusi məqsədli auditlər (layihə, donor, daxili ehtiyaclar)",
+        "Maliyyə hesabatlarının yoxlanılması və təhlili",
+        "Audit tövsiyələri və risklərin idarə edilməsi"
+      ]
+    },
+    "valuation": {
+      "title": "Qiymətləndirmə Xidmətləri",
+      "description": "Dəqiq aktiv qiymətləndirməsi üçün peşəkar qiymətləndirmə və ekspertiza xidmətləri",
+      "features": [
+        "Əmlak və digər aktivlərin peşəkar qiymətləndirilməsi",
+        "Aktiv dəyərlərinin müəyyənləşdirilməsi üçün ekspertiza xidmətləri"
+      ]
+    },
+    "tax-legal": {
+      "title": "Vergi və Hüquqi Xidmətlər",
+      "description": "Tam uyğunluğu təmin etmək üçün ekspert vergi planlaşdırması və hüquqi dəstək",
+      "features": [
+        "Vergi planlaşdırması, konsaltinq və uyğunluq xidmətləri",
+        "Hüquqi sənədlərin hazırlanması və hüquqi rəylər",
+        "Vergi yoxlamaları və auditlər zamanı dəstək"
+      ]
+    },
+    "consulting": {
+      "title": "Konsaltinq Xidmətləri",
+      "description": "Əməliyyatları optimallaşdırmaq və performansı artırmaq üçün strateji biznes konsaltinqi",
+      "features": [
+        "Strateji və əməliyyat konsaltinqi",
+        "Daxili idarəetmə sistemlərinin təkmilləşdirilməsi",
+        "Biznes optimallaşdırma tövsiyələri"
+      ]
+    },
+    "accounting": {
+      "title": "Mühasibat Xidmətləri",
+      "description": "Effektiv maliyyə idarəetməsi üçün tam mühasibat həlləri",
+      "features": [
+        "Maliyyə və vergi mühasibatının təşkili",
+        "Bəyannamələrin hazırlanması və təqdim edilməsi",
+        "Mühasibat sistemlərinin qurulması və dəstəklənməsi"
+      ]
+    },
+    "hr": {
+      "title": "İnsan Resursları Xidmətləri",
+      "description": "İşçi qüvvənizi idarə etmək və inkişaf etdirmək üçün hərtərəfli İR həlləri",
+      "features": [
+        "İşə qəbul və kadr sənədləşməsi",
+        "İR siyasətlərinin hazırlanması",
+        "Strateji İR xidmətləri",
+        "Əməyin mühafizəsi və təhlükəsizliyi",
+        "İnsan Resursları Auditi"
+      ]
+    },
+    "learnMore": "Ətraflı Məlumat",
+    "cta": {
+      "title": "Başlamağa Hazırsınız?",
+      "description": "Biznesinizin inkişafına necə kömək edə biləcəyimizi müzakirə etmək üçün bu gün bizimlə əlaqə saxlayın",
+      "button": "Əlaqə Saxlayın"
+    }
+  },
+
+  "serviceDetailsSection": {
+    "audit": {
+      "title": "Audit Xidmətləri",
+      "subtitle": "Maliyyə Şəffaflığını və Uyğunluğu Təmin Etmək",
+      "description": "Audit xidmətlərimiz maliyyə hesabatlarınızın hərtərəfli yoxlanılmasını və təsdiqlənməsini təmin edir, beynəlxalq və milli standartlara uyğunluğu qoruyaraq təkmilləşdirmə imkanlarını müəyyənləşdirir.",
+      "features": [
+        {
+          "title": "Maliyyə Hesabatlarının Auditi",
+          "description": "Beynəlxalq Audit Standartlarına (ISA) və milli qaydalara uyğun olaraq maliyyə hesabatlarının tam auditi, maraqlı tərəflərə maliyyə hesabatlarınızda inam təmin edir."
+        },
+        {
+          "title": "Xüsusi Məqsədli Auditlər",
+          "description": "Layihə auditləri, donor tərəfindən maliyyələşdirilən proqram auditləri və daxili nəzarət qiymətləndirmələri daxil olmaqla, xüsusi ehtiyaclar üçün fərdiləşdirilmiş audit həlləri."
+        },
+        {
+          "title": "Maliyyə Təhlili və Yoxlama",
+          "description": "Maliyyə məlumatlarının dəqiqliyini təmin etmək, uyğunsuzluqları müəyyənləşdirmək və daha yaxşı maliyyə idarəetməsi üçün anlayışlar təqdim etmək üçün dərin təhlil və yoxlama."
+        },
+        {
+          "title": "Risklərin İdarə Edilməsi və Tövsiyələr",
+          "description": "Daxili nəzarətləri gücləndirmək və əməliyyat səmərəliliyini artırmaq üçün praktiki tövsiyələrlə hərtərəfli risk qiymətləndirilməsi."
+        }
+      ],
+      "benefits": [
+        "Maraqlı tərəflərlə inamın artırılması",
+        "Daxili nəzarətlərin təkmilləşdirilməsi",
+        "Normativ uyğunluğun təmin edilməsi",
+        "Risklərin müəyyənləşdirilməsi və azaldılması",
+        "Əməliyyat səmərəliliyinin artırılması",
+        "Daha yaxşı qərar qəbulu üçün anlayışlar"
+      ]
+    },
+    "valuation": {
+      "title": "Qiymətləndirmə Xidmətləri",
+      "subtitle": "Peşəkar Aktiv Qiymətləndirmə və Ekspertiza",
+      "description": "Qiymətləndirmə xidmətlərimiz aktivlərinizin dəqiq və etibarlı qiymətləndirməsini təmin edir, əməliyyatlar, maliyyə hesabatları və strateji planlaşdırma üçün məlumatlı qərarlar qəbul etməyinizə kömək edir.",
+      "features": [
+        {
+          "title": "Əmlak Qiymətləndirməsi",
+          "description": "Daşınmaz əmlak, kommersiya obyektləri və sənaye aktivlərinin beynəlxalq səviyyədə tanınmış metodologiyalar və standartlar əsasında peşəkar qiymətləndirilməsi."
+        },
+        {
+          "title": "Aktiv Dəyəri Ekspertizası",
+          "description": "Avadanlıqlar, inventar, qeyri-maddi aktivlər və biznes qiymətləndirmələri daxil olmaqla müxtəlif aktivlər üçün ədalətli bazar dəyərinin ekspert müəyyənləşdirilməsi."
+        }
+      ],
+      "benefits": [
+        "Dəqiq aktiv qiymətləndirmələri",
+        "Mühasibat standartlarına uyğunluq",
+        "Birləşmə və satınalma əməliyyatları üçün dəstək",
+        "Sığorta iddialarının əsaslandırılması",
+        "Vergi planlaşdırmasının optimallaşdırılması",
+        "İnvestisiya qərarlarına dəstək"
+      ]
+    },
+    "tax-legal": {
+      "title": "Vergi və Hüquqi Xidmətlər",
+      "subtitle": "Uyğunluq və Optimallaşdırma üçün Ekspert Rəhbərliyi",
+      "description": "Mürəkkəb vergi qaydalarını və hüquqi tələbləri bizim hərtərəfli məsləhət xidmətlərimizlə idarə edin, uyğunluğu təmin edərək vergi mövqeyinizi optimallaşdırın.",
+      "features": [
+        {
+          "title": "Vergi Planlaşdırması və Konsaltinq",
+          "description": "Öhdəlikləri minimuma endirmək, vergi mövqelərini optimallaşdırmaq və yerli və beynəlxalq vergi qaydalarına tam uyğunluğu təmin etmək üçün strateji vergi planlaşdırması."
+        },
+        {
+          "title": "Hüquqi Sənədləşmə",
+          "description": "Biznes maraqlarınızı qorumaq üçün hüquqi sənədlərin, müqavilələrin və razılaşmaların hazırlanması ilə ekspert hüquqi rəylər."
+        },
+        {
+          "title": "Audit Dəstəyi",
+          "description": "Vergi yoxlamaları, auditlər və vergi orqanları ilə mübahisələr zamanı peşəkar təmsilçilik və dəstək."
+        }
+      ],
+      "benefits": [
+        "Vergi optimallaşdırma strategiyaları",
+        "Hüquqi uyğunluğun təmin edilməsi",
+        "Risklərin azaldılması",
+        "Ekspert təmsilçilik",
+        "Xərc baxımından səmərəli həllər",
+        "Rahatlıq"
+      ]
+    },
+    "consulting": {
+      "title": "Konsaltinq Xidmətləri",
+      "subtitle": "Biznes Mükəmməlliyi üçün Strateji Həllər",
+      "description": "Strateji konsaltinq xidmətlərimizlə biznesinizi transformasiya edin, əməliyyatları optimallaşdırmaq, performansı artırmaq və davamlı inkişafı təmin etmək üçün nəzərdə tutulmuşdur.",
+      "features": [
+        {
+          "title": "Strateji Konsaltinq",
+          "description": "Görüş və məqsədlərinizə uyğunlaşdırılmış hərtərəfli biznes strategiyalarının, bazar giriş planlarının və inkişaf təşəbbüslərinin hazırlanması."
+        },
+        {
+          "title": "Əməliyyat Mükəmməlliyi",
+          "description": "Məhsuldarlığı artırmaq və xərcləri azaltmaq üçün proses optimallaşdırması, səmərəliliyin artırılması və əməliyyat restruktizasiyası."
+        },
+        {
+          "title": "İdarəetmə Sistemləri",
+          "description": "Güclü daxili idarəetmə sistemlərinin, idarəetmə strukturlarının və performans ölçmə çərçivələrinin dizaynı və tətbiqi."
+        }
+      ],
+      "benefits": [
+        "Əməliyyat səmərəliliyinin artırılması",
+        "Strateji aydınlıq və istiqamət",
+        "Rəqabət qabiliyyətinin artırılması",
+        "Resurslardan daha yaxşı istifadə",
+        "Davamlı inkişaf strategiyaları",
+        "Performansın optimallaşdırılması"
+      ]
+    },
+    "accounting": {
+      "title": "Mühasibat Xidmətləri",
+      "subtitle": "Tam Maliyyə İdarəetmə Həlləri",
+      "description": "Bütün normativ tələblərə vaxtında uyğunluğu təmin edərək, dəqiq qeydiyyat və maliyyə əməliyyatlarınızı sadələşdirən hərtərəfli mühasibat xidmətlərimizlə maliyyə əməliyyatlarınızı sadələşdirin.",
+      "features": [
+        {
+          "title": "Maliyyə və Vergi Mühasibatı",
+          "description": "Milli standartlara və qaydalara uyğun olaraq maliyyə və vergi mühasibat qeydlərinin tam təşkili və saxlanılması."
+        },
+        {
+          "title": "Bəyannamə Xidmətləri",
+          "description": "Bütün tələb olunan vergi bəyannamələrinin, maliyyə hesabatlarının və normativ sənədlərin vaxtında hazırlanması və təqdim edilməsi."
+        },
+        {
+          "title": "Sistem Tətbiqi",
+          "description": "Biznes ehtiyaclarınıza uyğunlaşdırılmış mühasibat sistemlərinin qurulması və davamlı dəstəyi, o cümlədən proqram seçimi və proses dizaynı."
+        }
+      ],
+      "benefits": [
+        "Dəqiq maliyyə qeydləri",
+        "Vaxtında normativ uyğunluq",
+        "İnzibati yükün azaldılması",
+        "Daha yaxşı maliyyə görünürlüğü",
+        "Xərc baxımından səmərəli həllər",
+        "Ekspert davamlı dəstək"
+      ]
+    },
+    "hr": {
+      "title": "İnsan Resursları Xidmətləri",
+      "subtitle": "Biznesiniz üçün Hərtərəfli İR Həlləri",
+      "description": "İşə qəbuldan strateji İR idarəetmə və uyğunluğa qədər tam spektrli İR xidmətlərimizlə güclü işçi qüvvəsi qurun və saxlayın.",
+      "features": [
+        {
+          "title": "İşə Qəbul və Sənədləşmə",
+          "description": "Əmək qanunlarına uyğunluğu təmin edən tam işə qəbul xidmətləri və kadr sənədləşməsinin idarə edilməsi."
+        },
+        {
+          "title": "İR Siyasətinin İnkişafı",
+          "description": "Ən yaxşı təcrübələrə və hüquqi tələblərə uyğun hərtərəfli İR siyasətlərinin, prosedurlarının və işçilər üçün təlimatların yaradılması."
+        },
+        {
+          "title": "Strateji İR Xidmətləri",
+          "description": "İnsan kapitalını biznes məqsədlərinə uyğunlaşdırmaq üçün strateji işçi qüvvəsi planlaşdırması, təşkilati dizayn və istedad idarəetməsi."
+        },
+        {
+          "title": "Əməyin Mühafizəsi və Təhlükəsizliyi",
+          "description": "Uyğunluğu və işçilərin rifahını təmin edən iş yerində əməyin mühafizəsi və təhlükəsizlik proqramlarının hazırlanması və tətbiqi."
+        },
+        {
+          "title": "İR Auditi",
+          "description": "Uyğunluğun qiymətləndirilməsi, risklərin müəyyənləşdirilməsi və İR təcrübələri və prosedurlarında təkmilləşdirmələr üçün tövsiyələrin verilməsi üçün hərtərəfli İR auditləri."
+        }
+      ],
+      "benefits": [
+        "İstedad əldə etmənin təkmilləşdirilməsi",
+        "Hüquqi uyğunluğun təmin edilməsi",
+        "İşçi iştirakının artırılması",
+        "İR risklərinin azaldılması",
+        "Sadələşdirilmiş İR prosesləri",
+        "Strateji işçi qüvvəsi uyğunlaşdırılması"
+      ]
+    },
+    "floatingCard": {
+      "title": "Etibarlı Tərəfdaş",
+      "description": "15+ illik mükəmməllik"
+    },
+    "featuresSection": {
+      "title": "Nə Təklif Edirik",
+      "description": "Xüsusi ehtiyaclarınıza uyğunlaşdırılmış hərtərəfli həllər"
+    },
+    "benefitsSection": {
+      "title": "Əsas Faydalar",
+      "imageAlt": "Faydalar"
+    },
+    "statsOverlay": {
+      "clients": {
+        "value": "500+",
+        "description": "Məmnun Müştərilər"
+      },
+      "successRate": {
+        "value": "98%",
+        "description": "Uğur Nisbəti"
+      }
+    },
+    "cta": {
+      "title": "Başlamağa Hazırsınız?",
+      "description": "Ekspertlərimizin peşəkar {serviceTitle} ilə biznes məqsədlərinizə çatmağınıza kömək etməsinə icazə verin",
+      "buttons": {
+        "consultation": "Pulsuz Məsləhətləşmə Alın",
+        "call": "İndi Bizə Zəng Edin"
+      }
+    }
+  },
+  "blogSection": {
+    "sectionHeader": {
+      "label": "Bloq",
+      "title": "Bloqlar",
+      "description": "Ən son xəbərlər və məqalələrlə tanış olun."
+    },
+    "categories": {
+      "all": "Bütün Kateqoriyalar",
+      "audit": "Audit Xidmətləri",
+      "valuation": "Qiymətləndirmə Xidmətləri",
+      "tax-legal": "Vergi və Hüquqi Xidmətlər",
+      "consulting": "Konsultasiya Xidmətləri",
+      "accounting": "Mühasibat Xidmətləri",
+      "hr": "İnsan Resursları Xidmətləri"
+    },
+    "sidebar": {
+      "categoriesTitle": "Kateqoriyalar"
+    },
+    "actionButtons": {
+      "filter": "Yazıları Filtrlə",
+      "cardLayout": "Kard Görünüşə Keç",
+      "wideLayout": "Geniş Görünüşə Keç"
+    },
+    "mobileSidebar": {
+      "title": "Yazıları Filtrlə",
+      "categoriesTitle": "Kateqoriyalar"
+    },
+    "featuredPost": {
+      "badge": "Seçilmiş",
+      "readMore": "Tam Məqaləni Oxu"
+    },
+    "posts": {
+      "noImage": "Şəkil Yoxdur",
+      "badge": "Seçilmiş"
+    },
+    "noPosts": {
+      "title": "Bu kateqoriyada yazı tapılmadı",
+      "description": "Seçdiyiniz kateqoriyada hazırda heç bir məqalə yoxdur. Başqa kateqoriyalara baxmağa çalışın və ya daha sonra yenidən yoxlayın.",
+      "button": "Bütün Yazılara Bax"
+    },
+    "pagination": {
+      "previous": "Əvvəlki",
+      "next": "Növbəti"
+    },
+    "blogDetailsSection": {
+      "categories": {
+        "audit": "Audit Xidmətləri",
+        "valuation": "Qiymətləndirmə Xidmətləri",
+        "tax-legal": "Vergi və Hüquqi Xidmətlər",
+        "consulting": "Konsultasiya Xidmətləri",
+        "accounting": "Mühasibat Xidmətləri",
+        "hr": "İnsan Resursları Xidmətləri"
+      },
+      "loading": "Yüklənir...",
+      "notFound": "Bloq yazısı tapılmadı",
+      "noImage": "Şəkil Yoxdur"
+    }
+  },
+"faqSection": {
+    "header": {
+      "label": "Salam",
+      "title": "Tez-tez verilən suallar",
+      "description": "Bizimlə bağlı ən çox verilən suallara cavabları kəşf edin və xidmətlərimiz haqqında daha çox məlumat əldə edin."
+    },
+    "categories": {
+      "general": "Ümumi Suallar",
+      "audit": "Audit Xidmətləri",
+      "tax": "Vergi və Hüquq"
+    },
+    "general": {
+      "q1": {
+        "question": "Şirkətiniz hansı xidmətləri təklif edir?",
+        "answer": "Audit xidmətləri (o cümlədən, maliyyə hesabatlarının auditi, xüsusi təyinatlı auditlər və digər audit xidmətləri), vergi və hüquq xidmətləri, konsaltinq xidməti, mühasibatlıq xidmətləri, insan resursları xidmətləri."
+      },
+      "q2": {
+        "question": "Hansı sahələrdə xidmət göstərirsiniz?",
+        "answer": "Audit, vergi və hüquq xidmətlərimiz fərqli sahələrdə fəaliyyət göstərən müəssisələrə və fiziki şəxslərə yönəlib. Fəaliyyət sahəsindən asılı olaraq xidmətlər fərdiləşdirilir və spesifik ehtiyaclara uyğunlaşdırılır."
+      }
+    },
+    "audit": {
+      "q1": {
+        "question": "Audit xidmətləriniz nələri əhatə edir?",
+        "answer": "Audit xidmətlərimiz, müəssisənizin maliyyə şəffaflığını, risklərin idarə olunmasını və əməliyyatların səmərəliliyini təmin etməyə yönəlmiş peşəkar və obyektiv xidmətlər paketini əhatə edir."
+      }
+    },
+    "tax": {
+      "q1": {
+        "question": "Vergi xidmətləriniz nələri əhatə edir?",
+        "answer": "Vergi məsələlərində sizə həm praktiki, həm də strateji səviyyədə dəstək göstərə bilərik. Məqsədimiz — sizin müəssisənin vergi risklərini minimuma endirmək, qanunvericiliyə tam uyğun fəaliyyət göstərməsini təmin etmək və vergitutma yükünü optimallaşdırmaqdır."
+      },
+      "q2": {
+        "question": "Hüquq xidmətlərinə nə daxildir?",
+        "answer": "Hüquq xidmətlərimiz müəssisələrin qanunvericiliyə uyğun və hüquqi cəhətdən təhlükəsiz fəaliyyət göstərməsini təmin etməyə yönəlmiş peşəkar dəstəyi əhatə edir."
+      },
+      "q3": {
+        "question": "Xidmətlərin beynəlxalq standartlara uyğunluğu təmin olunurmu?",
+        "answer": "Bəli, bizim təqdim etdiyimiz audit, vergi və hüquq xidmətləri beynəlxalq standartlara və qabaqcıl təcrübələrə əsaslanaraq həyata keçirilir. Bu, yerli qanunvericiliyə qəbul edilmiş prinsiplərə uyğunluğun təmin olunması deməkdir."
+      }
+    },
+    "noResults": {
+      "title": "Nəticə tapılmadı",
+      "description": "Fərqli açar sözlərlə axtarış edin və ya kateqoriyalarımıza baxın"
+    },
+    "sidebar": {
+      "stats": {
+        "title": "Tez Statistika",
+        "totalQuestions": "Ümumi Suallar",
+        "categories": "Kateqoriyalar",
+        "support": "Dəstək Mövcuddur"
+      },
+      "help": {
+        "title": "Hələ də köməyə ehtiyacınız var?",
+        "description": "Axtardığınız cavabı tapa bilmirsiniz? Ekspert komandamız kömək etmək üçün buradadır.",
+        "contact": "Bizimlə Əlaqə",
+        "call": "İndi Zəng Et",
+        "email": "Bizə Yaz"
+      },
+      "topics": {
+        "title": "Populyar Mövzular",
+        "audit": "#AuditXidmətləri",
+        "taxCompliance": "#VergiUyğunluğu",
+        "legalServices": "#HüquqXidmətləri",
+        "internationalStandards": "#BeynəlxalqStandartlar",
+        "consulting": "#Konsaltinq"
+      }
+    }
+  },
+  "contactSection": {
+    "header": {
+      "label": "Bizimlə Əlaqə",
+      "title": "Əlaqə Saxlayın",
+      "description": "Audit, vergi və konsaltinq ehtiyaclarınızla bağlı sizə kömək etmək üçün buradayıq. Peşəkar dəstək və ekspert rəhbərliyi üçün bizə müraciət edin."
+    },
+    "info": {
+      "visit": {
+        "title": "Bizi Ziyarət Edin",
+        "details": {
+          "0": "AZ 1069, Bakı şəhəri, Nəsimi rayonu",
+          "1": "A. Salamzadə küç., 65A"
+        }
+      },
+      "call": {
+        "title": "Bizə Zəng Edin",
+        "details": {
+          "0": "+994 12 562 66 13",
+          "1": "Bazar ertəsi-Cümə: 9:00 - 18:00"
+        }
+      },
+      "email": {
+        "title": "Bizə Yazın",
+        "details": {
+          "0": "office@tacs.az",
+          "1": "support@tacs.az"
+        }
+      },
+      "hours": {
+        "title": "İş Saatları",
+        "details": {
+          "0": "Bazar ertəsi-Cümə: 9:00 - 18:00",
+          "1": "Şənbə-Bazar: Bağlıdır"
+        }
+      }
+    },
+    "form": {
+      "title": "Bizə Mesaj Göndərin",
+      "description": "Aşağıdakı formanı doldurun, biz sizə ən qısa zamanda cavab verəcəyik.",
+      "name": "Tam Ad *",
+      "namePlaceholder": "Fərhad Sultanov",
+      "email": "E-poçt Ünvanı *",
+      "emailPlaceholder": "farhad@example.com",
+      "phone": "Telefon Nömrəsi",
+      "phonePlaceholder": "+994 XX XXX XX XX",
+      "subject": "Mövzu *",
+      "subjectPlaceholder": "Mövzu seçin",
+      "subjectOptions": {
+        "audit": "Audit Xidmətləri",
+        "valuation": "Dəyərləndirmə Xidmətləri",
+        "tax": "Vergi və Hüquq Xidmətləri",
+        "consulting": "Konsaltinq Xidmətləri",
+        "accounting": "Mühasibat Xidmətləri",
+        "hr": "İnsan Resursları Xidmətləri"
+      },
+      "message": "Mesaj *",
+      "messagePlaceholder": "Sizə necə kömək edə bilərik...",
+      "send": "Mesaj Göndər",
+      "sending": "Göndərilir...",
+      "successMessage": "Mesajınız uğurla göndərildi!",
+      "errorMessage": "Mesaj göndərilmədi. Zəhmət olmasa yenidən cəhd edin."
+    },
+    "reasons": {
+      "support": {
+        "title": "24/7 Dəstək",
+        "description": "Sualarınızla bağlı hər zaman kömək etmək üçün buradayıq."
+      },
+      "response": {
+        "title": "Sürətli Cavab",
+        "description": "24 saat ərzində cavab veririk."
+      },
+      "global": {
+        "title": "Qlobal Əhatə",
+        "description": "Dünya üzrə müştərilərə xidmət göstəririk."
+      }
+    },
+    "sidebar": {
+      "why": {
+        "title": "Niyə Bizimlə Əlaqə Saxlamalısınız?"
+      },
+      "social": {
+        "title": "Bizimlə Əlaqədə Olun"
+      }
+    }
+  },
+  "errorSection": {
+    "title": "404 - Səhifə Tapılmadı",
+    "description": "Bağışlayın! Axtardığınız səhifə mövcud deyil və ya köçürülüb.",
+    "backButton": "Ana Səhifəyə Qayıt"
+  },
+  "aboutSection": {
+    "label": "salam",
+  "title": "Haqqımızda",
+  "description": "Hekayəmizi və təsirli həllər yaratmaq missiyamızı kəşf edin.",
+  "stats": [
+    { "number": "15+", "label": "Təcrübə İlləri" },
+    { "number": "450+", "label": "Məmnun Müştərilər" },
+    { "number": "800+", "label": "Tamamlanmış Layihələr" }
+  ],
+  "sectors": [
+    { "name": "Neft və Qaz", "icon": "🛢️" },
+    { "name": "Bankçılıq və Maliyyə", "icon": "🏦" },
+    { "name": "İnşaat və İnfrastruktur", "icon": "🏗️" },
+    { "name": "Pərakəndə və İstehsalat", "icon": "🏭" },
+    { "name": "Nəqliyyat və Logistika", "icon": "🚛" },
+    { "name": "Texnologiya və Xidmətlər", "icon": "💻" }
+  ],
+  "values": [
+    {
+      "title": "Müştəri Mərkəzli Xidmət",
+      "description": "Müştərilərimizi birinci yerə qoyaraq, onların unikal ehtiyaclarına uyğunlaşdırılmış fərdi həllər təklif edirik"
+    },
+    {
+      "title": "Yüksək Keyfiyyət və Dəqiqlik",
+      "description": "Sənaye standartlarını aşan dəqiq və etibarlı xidmətlər təqdim edirik"
+    },
+    {
+      "title": "Davamlı İnkişaf",
+      "description": "İnnovasiyaları qəbul edərək, ən son sənaye trendləri ilə irəlidə qalırıq"
+    },
+    {
+      "title": "Etik Prinsiplər",
+      "description": "Bütün əməliyyatlarımızda etik və qanuni standartlara tam sadiqlik"
+    }
+  ],
+  "mission": {
+    "title": "Missiyamız",
+    "description": "Əsas məqsədimiz <strong>şəffaf və etibarlı xidmətlər təqdim etmək</strong>, müasir standartlara əsaslanaraq, bizneslərin maliyyə və hüquqi sabitliyini təmin etmək və onların davamlı inkişafına töhfə verməkdir."
+  },
+  "team": {
+    "title": "Peşəkar Komanda",
+    "description": "Mütəxəssislərimiz <strong>maliyyə, audit, hüquq və vergi sahəsində dərin bilik və praktiki təcrübəyə malik peşəkarlardır</strong>. Komandamız dəyişən qanunvericiliyi və beynəlxalq standartları daim izləyir ki, müştərilərə ən optimal və qanuni həllər təqdim etsin."
+  },
+  "approach": {
+    "title": "Yanaşmamız",
+    "description": "Fəaliyyət prinsipimiz <strong>dürüstlük, etibarlılıq və peşəkarlıq</strong> üzərində qurulub. Hər bir müştəriyə fərdi yanaşma tətbiq edərək, onların xüsusi ehtiyaclarına uyğun <strong>praktik, şəffaf və davamlı həllər</strong> təklif edirik."
+  },
+  "sectorsHeader": "Xidmət Etdiyimiz Sektorlar",
+  "sectorsDescription": "Bu sektorlarda müştərilərlə <strong>uzunmüddətli və etibarlı tərəfdaşlıqlar</strong> qurmuşuq. Onların etimadı və davamlı məmnuniyyəti bizim ən böyük uğurumuzdur.",
+  "valuesHeader": {
+    "title": "Əsas Dəyərlərimiz",
+    "description": "Bizi istiqamətləndirən prinsiplər"
+  },
+  "cta": {
+    "title": "Birlikdə İşləməyə Hazırsınız?",
+    "description": "Biznesinizin məqsədlərinə çatmaq üçün necə kömək edə biləcəyimizi müzakirə edək",
+    "buttons": {
+      "primary": "Əlaqə Saxlayın",
+      "secondary": "Xidmətlərimiz"
+    }
+  }
+  }
+  
+}

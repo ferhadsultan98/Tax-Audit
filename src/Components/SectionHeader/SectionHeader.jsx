@@ -3,7 +3,7 @@ import "./SectionHeader.scss";
 import Breadcrumb from "../Breadcrumb/Breadcrumb";
 import sectionHeaderVideo from "../../assets/sectionHeader.mp4";
 
-const SectionHeader = ({ label, title, description, centered = true }) => {
+const SectionHeader = ({ label, title, description, centered = true, breadcrumbItems }) => {
   return (
     <div className={`sectionHeader ${centered ? "centered" : ""}`}>
       <video className="headerVideo" autoPlay loop muted playsInline>
@@ -12,7 +12,7 @@ const SectionHeader = ({ label, title, description, centered = true }) => {
       <span className="headerLabel">{label}</span>
       <h2 className="headerTitle">{title}</h2>
       {description && <p className="headerDescription">{description}</p>}
-      <Breadcrumb />
+      <Breadcrumb items={breadcrumbItems} />
     </div>
   );
 };

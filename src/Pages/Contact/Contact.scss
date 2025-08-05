@@ -41,7 +41,17 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 .contactPage {
   min-height: 100vh;
   background: $whiteColor;
+.successMessage {
+  color: #54e7b3;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
 
+.errorMessage {
+  color: #e74c3c;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
   // Hero Section
   .contactHero {
     background: linear-gradient(135deg, $darkColor 0%, lighten($darkColor, 10%) 100%);

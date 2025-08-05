@@ -13,11 +13,22 @@ import Login from '../Admin/Login/Login';
 import AdminLayout from '../Admin/AdminLayout';
 import AdminBlog from '../Admin/AdminBlog/AdminBlog';
 import LegalPages from '../Pages/LegalPage/LegalPage';
+import ErrorPage from '../Pages/ErrorPage/ErrorPage';
 
+// ProtectedRoute for authenticated users
 const ProtectedRoute = ({ children }) => {
   const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
-  return isAuthenticated ? children : <Navigate to="/login" />;
+  return isAuthenticated ? children : <Navigate to="/login" replace />;
 };
+
+// PublicRoute for unauthenticated users (e.g., login page)
+const PublicRoute = ({ children }) => {
+  const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+  return isAuthenticated ? <Navigate to="/admin" replace /> : children;
+};
+
+
+
 
 const AppRoutes = () => {
   return (
@@ -33,7 +44,14 @@ const AppRoutes = () => {
         <Route path="/faq" element={<FAQ />} />
         <Route path="/terms" element={<LegalPages />} />
       </Route>
-      <Route path="/login" element={<Login />} />
+      <Route
+        path="/login"
+        element={
+          <PublicRoute>
+            <Login />
+          </PublicRoute>
+        }
+      />
       <Route
         path="/admin"
         element={
@@ -44,7 +62,7 @@ const AppRoutes = () => {
           </ProtectedRoute>
         }
       />
-      <Route path="*" element={<Error />} />
+      <Route path="*" element={<ErrorPage />} />
     </Routes>
   );
 };

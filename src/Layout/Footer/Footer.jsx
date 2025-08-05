@@ -1,7 +1,16 @@
-import React from 'react';
-import './Footer.scss';
-import { MapPin, Phone, Mail, Facebook, Linkedin, Instagram, Twitter, ChevronRight } from 'lucide-react';
-import FooterLogo from '../../assets/taxgreen.png'
+import React from "react";
+import "./Footer.scss";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Facebook,
+  Linkedin,
+  Instagram,
+  Twitter,
+  ChevronRight,
+} from "lucide-react";
+import FooterLogo from "../../assets/taxgreen.png";
 
 const Footer = () => {
   return (
@@ -14,24 +23,44 @@ const Footer = () => {
                 <img src={FooterLogo} alt="TACS Logo" />
               </div>
               <p className="companyDesc">
-                Leading provider of professional audit, tax, and consulting services. 
-                We help businesses achieve their goals through innovative solutions 
-                and expert guidance.
+                Leading provider of professional audit, tax, and consulting
+                services. We help businesses achieve their goals through
+                innovative solutions and expert guidance.
               </p>
-              <div className="socialLinks">
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              {/* <div className="socialLinks">
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                >
                   <Facebook size={20} />
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
                   <Linkedin size={20} />
                 </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                >
                   <Instagram size={20} />
                 </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Twitter"
+                >
                   <Twitter size={20} />
                 </a>
-              </div>
+              </div> */}
             </div>
 
             <div className="footerColumn">
@@ -49,22 +78,23 @@ const Footer = () => {
                     Our Services
                   </a>
                 </li>
+                
                 <li>
-                  <a href="/team">
+                  <a href="/faq">
                     <ChevronRight size={16} />
-                    Our Team
-                  </a>
-                </li>
-                <li>
-                  <a href="/careers">
-                    <ChevronRight size={16} />
-                    Careers
+                    FAQ
                   </a>
                 </li>
                 <li>
                   <a href="/blog">
                     <ChevronRight size={16} />
                     Blog
+                  </a>
+                </li>
+                <li>
+                  <a href="/contact">
+                    <ChevronRight size={16} />
+                    Contact
                   </a>
                 </li>
               </ul>
@@ -102,9 +132,11 @@ const Footer = () => {
                     <ChevronRight size={16} />
                     Legal Services
                   </a>
+                </li>
+                <li>
                   <a href="/services/legal">
                     <ChevronRight size={16} />
-                    Huma
+                    Human Sources
                   </a>
                 </li>
               </ul>
@@ -150,13 +182,22 @@ const Footer = () => {
             <div className="copyright">
               <p>© {new Date().getFullYear()} TACS. All rights reserved.</p>
             </div>
-            <div className="bottomLinks">
+            {/* <div className="bottomLinks">
               <a href="/terms">Privacy Policy</a>
               <span className="separator">|</span>
               <a href="/terms">Terms of Service</a>
-            </div>
+            </div> */}
             <div className="createdBy">
-              <p>Created by <a href="https://pmsystems.az" target="_blank" rel="noopener noreferrer">PM Systems</a></p>
+              <p>
+                Created by{" "}
+                <a
+                  href="https://pmsystems.az"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  PM Systems
+                </a>
+              </p>
             </div>
           </div>
         </div>

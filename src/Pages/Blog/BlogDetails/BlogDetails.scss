@@ -146,6 +146,45 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             margin-bottom: 12px;
           }
         }
+
+        /* Added styles for React Quill content */
+        img {
+          max-width: 100%;
+          height: auto;
+          display: block;
+          margin: 20px 0;
+        }
+
+        .ql-editor {
+          padding: 0;
+          min-height: 200px;
+          font-family: inherit;
+          font-size: inherit;
+          line-height: inherit;
+          color: inherit;
+        }
+
+        .ql-container {
+          border: none;
+          padding: 0;
+        }
+
+        /* Ensure all Quill elements render correctly */
+        strong, em, u {
+          color: $darkColor;
+        }
+
+        a {
+          color: $primaryColor;
+          text-decoration: underline;
+        }
+
+        blockquote {
+          margin: 20px 0;
+          padding-left: 20px;
+          border-left: 4px solid $primaryColor;
+          color: $darkColor;
+        }
       }
 
       .authorSection {
@@ -172,7 +211,9 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
         .authorDetails {
           display: flex;
-          flex-direction: column;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          width: 100%;
 
           .authorName {
             font-size: 18px;
@@ -180,10 +221,12 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             color: $darkColor;
           }
 
-          .authorRole {
+          .date {
             font-size: 15px;
-            color: $grayColor;
+            color: $darkColor;
             opacity: 0.8;
+            display: flex;
+            align-items: center;
           }
         }
       }
@@ -376,8 +419,10 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           }
 
           .authorDetails {
+             flex-direction: column;
             .authorName {
               font-size: 16px;
+             
             }
 
             .authorRole {

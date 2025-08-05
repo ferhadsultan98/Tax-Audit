@@ -1,0 +1,53 @@
+[
+  {
+    "id": 1,
+    "title_az": "Maliyyə auditiyə giriş",
+    "title_en": "Introduction to Financial Auditing",
+    "title_ru": "Введение в финансовый аудит",
+    "excerpt_az": "Maliyyə auditinin əsaslarını və biznesdəki əhəmiyyətini öyrənin.",
+    "excerpt_en": "Learn the basics of financial auditing and its importance in business.",
+    "excerpt_ru": "Узнайте основы финансового аудита и его важность в бизнесе.",
+    "content_az": "<p>Bu, maliyyə auditi haqqında ətraflı bələdçidir...</p>",
+    "content_en": "<p>This is a detailed guide on financial auditing...</p>",
+    "content_ru": "<p>Это подробное руководство по финансовому аудиту...</p>",
+    "category": "audit",
+    "author": "John Doe",
+    "date": "2025-07-01",
+    "image_id": "https://www.accountsjunction.com/BlogImg/financial%20audit%20report.jpg",
+    "featured": false
+  },
+  {
+    "id": 2,
+    "title_az": "Vergi uyğunluğu üzrə məsləhətlər",
+    "title_en": "Tax Compliance Tips",
+    "title_ru": "Советы по соблюдению налогового законодательства",
+    "excerpt_az": "2025-ci ildə vergi uyğunluğunu təmin etmək üçün vacib məsləhətlər.",
+    "excerpt_en": "Essential tips for ensuring tax compliance in 2025.",
+    "excerpt_ru": "Основные советы по соблюдению налогового законодательства в 2025 году.",
+    "content_az": "<p>Vergi uyğunluğu bizneslər üçün çox vacibdir...</p>",
+    "content_en": "<p>Tax compliance is crucial for businesses...</p>",
+    "content_ru": "<p>Соблюдение налогового законодательства важно для бизнеса...</p>",
+    "category": "tax-legal",
+    "author": "Jane Smith",
+    "date": "2025-07-15",
+    "image_id": "https://lwegatech.co/storm/wp-content/uploads/2021/12/Taxation-Services-Storms-Over-Resources.jpg",
+    "featured": false
+  },
+  {
+    "id": 3,
+    "title_az": "İnsan resursları üzrə ən yaxşı təcrübələr",
+    "title_en": "HR Best Practices",
+    "title_ru": "Лучшие практики управления персоналом",
+    "excerpt_az": "İş yeri mədəniyyətini yaxşılaşdırmaq üçün İR strategiyalarını kəşf edin.",
+    "excerpt_en": "Discover HR strategies to improve workplace culture.",
+    "excerpt_ru": "Откройте для себя стратегии управления персоналом для улучшения рабочей культуры.",
+    "content_az": "<p>Effektiv İR təcrübələri təşkilatınızı dəyişdirə bilər...</p>",
+    "content_en": "<p>Effective HR practices can transform your organization...</p>",
+    "content_ru": "<p>Эффективные практики управления персоналом могут преобразовать вашу организацию...</p>",
+    "category": "hr",
+    "author": "Alice Johnson",
+    "date": "2025-08-01",
+    "image_id": 3,
+    "featured": false
+  }
+]

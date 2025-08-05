@@ -6,6 +6,8 @@ import "./AdminBlog.scss";
 import { FaUser } from "react-icons/fa";
 import { FaRegCalendarCheck } from "react-icons/fa6";
 import Switch from "react-switch";
+import { CiEdit } from "react-icons/ci";
+import { IoNewspaperOutline } from "react-icons/io5";
 
 const AdminBlog = () => {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -42,7 +44,7 @@ const AdminBlog = () => {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/api/blog/posts/")
+      .get("http://172.20.10.91:8000/api/blog/posts/")
       .then((res) => {
         setBlogPosts(Array.isArray(res.data) ? res.data : [res.data]);
       })
@@ -101,18 +103,18 @@ const AdminBlog = () => {
     try {
       if (editingId) {
         const res = await axios.put(
-          `http://127.0.0.1:8000/api/blog/posts/${editingId}/`,
+          `http://172.20.10.91:8000/api/blog/posts/${editingId}/`,
           data,
           { headers: { "Content-Type": "multipart/form-data" } }
         );
         setBlogPosts((prev) =>
-          prev.map((post) => (post.id === editingId ? res.data : post))
+          prev.map((post) => (post.id === editin3gId ? res.data : post))
         );
         setEditingId(null);
         alert("Bloq yazısı uğurla yeniləndi!");
       } else {
         const res = await axios.post(
-          "http://127.0.0.1:8000/api/blog/posts/",
+          "http://172.20.10.91:8000/api/blog/posts/",
           data,
           { headers: { "Content-Type": "multipart/form-data" } }
         );
@@ -167,7 +169,7 @@ const AdminBlog = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Bu yazını silmək istədiyinizə əminsiniz?")) {
       try {
-        await axios.delete(`http://127.0.0.1:8000/api/blog/posts/${id}/`);
+        await axios.delete(`http://172.20.10.91:8000/api/blog/posts/${id}/`);
         setBlogPosts((prev) => prev.filter((post) => post.id !== id));
         alert("Bloq yazısı uğurla silindi!");
       } catch (err) {
@@ -220,7 +222,10 @@ const AdminBlog = () => {
     <section className="blogManagement">
       <div className="createBlogForm">
         <div className="languageFilter">
-          <select value={language} onChange={(e) => setLanguage(e.target.value)}>
+          <select
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
+          >
             <option value="az">Azərbaycanca</option>
             <option value="en">İngiliscə</option>
             <option value="ru">Rusca</option>
@@ -237,7 +242,9 @@ const AdminBlog = () => {
               type="text"
               name={`title_${language}`}
               value={formData[`title_${language}`]}
-              onChange={(e) => handleChange(e.target.value, e, `title_${language}`)}
+              onChange={(e) =>
+                handleChange(e.target.value, e, `title_${language}`)
+              }
               placeholder={`Bloq başlığını ${
                 language === "az"
                   ? "Azərbaycanca"
@@ -304,11 +311,12 @@ const AdminBlog = () => {
 
         <div className="formGroup fullWidth">
           <label>Qısa Təsvir</label>
-          <ReactQuill
-            theme="snow"
+          <textarea
+            name={`excerpt_${language}`}
             value={formData[`excerpt_${language}`]}
-            onChange={(value) => handleQuillChange(value, `excerpt_${language}`)}
-            modules={quillModules}
+            onChange={(e) =>
+              handleChange(e.target.value, e, `excerpt_${language}`)
+            }
             placeholder={`Qısa təsviri ${
               language === "az"
                 ? "Azərbaycanca"
@@ -316,6 +324,7 @@ const AdminBlog = () => {
                 ? "İngiliscə"
                 : "Rusca"
             } daxil edin`}
+            rows="4"
           />
         </div>
 
@@ -324,7 +333,9 @@ const AdminBlog = () => {
           <ReactQuill
             theme="snow"
             value={formData[`content_${language}`]}
-            onChange={(value) => handleQuillChange(value, `content_${language}`)}
+            onChange={(value) =>
+              handleQuillChange(value, `content_${language}`)
+            }
             modules={quillModules}
             placeholder={`Tam bloq məzmununu ${
               language === "az"
@@ -346,7 +357,7 @@ const AdminBlog = () => {
               className="cancelBtn"
               onClick={handleCancelEdit}
             >
-              Redaktəni Ləğv Et
+              Ləğv Et
             </button>
           )}
         </div>
@@ -378,7 +389,7 @@ const AdminBlog = () => {
               <div className="cardImage">
                 {post.image_id ? (
                   <img
-                    src={`http://127.0.0.1:8000/api/blog/images/${post.image_id}/`}
+                    src={`http://172.20.10.91:8000/api/blog/images/${post.image_id}/`}
                   />
                 ) : (
                   <div className="noImage">
@@ -428,7 +439,9 @@ const AdminBlog = () => {
 
                 <div className="cardActions">
                   <button className="editBtn" onClick={() => handleEdit(post)}>
-                    <i className="fas fa-edit"></i>
+                    <i>
+                      <CiEdit />
+                    </i>
                     Redaktə Et
                   </button>
                   <button
@@ -444,9 +457,13 @@ const AdminBlog = () => {
           ))
         ) : (
           <div className="emptyState">
-            <i className="fas fa-newspaper"></i>
+            <i>
+              <IoNewspaperOutline />
+            </i>
             <h3>Hələ Bloq Yazısı Yoxdur</h3>
-            <p>Yuxarıdakı formadan istifadə edərək ilk bloq yazınızı yaradın.</p>
+            <p>
+              Yuxarıdakı formadan istifadə edərək ilk bloq yazınızı yaradın.
+            </p>
           </div>
         )}
       </div>
