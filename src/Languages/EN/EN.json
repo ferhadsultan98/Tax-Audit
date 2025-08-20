@@ -651,5 +651,33 @@
         "secondary": "Our Services"
       }
     }
+  },
+  "footer": {
+    "companyDesc": "Leading provider of professional audit, tax, and consulting services. We help businesses achieve their goals through innovative solutions and expert guidance.",
+    "quickLinks": {
+      "title": "Quick Links",
+      "aboutUs": "About Us",
+      "ourServices": "Our Services",
+      "faq": "FAQ",
+      "blog": "Blog",
+      "contact": "Contact"
+    },
+    "services": {
+      "title": "Our Services",
+      "auditAssurance": "Audit & Assurance",
+      "taxAdvisory": "Tax Advisory",
+      "businessConsulting": "Business Consulting",
+      "accountingServices": "Accounting Services",
+      "legalServices": "Legal Services",
+      "humanResources": "Human Resources"
+    },
+    "contactUs": {
+      "title": "Contact Us",
+      "address": "Baku city, Nasimi district, A. Salamzade str., 65A"
+    },
+    "bottom": {
+      "copyright": "© 2025 TACS. All rights reserved.",
+      "createdBy": "Created by"
+    }
   }
 }

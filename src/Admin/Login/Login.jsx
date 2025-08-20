@@ -10,16 +10,16 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false); 
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    setIsLoading(true); 
+    setIsLoading(true);
 
     try {
-      const response = await fetch("http://172.20.10.112:8000/api/auth/token/", {
+      const response = await fetch(`${API_BASE_URL}/api/auth/token/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
@@ -38,7 +38,7 @@ const Login = () => {
     } catch (err) {
       setError("Server error. Please try again later.");
     } finally {
-      setIsLoading(false); 
+      setIsLoading(false);
     }
   };
 

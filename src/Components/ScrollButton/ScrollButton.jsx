@@ -4,22 +4,20 @@ import './ScrollButton.scss';
 
 const ScrollButton = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
-  // Show button when user scrolls down 300px
   useEffect(() => {
-    const toggleVisibility = () => {
-      if (window.scrollY > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (window.scrollY / totalHeight) * 100;
+      setScrollProgress(progress);
+      setIsVisible(window.scrollY > 300);
     };
 
-    window.addEventListener('scroll', toggleVisibility);
-    return () => window.removeEventListener('scroll', toggleVisibility);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Scroll to top function
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -33,7 +31,29 @@ const ScrollButton = () => {
       onClick={scrollToTop}
       aria-label="Scroll to top"
     >
-      <FaArrowUp />
+      <svg className="progress-circle" viewBox="0 0 100 100">
+        <circle
+          className="progress-background"
+          cx="50"
+          cy="50"
+          r="45"
+          fill="none"
+          stroke="#54e7b3"
+          strokeWidth="5"
+        />
+        <circle
+          className="progress"
+          cx="50"
+          cy="50"
+          r="45"
+          fill="none"
+          stroke="black"
+          strokeWidth="5"
+          strokeDasharray="283"
+          strokeDashoffset={283 - (283 * scrollProgress) / 100}
+        />
+      </svg>
+      <FaArrowUp className="arrow-icon" />
     </button>
   );
 };

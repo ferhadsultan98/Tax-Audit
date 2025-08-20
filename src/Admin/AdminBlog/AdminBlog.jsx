@@ -31,6 +31,7 @@ const AdminBlog = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [language, setLanguage] = useState("az");
   const postsPerPage = 6;
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   const quillModules = {
     toolbar: [
@@ -44,7 +45,7 @@ const AdminBlog = () => {
 
   useEffect(() => {
     axios
-      .get("http://172.20.10.112:8000/api/blog/posts/")
+      .get(`${API_BASE_URL}/api/blog/posts/`)
       .then((res) => {
         setBlogPosts(Array.isArray(res.data) ? res.data : [res.data]);
       })
@@ -103,7 +104,7 @@ const AdminBlog = () => {
     try {
       if (editingId) {
         const res = await axios.put(
-          `http://172.20.10.112:8000/api/blog/posts/${editingId}/`,
+          `${API_BASE_URL}/api/blog/posts/${editingId}/`,
           data,
           { headers: { "Content-Type": "multipart/form-data" } }
         );
@@ -113,11 +114,9 @@ const AdminBlog = () => {
         setEditingId(null);
         alert("Bloq yazısı uğurla yeniləndi!");
       } else {
-        const res = await axios.post(
-          "http://172.20.10.112:8000/api/blog/posts/",
-          data,
-          { headers: { "Content-Type": "multipart/form-data" } }
-        );
+        const res = await axios.post(`${API_BASE_URL}/api/blog/posts/`, data, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
         setBlogPosts((prev) => [res.data, ...prev]);
         alert("Bloq yazısı uğurla yaradıldı!");
       }
@@ -169,7 +168,7 @@ const AdminBlog = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Bu yazını silmək istədiyinizə əminsiniz?")) {
       try {
-        await axios.delete(`http://172.20.10.112:8000/api/blog/posts/${id}/`);
+        await axios.delete(`${API_BASE_URL}/api/blog/posts/${id}/`);
         setBlogPosts((prev) => prev.filter((post) => post.id !== id));
         alert("Bloq yazısı uğurla silindi!");
       } catch (err) {
@@ -426,7 +425,7 @@ const AdminBlog = () => {
               <div className="cardImage">
                 {post.image_id ? (
                   <img
-                    src={`http://172.20.10.112:8000/api/blog/images/${post.image_id}/`}
+                    src={`${API_BASE_URL}/api/blog/images/${post.image_id}/`}
                   />
                 ) : (
                   <div className="noImage">

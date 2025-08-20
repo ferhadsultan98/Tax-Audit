@@ -9,10 +9,9 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import { MdGridView } from "react-icons/md";
 import SectionHeader from "../../Components/SectionHeader/SectionHeader";
-import postsData from "./BlogPosts.json"; // Import JSON data
 import "./Blog.scss";
+import { MdGridView } from "react-icons/md";
 
 const Blog = () => {
   const { t, i18n } = useTranslation();
@@ -24,6 +23,7 @@ const Blog = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 4;
   const language = i18n.language;
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   const categories = [
     { id: "all", name: t("blogSection.categories.all") },
@@ -36,17 +36,15 @@ const Blog = () => {
   ];
 
   useEffect(() => {
-    // Simulate API fetch by using JSON data
-    try {
-      setBlogPosts(postsData);
-    } catch (err) {
-      console.error("Failed to load blog posts:", err);
-    }
+    fetch(`${API_BASE_URL}/api/blog/posts/`)
+      .then((res) => res.json())
+      .then((data) => setBlogPosts(Array.isArray(data) ? data : [data]))
+      .catch((err) => console.error("Failed to fetch blog posts:", err));
   }, []);
 
   const filteredPosts = blogPosts.filter((post) => {
-    const title = post[`title_${language}`] || post.title_en || "";
-    const excerpt = post[`excerpt_${language}`] || post.excerpt_en || "";
+    const title = post[`title_${language}`] || "";
+    const excerpt = post[`excerpt_${language}`] || "";
     const matchesSearch =
       title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       excerpt.toLowerCase().includes(searchTerm.toLowerCase());
@@ -68,10 +66,10 @@ const Blog = () => {
   };
 
   const truncateText = (text, maxLength) => {
-    if (text && text.length > maxLength) {
+    if (text.length > maxLength) {
       return text.substring(0, maxLength) + "...";
     }
-    return text || "";
+    return text;
   };
 
   return (
@@ -159,7 +157,11 @@ const Blog = () => {
                 >
                   <div className="featuredImage">
                     <img
-                      src={featuredPost.image_id}
+                      src={
+                        featuredPost.image_id
+                          ? `${API_BASE_URL}/api/blog/images/${featuredPost.image_id}/`
+                          : ""
+                      }
                       alt={featuredPost[`title_${language}`] || ""}
                     />
                     {featuredPost.featured && (
@@ -175,15 +177,13 @@ const Blog = () => {
                     </span>
                     <h2>
                       {truncateText(
-                        featuredPost[`title_${language}`] ||
-                          featuredPost.title_en,
+                        featuredPost[`title_${language}`] || "",
                         isWideLayout ? 50 : 80
                       )}
                     </h2>
                     <p className="excerpt">
                       {truncateText(
-                        featuredPost[`excerpt_${language}`] ||
-                          featuredPost.excerpt_en,
+                        featuredPost[`excerpt_${language}`] || "",
                         isWideLayout ? 100 : 150
                       )}
                     </p>
@@ -221,7 +221,7 @@ const Blog = () => {
                       <div className="postImage">
                         {post.image_id ? (
                           <img
-                            src={post.image_id} // Adjust path for your setup
+                            src={`${API_BASE_URL}/api/blog/images/${post.image_id}/`}
                             alt={post[`title_${language}`] || ""}
                           />
                         ) : (
@@ -243,14 +243,14 @@ const Blog = () => {
                         <div className="postHeader">
                           <h3>
                             {truncateText(
-                              post[`title_${language}`] || post.title_en,
+                              post[`title_${language}`] || "",
                               isWideLayout ? 50 : 80
                             )}
                           </h3>
                         </div>
                         <p className="excerpt">
                           {truncateText(
-                            post[`excerpt_${language}`] || post.excerpt_en,
+                            post[`excerpt_${language}`] || "",
                             isWideLayout ? 100 : 150
                           )}
                         </p>

@@ -13,12 +13,16 @@ const Header = () => {
   const [servicesDropdown, setServicesDropdown] = useState(false);
   const [langDropdown, setLangDropdown] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const servicesRef = useRef(null);
   const langRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (window.scrollY / totalHeight) * 100;
+      setScrollProgress(progress);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -155,8 +159,7 @@ const Header = () => {
           />
         </div>
       </div>
-
-      {isOpen && <div className="overlay" onClick={() => setIsOpen(false)} />}
+      {/* <div className="progress-bar" style={{ width: `${scrollProgress}%` }} /> */}
     </header>
   );
 };

@@ -429,7 +429,7 @@
       "noImage": "Şəkil Yoxdur"
     }
   },
-"faqSection": {
+  "faqSection": {
     "header": {
       "label": "Salam",
       "title": "Tez-tez verilən suallar",
@@ -651,6 +651,33 @@
         "secondary": "Xidmətlərimiz"
       }
     }
+  },
+  "footer": {
+    "companyDesc": "Peşəkar audit, vergi və konsaltinq xidmətlərinin aparıcı təminatçısı. Biz innovativ həllər və ekspert rəhbərliyi ilə bizneslərə öz məqsədlərinə çatmağa kömək edirik.",
+    "quickLinks": {
+      "title": "Sürətli Keçidlər",
+      "aboutUs": "Haqqımızda",
+      "ourServices": "Xidmətlərimiz",
+      "faq": "FAQ",
+      "blog": "Bloq",
+      "contact": "Əlaqə"
+    },
+    "services": {
+      "title": "Xidmətlərimiz",
+      "auditAssurance": "Audit və Təminat",
+      "taxAdvisory": "Vergi Məsləhəti",
+      "businessConsulting": "Biznes Konsaltinqi",
+      "accountingServices": "Mühasibat Xidmətləri",
+      "legalServices": "Hüquqi Xidmətlər",
+      "humanResources": "İnsan Resursları"
+    },
+    "contactUs": {
+      "title": "Bizimlə Əlaqə",
+      "address": "Bakı şəhəri, Nəsimi rayonu, A. Salamzadə küç., 65A"
+    },
+    "bottom": {
+      "copyright": "© 2025 TACS. Bütün hüquqlar qorunur.",
+      "createdBy": "Yaradılıb"
+    }
   }
-  
 }

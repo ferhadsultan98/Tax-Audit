@@ -1,18 +1,12 @@
 import React from "react";
 import "./Footer.scss";
-import {
-  MapPin,
-  Phone,
-  Mail,
-  Facebook,
-  Linkedin,
-  Instagram,
-  Twitter,
-  ChevronRight,
-} from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { MapPin, Phone, Mail, ChevronRight } from "lucide-react";
 import FooterLogo from "../../assets/taxgreen.png";
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="footer">
       <div className="footerTop">
@@ -22,136 +16,96 @@ const Footer = () => {
               <div className="footerLogo">
                 <img src={FooterLogo} alt="TACS Logo" />
               </div>
-              <p className="companyDesc">
-                Leading provider of professional audit, tax, and consulting
-                services. We help businesses achieve their goals through
-                innovative solutions and expert guidance.
-              </p>
-              {/* <div className="socialLinks">
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Facebook"
-                >
-                  <Facebook size={20} />
-                </a>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin size={20} />
-                </a>
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                >
-                  <Instagram size={20} />
-                </a>
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Twitter"
-                >
-                  <Twitter size={20} />
-                </a>
-              </div> */}
+              <p className="companyDesc">{t("footer.companyDesc")}</p>
             </div>
 
             <div className="footerColumn">
-              <h3 className="columnTitle">Quick Links</h3>
+              <h3 className="columnTitle">{t("footer.quickLinks.title")}</h3>
               <ul className="footerLinks">
                 <li>
                   <a href="/about">
                     <ChevronRight size={16} />
-                    About Us
+                    {t("footer.quickLinks.aboutUs")}
                   </a>
                 </li>
                 <li>
                   <a href="/services">
                     <ChevronRight size={16} />
-                    Our Services
+                    {t("footer.quickLinks.ourServices")}
                   </a>
                 </li>
-                
                 <li>
                   <a href="/faq">
                     <ChevronRight size={16} />
-                    FAQ
+                    {t("footer.quickLinks.faq")}
                   </a>
                 </li>
                 <li>
                   <a href="/blog">
                     <ChevronRight size={16} />
-                    Blog
+                    {t("footer.quickLinks.blog")}
                   </a>
                 </li>
                 <li>
                   <a href="/contact">
                     <ChevronRight size={16} />
-                    Contact
+                    {t("footer.quickLinks.contact")}
                   </a>
                 </li>
               </ul>
             </div>
 
             <div className="footerColumn">
-              <h3 className="columnTitle">Our Services</h3>
+              <h3 className="columnTitle">{t("footer.services.title")}</h3>
               <ul className="footerLinks">
                 <li>
                   <a href="/services/audit">
                     <ChevronRight size={16} />
-                    Audit & Assurance
+                    {t("footer.services.auditAssurance")}
                   </a>
                 </li>
                 <li>
                   <a href="/services/tax">
                     <ChevronRight size={16} />
-                    Tax Advisory
+                    {t("footer.services.taxAdvisory")}
                   </a>
                 </li>
                 <li>
                   <a href="/services/consulting">
                     <ChevronRight size={16} />
-                    Business Consulting
+                    {t("footer.services.businessConsulting")}
                   </a>
                 </li>
                 <li>
                   <a href="/services/accounting">
                     <ChevronRight size={16} />
-                    Accounting Services
+                    {t("footer.services.accountingServices")}
                   </a>
                 </li>
                 <li>
                   <a href="/services/legal">
                     <ChevronRight size={16} />
-                    Legal Services
+                    {t("footer.services.legalServices")}
                   </a>
                 </li>
                 <li>
-                  <a href="/services/legal">
+                  <a href="/services/hr">
                     <ChevronRight size={16} />
-                    Human Sources
+                    {t("footer.services.humanResources")}
                   </a>
                 </li>
               </ul>
             </div>
 
             <div className="footerColumn">
-              <h3 className="columnTitle">Contact Us</h3>
+              <h3 className="columnTitle">{t("footer.contactUs.title")}</h3>
               <div className="contactInfo">
                 <div className="contactItem">
                   <div className="iconBox">
                     <MapPin size={18} />
                   </div>
                   <div className="contactText">
-                    <p>AZ 1069, Baku city, Nasimi district,</p>
-                    <p>A. Salamzade str., 65A</p>
+                    <p>{t("footer.contactUs.address")}</p>
                   </div>
                 </div>
                 <div className="contactItem">
@@ -180,21 +134,12 @@ const Footer = () => {
         <div className="footerContainer">
           <div className="bottomContent">
             <div className="copyright">
-              <p>© {new Date().getFullYear()} TACS. All rights reserved.</p>
+              <p>{t("footer.bottom.copyright")}</p>
             </div>
-            {/* <div className="bottomLinks">
-              <a href="/terms">Privacy Policy</a>
-              <span className="separator">|</span>
-              <a href="/terms">Terms of Service</a>
-            </div> */}
             <div className="createdBy">
               <p>
-                Created by{" "}
-                <a
-                  href="https://pmsystems.az"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                {t("footer.bottom.createdBy")}{" "}
+                <a href="https://pmsystems.az" target="_blank" rel="noopener noreferrer">
                   PM Systems
                 </a>
               </p>

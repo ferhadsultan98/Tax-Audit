@@ -4,6 +4,7 @@ import { I18nextProvider } from 'react-i18next';
 import i18n from './Languages/i18n'; // i18n yapılandırması
 import AppRoutes from './Routes/Routes';
 import './App.css';
+import ScrollButton from './Components/ScrollButton/ScrollButton';
 
 // Rota değişimlerinde en üste kaydırma için bir yardımcı komponent
 const ScrollToTop = () => {
@@ -25,6 +26,7 @@ function App() {
       <Router>
         <ScrollToTop /> {/* Rota değişimlerinde otomatik kaydırma */}
         <AppRoutes />
+        <ScrollButton/>
       </Router>
     </I18nextProvider>
   );

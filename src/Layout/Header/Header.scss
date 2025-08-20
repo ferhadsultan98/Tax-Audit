@@ -3,7 +3,7 @@ $whiteColor: #ffffff;
 $shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-// Animasyonlar
+// Animations
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -43,7 +43,7 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transition: $transition;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
-  
+
   &.scrolled {
     background-color: rgba($primaryColor, 0.95);
     backdrop-filter: blur(10px);
@@ -53,7 +53,6 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       padding: 10px;
     }
     .nav {
-      
       .navList {
         background: none;
       }
@@ -68,6 +67,16 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     align-items: center;
     padding: 1rem 2rem;
     transition: $transition;
+  }
+
+  .progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background-color: $whiteColor;
+    transition: width 0.3s ease;
+    border-radius: 0 30px 30px 0;
   }
 
   .logo {
@@ -276,7 +285,6 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       overflow-y: auto;
       z-index: 5;
-      
 
       &.open {
         right: 0;
